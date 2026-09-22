@@ -1,0 +1,16 @@
+CACHE MANIFEST
+# rev 20260922-landing-cache-v3-pkgbackup-tool
+
+CACHE:
+index.html
+style.css
+logo.png
+tools/pkg-backup/index.html
+tools/pkg-backup/ps4-pkg-backup_v13.bin
+tools/pkg-backup/config.cfg
+
+FALLBACK:
+/bayz/ /bayz/index.html
+
+NETWORK:
+*

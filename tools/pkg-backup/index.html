@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>نسخ الألعاب — PKG-BackUP v1.3 | الدراع بايظ</title>
+<link rel="icon" type="image/png" href="../../logo.png">
+<style>
+:root{color-scheme:dark;--bg:#0b0d10;--panel:#151a21;--line:#2b3542;--gold:#d4af37;--gold2:#f0d060;--muted:#aab4c0;--ok:#7fd0a0;--warn:#e0c77b;--bad:#e08a7f}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#0b0d10 0%,#1a1410 100%);color:#edf1f5;font:16px/1.8 "Segoe UI",Tahoma,sans-serif}
+main{width:min(94%,880px);margin:0 auto;padding:24px 0 56px}
+h1{color:var(--gold);font-size:clamp(26px,5vw,40px);margin:6px 0 2px}
+h2{color:var(--gold);font-size:22px;margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{color:var(--gold2);font-size:17px;margin:18px 0 6px}
+.sub{color:var(--muted);margin:0 0 10px}
+.back{display:inline-block;color:var(--gold);text-decoration:none;margin-bottom:10px;font-weight:600}
+.back:hover{color:var(--gold2)}
+.box{background:rgba(21,26,33,.92);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+.warning{border-color:#75622c;color:var(--warn)}
+.ok-box{border-color:#315b45;color:var(--ok)}
+.bad-box{border-color:#6e3b36;color:var(--bad)}
+code,pre{font-family:Consolas,Menlo,monospace;direction:ltr;text-align:left}
+code{background:#0b0d10;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:14px;color:#e8d090}
+pre{background:#0b0d10;border:1px solid var(--line);border-radius:8px;padding:13px;overflow:auto;color:#dce5ef;font-size:14px}
+a.button{display:inline-block;background:var(--gold);color:#0b0d10;text-decoration:none;font-weight:800;border-radius:9px;padding:10px 18px;margin:4px 4px 4px 0;font-size:15px}
+a.button:hover{background:var(--gold2)}
+a.button.ghost{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+button{cursor:pointer;font-family:inherit}
+.meta{color:var(--muted);font-size:13px;word-break:break-all}
+ol,ul{padding-right:26px;margin:8px 0}
+li{margin:9px 0}
+.small{font-size:13px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px}
+th,td{border:1px solid var(--line);padding:8px 12px;text-align:right}
+th{background:#1a1410;color:var(--gold)}
+td code{font-size:13px}
+/* ===== صندوق حالة الجهاز ===== */
+#devbox .row{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed #232c38;padding:7px 2px;flex-wrap:wrap}
+#devbox .row:last-child{border-bottom:none}
+#devbox .k{color:var(--muted)}
+#devbox .v{font-weight:700;color:#e6ebf2}
+.v.ok{color:var(--ok)}.v.warn{color:var(--warn)}.v.bad{color:var(--bad)}
+/* ===== زر التشغيل الكبير ===== */
+#launch{display:block;width:100%;text-align:center;background:linear-gradient(180deg,#f0d060,#d4af37);color:#141005;border:none;border-radius:14px;padding:20px 16px;font-size:clamp(18px,3.4vw,24px);font-weight:900;box-shadow:0 6px 22px rgba(212,175,55,.25);margin:6px 0 2px}
+#launch:hover{filter:brightness(1.07)}
+#launch[disabled]{background:#3a4250;color:#77808c;cursor:not-allowed;box-shadow:none}
+.launch-note{text-align:center;color:var(--muted);font-size:13px;margin-top:8px}
+/* ===== مولد الاعدادات ===== */
+.radio-line{display:flex;align-items:center;gap:8px;margin:8px 0;cursor:pointer}
+.radio-line input{accent-color:var(--gold);width:18px;height:18px;cursor:pointer}
+input[type=text]{width:100%;background:#0b0d10;border:1px solid var(--line);border-radius:8px;color:#e6ebf2;padding:9px 12px;font-family:Consolas,monospace;font-size:15px;direction:ltr;text-align:left}
+input[type=text]:focus{outline:1px solid var(--gold)}
+.steps{counter-reset:step;list-style:none;padding-right:0}
+.steps>li{counter-increment:step;position:relative;padding-right:52px;margin:14px 0}
+.steps>li::before{content:counter(step);position:absolute;right:0;top:2px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:#141005;font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center}
+kbd{background:#1a1410;border:1px solid #3a3320;border-bottom-width:3px;border-radius:6px;padding:2px 9px;font-family:inherit;font-size:14px;color:var(--gold2)}
+hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../../index.html">← العودة إلى صفحة الهبوط</a>
+<h1>نسخ الألعاب — PKG-BackUP v1.3</h1>
+<p class="sub">أداة نسخ الألعاب المثبّتة (Base + Update + DLC) من الـ PS4 إلى الفلاشة كملفات PKG — Payload رسمي من مشروع <b>kmeps4/PKG-BackUP</b></p>
+
+<!-- ============ حالة الجهاز ============ -->
+<h2>حالة جهازك</h2>
+<div class="box" id="devbox">
+  <div class="row"><span class="k">الجهاز</span><span class="v" id="d-device">جارٍ الفحص...</span></div>
+  <div class="row"><span class="k">الفيرموير</span><span class="v" id="d-fw">—</span></div>
+  <div class="row"><span class="k">سلسلة الثغرة المستخدمة</span><span class="v" id="d-chain">—</span></div>
+  <div class="row"><span class="k">توافق الأداة</span><span class="v" id="d-compat">—</span></div>
+</div>
+
+<!-- ============ الأداة ============ -->
+<h2>تشغيل الأداة</h2>
+<div class="box">
+  <p style="margin-top:0">الأداة بتشتغل مباشرة من متصفح الـ PS4 من غير أي برامج إضافية — الصفحة هتشغّل الثغرة الخاصة بفيرموير جهازك تلقائيًا، وبعدها تحمّل أداة النسخ في الكيرنل وتشغّلها فورًا.</p>
+  <button id="launch">🚀 تشغيل أداة النسخ الآن</button>
+  <p class="launch-note" id="launch-note">مدة الثغرة عادةً من ٣٠ إلى ٩٠ ثانية — متعملش حاجة في الجهاز لحد ما تشوف رسالة التأكيد.</p>
+  <div id="fallback-btns" style="display:none">
+    <p class="small" style="margin-bottom:4px">فتحت الصفحة دي من جهاز تاني (مش PS4). للمعاينة، دي روابط التشغيل لكل قسم:</p>
+    <a class="button ghost" href="../../7-13/index.html?bin=../tools/pkg-backup/ps4-pkg-backup_v13.bin">القسم 7.00 – 13.00</a>
+    <a class="button ghost" href="../../13-13.52/index.html?bin=../tools/pkg-backup/ps4-pkg-backup_v13.bin">القسم 13.02 – 13.52</a>
+  </div>
+  <div class="box ok-box" style="margin-bottom:0">
+    <b>قبل ما تضغط تشغيل، اتأكد من التلات نقط دول:</b>
+    <ol style="margin-bottom:0">
+      <li>الفلاشة / الهارد <b>موصول بالجهاز</b> قبل التشغيل.</li>
+      <li>ملف <code>config.cfg</code> موجود في <b>جذر الفلاشة</b> (مش جوه فولدر).</li>
+      <li>مساحة الفلاشة كافية (لعبة واحدة ممكن توصل 100GB).</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ============ التعليمات الكاملة ============ -->
+<h2>تعليمات التشغيل الكاملة</h2>
+
+<div class="box">
+<h3 style="margin-top:0">الأداة دي بتعمل إيه بالظبط؟</h3>
+<p>PKG-BackUP بيدور على الألعاب المثبّتة على جهازك (اللي انتا مثبتها بـ PKG) وبينسخ ملفاتها الأصلية — <b>Base</b> (اللعبة الأساسية) و<b>Update</b> (التحديثات) و<b>DLC</b> (الإضافات) — وبيحطها على الفلاشة زي ما هي. النسخة اللي بتطلع على الفلاشة هي نفس ملفات الـ PKG الأصلية، فتقدر تركّبها تاني على نفس الجهاز أو أي جهاز تاني عليه GoldHEN من خلال <b>Package Installer</b> أو <b>GoldHEN Package Installer</b>.</p>
+</div>
+
+<div class="box">
+<h3 style="margin-top:0">الخطوات بالتفصيل</h3>
+<ol class="steps">
+<li><b>جهّز الفلاشة أو الهارد الخارجي:</b> استخدم وحدة USB مناسبة متوصّلة مباشرة في منفذ الـ PS4 (من غير هوب/extension)، ولو هتنسخ ألعاب كتير يفضّل هارد خارجي بمساحة كبيرة. المهم: الفلاشة تكون متهيّأة بنظام ملفات يقرأه الـ PS4 زي FAT32 أو exFAT.</li>
+<li><b>حط ملف <code>config.cfg</code> في جذر الفلاشة:</b> نزّل الملف الجاهز من قسم «التحميلات» تحت، أو ولّده بنفسك من «مولّد الإعدادات»، وانسخه في <b>أول طبقة</b> في الفلاشة (مش جوه أي فولدر). الملف ده هو اللي بيقول للأداة هتنسخ إيه بالظبط.</li>
+<li><b>افتح الهوست من متصفح الـ PS4:</b> من صفحة الهبوط اضغط على كارت <b>«نسخ الألعاب»</b> — هيوصلك للصفحة دي.</li>
+<li><b>اضغط زر «تشغيل أداة النسخ الآن»:</b> الصفحة هتوجّهك تلقائيًا لسلسلة الثغرة المناسبة لفيرموير جهازك. الثغرة هتشغّل نفسها (استنّى من ٣٠ لـ ٩٠ ثانية) وبعدها الأداة هتشتغّل لوحدها وتبدأ النسخ.</li>
+<li><b>استنّى لحد ما رسالة «PKG-BackUP v1.3 Loaded» تظهر:</b> بعد ظهور الرسالة، النسخ بيكون شغال في الخلفية. <b>متقفلش المتصفح ومتفصلش الفلاشة ومتطفيش الجهاز</b> لحد ما تخلّص كل الألعاب — اللعبة الكبيرة ممكن تاخد وقت طويل حسب سرعة الفلاشة.</li>
+<li><b>اتأكد إن النسخ خلص:</b> افتح الفلاشة على الكمبيوتر وهتلاقي ملفات الـ PKG جاهزة. بعد ما تخلص افصل الفلاشة بشكل آمن (اللعبة مش هتتقفل ولا حاجة).</li>
+</ol>
+</div>
+
+<div class="box">
+<h3 style="margin-top:0">إزاي تركّب الألعاب المنسوخة تاني؟</h3>
+<p>اركّب GoldHEN على الجهاز المستهدف زي المعتاد، وبعدين حط ملفات الـ PKG على فلاشة أو شغّل خادم FTP، وركّبها من <b>GoldHEN ← Package Installer</b>. ركّب بنفس الترتيب: <b>Base</b> الأول، وبعده <b>Update</b>، وفي الآخر <b>DLC</b>. لو اللعبة كانت عليها License معين، لازم يكون نفس الجهاز أو جهاز عليه نفس الحساب/الترخيص عشان تشتغل.</p>
+</div>
+
+<!-- ============ شرح config ============ -->
+<h2>شرح ملف config.cfg</h2>
+<div class="box">
+<p style="margin-top:0">الملف فيه سطرين أساسيين:</p>
+<pre>; cusa=0 يعني نسخ كل الألعاب المثبتة
+cusa=0
+
+; 0 = Base فقط | 1 = Update فقط | 2 = DLC فقط | 3 = الكل
+method=3</pre>
+<h3>قيم <code>method</code>:</h3>
+<table>
+<tr><th>القيمة</th><th>اللي هيتم نسخه</th></tr>
+<tr><td><code>0</code></td><td>اللعبة الأساسية (Base) فقط</td></tr>
+<tr><td><code>1</code></td><td>التحديثات (Update) فقط</td></tr>
+<tr><td><code>2</code></td><td>الإضافات (DLC) فقط</td></tr>
+<tr><td><code>3</code></td><td>الأساسية + التحديثات + الإضافات (الكل) — <b>المُستحسن</b></td></tr>
+</table>
+<h3>قيمة <code>cusa</code>:</h3>
+<p><code>cusa=0</code> = نسخ <b>كل</b> الألعاب المثبتة. لو عايز تنسخ لعبة واحدة بس، حط رقم الـ CUSA بتاعها من غير حروف — مثال: لعبة عنوانها <code>CUSA12345</code> تتحط في الملف كده: <code>cusa=12345</code>. تلاقي رقم الـ CUSA على غلاف اللعبة أو في اسم ملف الـ PKG الأصلي.</p>
+<p class="small">ملحوظة: متحطش مسافات زيادة وحوالين علامة <code>=</code>، ومتغيرش أسماء المفاتيح، والملف لازم يفضل اسمه <code>config.cfg</code> بالظبط.</p>
+</div>
+
+<!-- ============ مولد الاعدادات ============ -->
+<h2>مولّد الإعدادات (config.cfg)</h2>
+<div class="box">
+<p style="margin-top:0">اختار اللي عايز تنسخه، ولو عايز لعبة بعينها اكتب رقم الـ CUSA، وبعدين اضغط «توليد» — نزّل الملف وحطه على جذر الفلاشة. (التوليد والتحميل شغالين من متصفح الكمبيوتر أو الموبايل).</p>
+<label class="radio-line"><input type="radio" name="method" value="0"><span>Base فقط — اللعبة الأساسية</span></label>
+<label class="radio-line"><input type="radio" name="method" value="1"><span>Update فقط — التحديثات</span></label>
+<label class="radio-line"><input type="radio" name="method" value="2"><span>DLC فقط — الإضافات</span></label>
+<label class="radio-line"><input type="radio" name="method" value="3" checked><span>الكل — Base + Update + DLC <b>(مُستحسن)</b></span></label>
+<p style="margin:14px 0 4px">رقم CUSA (سيبه فاضي أو 0 للنسخ الكلي):</p>
+<input type="text" id="cusa-in" inputmode="numeric" placeholder="0" value="0">
+<div style="margin-top:12px">
+<button class="button" id="gen-btn" style="border:none">⚙️ توليد config.cfg</button>
+<a class="button ghost" id="dl-btn" style="display:none">⬇️ تحميل الملف</a>
+</div>
+<pre id="cfg-out" style="display:none"></pre>
+</div>
+
+<!-- ============ التحميلات ============ -->
+<h2>التحميلات</h2>
+<div class="box">
+<a class="button" href="ps4-pkg-backup_v13.bin" download>تحميل Payload (ps4-pkg-backup_v13.bin)</a>
+<a class="button ghost" href="config.cfg" download>تحميل config.cfg الجاهز (method=3)</a>
+<p class="meta">SHA-256 للـPayload:<br><code>05f044b5c2d2e8e09615d59a3ff57d791289cb71ba08833ed428eef57c044298</code><br><br>SHA-256 للـconfig:<br><code>4f69d51beb4ef8ed10d0896607c94b60543a067baced439b7d9fe8d40c1bcfae</code></p>
+</div>
+
+<!-- ============ تحذيرات ============ -->
+<h2>تحذيرات مهمة</h2>
+<div class="box warning">
+<ul style="margin:0">
+<li><b>التوافق:</b> الإصدار v1.3 الرسمي بيدعم PS4 من 3.00 حتى 12.02. الفيرمويرات الأعلى (12.50 – 13.52) مش مضمونة رسميًا — الأداة هتشتغل من نفس سلسلة الثغرة بتاعتك، لكن استخدمها على مسؤوليتك، وجرّب الأول بلعبة صغيرة.</li>
+<li><b>أثناء النسخ:</b> متفصلش الفلاشة ومتطفيش الجهاز ومتقفلش المتصفح — كده الملفات هتبوظ.</li>
+<li><b>المساحة:</b> لو المساحة تخلص في نص النسخ، الملف هيتقطع — امسح مساحة أو استخدم فلاشة أكبر وابدأ من الأول.</li>
+<li><b>الاستخدام:</b> الأداة دي لأغراض النسخ الاحتياطي للمحتوى اللي <b>انتا مالكه</b> — مسؤولية الاستخدام عليك.</li>
+</ul>
+</div>
+
+<!-- ============ حل المشاكل ============ -->
+<h2>حل المشاكل الشائعة</h2>
+<div class="box">
+<table>
+<tr><th>المشكلة</th><th>الحل</th></tr>
+<tr><td>رسالة «Failed to Load! Restart Your Console»</td><td>دي فشل الثغرة العادي — قفل الجهاز وولّعه وحاول تاني. لو اتكررت: امسح بيانات المتصفح (Settings ← User Guide…) وامسح الـ Cache واعد تحميل الصفحة.</td></tr>
+<tr><td>رسالة «GoldHEN is Already Loaded» بدل الأداة</td><td>دي معناها إن النسخة القديمة من السلسلة اتحمّلت من الكاش. امسح كاش المتصفح وافتح الهوست تاني — النسخة الجديدة بتخطي الرسالة دي لوحدها مع الأداة.</td></tr>
+<tr><td>الأداة اشتغلت بس مفيش ملفات على الفلاشة</td><td>اتأكد إن <code>config.cfg</code> في جذر الفلاشة بالظبط، وإن الفلاشة موصولة قبل التشغيل، وإن <code>method</code> صحيح (جرب <code>method=3</code>)، وإن فيه مساحة كافية.</td></tr>
+<tr><td>الأداة مش راضية تشتغل على 12.50 – 13.52</td><td>الأداة رسميًا مدعومة حتى 12.02 — فوق كده تجربة على مسؤوليتك. لو مشتغلش، انسخ ألعابك من جهاز فيرموير أقل أو استخدم أداة Dump من GoldHEN.</td></tr>
+<tr><td>النسخ بياخد وقت طويل جدًا</td><td>طبيعي — السرعة بتعتمد على الفلاشة. فلاشة USB 3.0 أو SSD خارجي أسرع بكتير. متقفلش الصفحة.</td></tr>
+</table>
+</div>
+
+<!-- ============ حقوق ============ -->
+<h2>المصدر والحقوق</h2>
+<div class="box">
+<ul style="margin:0">
+<li>الأداة: مشروع <a href="https://github.com/kmeps4/PKG-BackUP" style="color:var(--gold)" target="_blank" rel="noopener">kmeps4/PKG-BackUP</a> — إصدار v1.3، محفوظ زي ما اتعلن من غير أي تعديل.</li>
+<li>التشغيل المباشر من المتصفح: الغلاف والسلاسل من تجهيز <b>الدراع بايظ — by H0sS (Hossam Elgogary)</b> فوق سلاسل PSFree / CSSFontFace / SlopKit / aio_multi_wait.</li>
+<li>شكرًا لفريق Raw Game وMODDED_WARFARE وAl-Azif على سلاسل الثغرات والباتشات.</li>
+</ul>
+</div>
+<p class="small" style="text-align:center">الدراع بايظ — Eldra3bayz | by H0sS — Hossam Elgogary | WhatsApp: 01008660201</p>
+</main>
+
+<script>
+(function () {
+  var m = /PlayStation\s+4[\/ ](\d+)\.(\d+)/.exec(navigator.userAgent);
+  var isPS4 = !!m;
+  var fwKey = null, fwnum = null;
+  if (m) {
+    // PS4 reports the minor as two hex digits in the UA (13.52 -> 0x52)
+    var ms = parseInt(m[2], 16).toString(16);
+    if (ms.length < 2) ms = "0" + ms;
+    fwKey = m[1] + "." + ms;
+    fwnum = parseInt(m[1], 10) * 100 + parseInt(ms, 10);
+  }
+
+  var BIN_PATH = "../tools/pkg-backup/ps4-pkg-backup_v13.bin";
+  var URL_713 = "../../7-13/index.html?bin=" + BIN_PATH;
+  var URL_1352 = "../../13-13.52/index.html?bin=" + BIN_PATH;
+
+  var chain = null; // "713" | "1352" | null
+  if (fwnum !== null && fwnum >= 700 && fwnum <= 1300) chain = "713";
+  else if (fwnum === 1302 || fwnum === 1304 || fwnum === 1350 || fwnum === 1352) chain = "1352";
+
+  var dDevice = document.getElementById("d-device");
+  var dFw = document.getElementById("d-fw");
+  var dChain = document.getElementById("d-chain");
+  var dCompat = document.getElementById("d-compat");
+  var launch = document.getElementById("launch");
+  var note = document.getElementById("launch-note");
+  var fallback = document.getElementById("fallback-btns");
+
+  function set(el, text, cls) {
+    el.textContent = text;
+    el.className = "v" + (cls ? " " + cls : "");
+  }
+
+  if (isPS4 && chain) {
+    set(dDevice, "PlayStation 4 ✔", "ok");
+    set(dFw, fwKey, "");
+    set(dChain,
+        chain === "713" ? "سلسلة 7.00 – 13.00 (PSFree / CSS / SlopKit)"
+                        : "سلسلة 13.02 – 13.52 (aio_multi_wait)", "ok");
+    var official = fwnum <= 1202;
+    set(dCompat, official ? "متوافق رسميًا (3.00 – 12.02) ✔"
+                          : "غير مضمون رسميًا — فوق 12.02 (على مسؤوليتك)",
+        official ? "ok" : "warn");
+    launch.textContent = "🚀 تشغيل أداة النسخ الآن — فيرموير " + fwKey;
+    launch.onclick = function () {
+      location.href = chain === "713" ? URL_713 : URL_1352;
+    };
+  } else if (isPS4) {
+    set(dDevice, "PlayStation 4", "warn");
+    set(dFw, fwKey || "غير معروف", "warn");
+    set(dChain, "غير مدعوم في الهوست ده", "bad");
+    set(dCompat, "الجهاز خارج نطاق 7.00 – 13.52", "bad");
+    launch.disabled = true;
+    launch.textContent = "فيرموير غير مدعوم";
+    note.textContent = "الهوست ده بيدعم PS4 من 7.00 لـ 13.52 بس.";
+  } else {
+    set(dDevice, "مش PS4 — متصفح عادي", "warn");
+    set(dFw, "—", "");
+    set(dChain, "افتح الصفحة دي من متصفح PS4 عشان التشغيل", "warn");
+    set(dCompat, "—", "");
+    launch.disabled = true;
+    launch.textContent = "الأداة بتشتغل من متصفح PS4 فقط";
+    fallback.style.display = "block";
+  }
+
+  // ===== مولّد config.cfg =====
+  var genBtn = document.getElementById("gen-btn");
+  var dlBtn = document.getElementById("dl-btn");
+  var out = document.getElementById("cfg-out");
+  var cusaIn = document.getElementById("cusa-in");
+
+  function buildCfg() {
+    var method = (document.querySelector("input[name=method]:checked") || {}).value || "3";
+    var cusa = (cusaIn.value || "0").replace(/[^0-9]/g, "") || "0";
+    return "; config.cfg — generated by Eldra3bayz PKG-BackUP page\n" +
+           "; copy this file to your USB disk ROOT\n" +
+           "; cusa=0 -> copy every installed title\n" +
+           "cusa=" + cusa + "\n\n" +
+           "; 0=Base only  1=Update only  2=DLC only  3=Base+Update+DLC\n" +
+           "method=" + method + "\n";
+  }
+
+  genBtn.onclick = function () {
+    var cfg = buildCfg();
+    out.style.display = "block";
+    out.textContent = cfg;
+    if (dlBtn.href) { try { URL.revokeObjectURL(dlBtn.href); } catch (e) {} }
+    var blob = new Blob([cfg], { type: "text/plain" });
+    dlBtn.href = URL.createObjectURL(blob);
+    dlBtn.download = "config.cfg";
+    dlBtn.style.display = "inline-block";
+  };
+})();
+</script>
+</body>
+</html>
