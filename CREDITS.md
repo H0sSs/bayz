@@ -15,6 +15,7 @@
 
 - **GoldHEN** — SiSTRo وTeam Xvortex وكل المساهمين — https://github.com/GoldHEN/GoldHEN
 - **PKG-BackUP v1.3** — kmeps4 — https://github.com/kmeps4/PKG-BackUP (محفوظ كما نُشر من غير تعديل)
+- **ItemzFlow** — LightningMods والمساهمون — https://github.com/LightningMods/Itemzflow (صفحة تعريف وتثبيت بالعربي فقط — التطبيق بيتحمّل من المصدر الرسمي pkg-zone.com/details/ITEM00001)
 
 ## تنويه قانوني
 

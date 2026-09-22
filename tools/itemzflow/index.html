@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ItemzFlow — مدير الألعاب والواجهة البديلة | الدراع بايظ</title>
+<link rel="icon" type="image/png" href="../../logo.png">
+<style>
+:root{color-scheme:dark;--bg:#0b0d10;--panel:#151a21;--line:#2b3542;--gold:#d4af37;--gold2:#f0d060;--muted:#aab4c0;--ok:#7fd0a0;--warn:#e0c77b;--bad:#e08a7f;--cyan:#38bdf8}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#0b0d10 0%,#1a1410 100%);color:#edf1f5;font:16px/1.8 "Segoe UI",Tahoma,sans-serif}
+main{width:min(94%,880px);margin:0 auto;padding:24px 0 56px}
+h1{color:var(--gold);font-size:clamp(26px,5vw,40px);margin:6px 0 2px}
+h2{color:var(--gold);font-size:22px;margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{color:var(--gold2);font-size:17px;margin:18px 0 6px}
+.sub{color:var(--muted);margin:0 0 10px}
+.back{display:inline-block;color:var(--gold);text-decoration:none;margin-bottom:10px;font-weight:600}
+.back:hover{color:var(--gold2)}
+.box{background:rgba(21,26,33,.92);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+.warning{border-color:#75622c;color:var(--warn)}
+.ok-box{border-color:#315b45;color:var(--ok)}
+code,pre{font-family:Consolas,Menlo,monospace;direction:ltr;text-align:left}
+code{background:#0b0d10;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:14px;color:#e8d090}
+a.button{display:inline-block;background:var(--gold);color:#0b0d10;text-decoration:none;font-weight:800;border-radius:9px;padding:10px 18px;margin:4px 4px 4px 0;font-size:15px}
+a.button:hover{background:var(--gold2)}
+a.ext{color:var(--cyan);text-decoration:none}
+a.ext:hover{text-decoration:underline}
+.meta{color:var(--muted);font-size:13px;word-break:break-all}
+ol,ul{padding-right:26px;margin:8px 0}
+li{margin:9px 0}
+.small{font-size:13px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px}
+th,td{border:1px solid var(--line);padding:8px 12px;text-align:right}
+th{background:#1a1410;color:var(--gold)}
+.steps{counter-reset:step;list-style:none;padding-right:0}
+.steps>li{counter-increment:step;position:relative;padding-right:52px;margin:14px 0}
+.steps>li::before{content:counter(step);position:absolute;right:0;top:2px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:#141005;font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center}
+hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+/* ===== زر التحميل الكبير ===== */
+#dl{display:block;width:100%;text-align:center;background:linear-gradient(180deg,#f0d060,#d4af37);color:#141005;text-decoration:none;border-radius:14px;padding:20px 16px;font-size:clamp(18px,3.4vw,24px);font-weight:900;box-shadow:0 6px 22px rgba(212,175,55,.25);margin:6px 0 2px}
+#dl:hover{filter:brightness(1.07)}
+.launch-note{text-align:center;color:var(--muted);font-size:13px;margin-top:8px}
+.feat{display:flex;gap:10px;margin:10px 0;align-items:flex-start}
+.feat b{color:var(--gold2);white-space:nowrap}
+.feat span{color:#d7dee7}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../../index.html">← العودة إلى صفحة الهبوط</a>
+<h1>ItemzFlow — مدير الألعاب</h1>
+<p class="sub">تطبيق PS4 مفتوح المصدر من المطور <b>LightningMods</b> — واجهة بديلة للـ Home Menu + مدير ألعاب كامل + أداة نسخ مدمجة — الإصدار 1.08</p>
+
+<!-- ============ إيه هو؟ ============ -->
+<h2>إيه هو ItemzFlow؟</h2>
+<div class="box">
+<p style="margin-top:0">ItemzFlow مش مجرد أداة نسخ — ده <b>تطبيق كامل بيتثبّت على الـ PS4</b> بيعمل وظيفة واجهة بديلة لقائمة الألعاب (Home Menu) ومعاه مدير ألعاب وأدوات كتير. بيتوزع كمصدر مفتوح على GitHub، والتطبيق نفسه بيتحمّل من المتجر الرسمي بتاعه على pkg-zone.</p>
+<p><b>الفرق الجوهري بينه وبين أدواتنا:</b> أدوات الهوست عندنا (زي PKG-BackUP) بتشتغل <b>فورًا من المتصفح</b> أثناء الجيلبريك من غير تثبيت — إنما ItemzFlow <b>تطبيق بيتثبّت مرة واحدة</b> على الجهاز ويفضل موجود عندك بعد كده، وبيشتغل مع الجيلبريك في كل مرة.</p>
+</div>
+
+<!-- ============ المميزات ============ -->
+<h2>أهم المميزات</h2>
+<div class="box">
+<div class="feat"><b>واجهة بديلة:</b><span>Home Menu بديل بالكامل فيه ثيمات وأغلفة ألعاب وتخصيصات</span></div>
+<div class="feat"><b>نسخ الألعاب:</b><span>Dumper مدمج — نسخ اللعبة كاملة أو Base بس أو الـ Updates بس لفلاشة/هارد USB</span></div>
+<div class="feat"><b>إدارة الألعاب:</b><span>ترتيب وتصنيفات وتشغيل للألعاب من غير قائمة سوني</span></div>
+<div class="feat"><b>تشغيل من USB:</b><span>دعم Fuse لتشغيل الألعاب مباشرة من الفلاشة الخارجية</span></div>
+<div class="feat"><b>FTP مدمج:</b><span>نقل ملفات من وإلى الجهاز من الكمبيوتر بدون فلاشة</span></div>
+<div class="feat"><b>يدعم العربي:</b><span>اللغة العربية اتضافت رسميًا في إصدار 1.08</span></div>
+<div class="feat"><b>بيتحدّث:</b><span>آخر تحديث مايو 2026 وفيه دعم جديد لفيرمويرات 12.50 – 13.02</span></div>
+</div>
+
+<!-- ============ التحميل ============ -->
+<h2>التحميل</h2>
+<div class="box">
+<a id="dl" href="https://pkg-zone.com/details/ITEM00001" rel="noopener">⬇ تحميل ItemzFlow من المصدر الرسمي</a>
+<p class="launch-note">الزر بيفتح صفحة التطبيق الرسمية على pkg-zone — دي نقطة التوزيع الوحيدة اللي المطور نفسه بيعتمدها، فبتجيبلك دايمًا آخر إصدار.</p>
+<table>
+<tr><th>البند</th><th>التفاصيل</th></tr>
+<tr><td>الإصدار الحالي</td><td>1.08 (مايو 2026)</td></tr>
+<tr><td>المطور</td><td>LightningMods + مساهمين من مجتمع PS4</td></tr>
+<tr><td>المصدر الرسمي للتحميل</td><td><a class="ext" href="https://pkg-zone.com/details/ITEM00001" rel="noopener">pkg-zone.com/details/ITEM00001</a></td></tr>
+<tr><td>كود المشروع</td><td><a class="ext" href="https://github.com/LightningMods/Itemzflow" rel="noopener">github.com/LightningMods/Itemzflow</a></td></tr>
+<tr><td>المتطلبات</td><td>PS4 عليه جيلبريك (GoldHEN) + مساحة تخزين للتطبيق</td></tr>
+</table>
+<div class="box warning" style="margin-bottom:0">
+<b>مهم قبل التحميل:</b> لازم تكون <b>عامل جيلبريك للجهاز الأول</b> من هوست الدراع بايظ (اختار كارت الفيرموير بتاعك من صفحة الهبوط) — التطبيق بيشتغل على كل الفيرمويرات اللي الهوست بيدعمها من 7.00 لـ 13.52.
+</div>
+</div>
+
+<!-- ============ التثبيت ============ -->
+<h2>التثبيت على PS4 — طريقتين</h2>
+
+<div class="box">
+<h3 style="margin-top:0">الطريقة الأولى: مباشرة من متصفح الـ PS4 (المستحسنة)</h3>
+<ol class="steps">
+<li><b>اعمل جيلبريك للجهاز:</b> من صفحة الهبوط اضغط كارت <b>«PS4»</b> بتاع فيرموير جهازك واستنّى رسالة نجاح الجيلبريك.</li>
+<li><b>افتح صفحة التحميل من المتصفح:</b> اضغط زر <b>«تحميل ItemzFlow من المصدر الرسمي»</b> فوق — هيفتح صفحة التطبيق على pkg-zone من نفس متصفح الـ PS4.</li>
+<li><b>اتبع زر التثبيت في صفحة pkg-zone:</b> التطبيق هيتنزّل ويتثبّت على الجهاز مباشرة — استنّى لحد ما التثبيت يخلص.</li>
+<li><b>شغّل التطبيق:</b> هتلاقي ItemzFlow ظهر في قائمة محتوى الجهاز زي أي لعبة — افتحه من هناك.</li>
+</ol>
+</div>
+
+<div class="box">
+<h3 style="margin-top:0">الطريقة التانية: فلاشة USB (لو التحميل المباشر مش متاح)</h3>
+<ol class="steps">
+<li><b>نزّل ملف الـ PKG من الكمبيوتر:</b> افتح نفس لينك التحميل على كمبيوتر أو موبايل ونزّل ملف الـ <code>.pkg</code> بتاع التطبيق.</li>
+<li><b>انقله على فلاشة:</b> فلاشة بنظام FAT32 أو exFAT، وحط الملف في جذرها (مش جوه فولدر).</li>
+<li><b>ركّبه من GoldHEN:</b> على الـ PS4 بعد الجيلبريك: <b>GoldHEN ← Package Installer ← Install from USB</b> — اختار ملف ItemzFlow واستنّى التثبيت.</li>
+<li><b>شغّل التطبيق:</b> من قائمة محتوى الجهاز زي أي تطبيق تاني.</li>
+</ol>
+</div>
+
+<!-- ============ أول تشغيل ============ -->
+<h2>أول تشغيل وإعدادات النسخ</h2>
+<div class="box">
+<p style="margin-top:0">أول ما تفتح ItemzFlow هيطلب منك إعدادات أولية — اتقبل وكمّل عادي. بعد كده تلاقي كل حاجة في <b>قائمة الإعدادات</b> جوه التطبيق:</p>
+<table>
+<tr><th>الإعداد</th><th>بيعمل إيه</th></tr>
+<tr><td><code>Dumper_option</code></td><td>نوع النسخ: <code>0</code> = اللعبة كاملة (Base + Update) &nbsp;|&nbsp; <code>1</code> = Base فقط &nbsp;|&nbsp; <code>2</code> = التحديثات فقط</td></tr>
+<tr><td><code>Dumper_Path</code></td><td>مسار النسخ على الفلاشة/الهارد الخارجي</td></tr>
+<tr><td><code>Sort_By</code></td><td>ترتيب عرض الألعاب في القائمة</td></tr>
+<tr><td><code>TTF_Font</code></td><td>خط مخصص للواجهة (لو حابب شكل مختلف)</td></tr>
+</table>
+<p class="small" style="margin-bottom:0">لو حصلت أي مشكلة في التطبيق، من قائمة الإعدادات اضغط زر <b>Triangle</b> عشان ترفع اللوجات للمطورين — دي الطريقة الرسمية للإبلاغ عن المشاكل.</p>
+</div>
+
+<!-- ============ المقارنة ============ -->
+<h2>ItemzFlow ولا أداة «نسخ الألعاب» عندنا؟</h2>
+<div class="box">
+<p style="margin-top:0">الاتنين بيكمّلوا بعض مش بيتنافسوا — ده الفرق باختصار:</p>
+<table>
+<tr><th></th><th>PKG-BackUP v1.3 (عندنا)</th><th>ItemzFlow</th></tr>
+<tr><td><b>التشغيل</b></td><td>من المتصفح فورًا مع الجيلبريك — بدون تثبيت</td><td>تطبيق بيتثبّت مرة واحدة ويفضل معاك</td></tr>
+<tr><td><b>النسخ</b></td><td>Base + Update + DLC لفلاشة USB</td><td>نسخ كامل أو جزئي + تشغيل من USB + FTP</td></tr>
+<tr><td><b>الواجهة</b></td><td>صفحة ويب بسيطة</td><td>واجهة كاملة بثيمات وأغلفة</td></tr>
+<tr><td><b>يناسب مين؟</b></td><td>اللي عايز ينسخ ألعابه بسرعة دلوقتي</td><td>اللي عايز تجربة ألعاب كاملة على الجهاز</td></tr>
+</table>
+<p class="small" style="margin-bottom:0">نصيحتنا: ابدأ بأداتنا الفورية لو محتاج نسخة سريعة، وثبّت ItemzFlow لو عايز مدير ألعاب دائم على الجهاز.</p>
+</div>
+
+<!-- ============ تحذيرات ============ -->
+<h2>تحذيرات وملاحظات</h2>
+<div class="box warning">
+<ul style="margin-bottom:0">
+<li><b>أثناء نسخ أي لعبة:</b> متطفيش الجهاز ومتفصلش الفلاشة لحد ما النسخ يخلص — كده الملفات هتبوظ.</li>
+<li><b>التحديثات:</b> التطبيق بيتحدث باستمرار — لينك pkg-zone الرسمي بيجيب دايمًا آخر إصدار، فلو ItemzFlow عندك قديم نزّله تاني من نفس اللينك.</li>
+<li><b>الجلبريك لازم يكون شغال</b> وقت استخدام أدوات النسخ والتشغيل من USB — لو رسترت الجهاز، اعمل الجيلبريك تاني من الهوست قبل ما تفتح التطبيق.</li>
+<li><b>المسؤولية:</b> الأداة لأغراض النسخ الاحتياطي للمحتوى اللي انتا مالكه — استخدامها مسؤوليتك الشخصية.</li>
+</ul>
+</div>
+
+<!-- ============ الشكر ============ -->
+<h2>الشكر والتقدير</h2>
+<div class="box ok-box" style="margin-bottom:0">
+<p style="margin:0">ItemzFlow من تطوير <b>LightningMods</b> بيساهم فيه مطورين كتير من مجتمع PS4 مفتوح المصدر (Masterzorag و Al-Azif و sleirsgoevy وغيرهم) — كود المشروع كله متاح على <a class="ext" href="https://github.com/LightningMods/Itemzflow" rel="noopener">GitHub</a>. الدراع بايظ بيوفّر صفحة التعريف والتثبيت بالعربي فقط — التطبيق نفسه محفوظ زي ما بيتوزع رسميًا.</p>
+</div>
+</main>
+</body>
+</html>

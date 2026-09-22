@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 20260922-landing-cache-v3-pkgbackup-tool
+# rev 20260923-landing-cache-v4-itemzflow-redesign
 
 CACHE:
 index.html
@@ -8,6 +8,7 @@ logo.png
 tools/pkg-backup/index.html
 tools/pkg-backup/ps4-pkg-backup_v13.bin
 tools/pkg-backup/config.cfg
+tools/itemzflow/index.html
 
 FALLBACK:
 /bayz/ /bayz/index.html

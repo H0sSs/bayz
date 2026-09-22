@@ -8,8 +8,12 @@
 }
 
 body {
-    background: linear-gradient(135deg, #0b0d10 0%, #1a1410 100%);
-    background-size: cover;
+    /* تدرج ثابت خفيف — بدون صور وبدون blur عشان أقصى سرعة على متصفح PS4 */
+    background-color: #0b0d10;
+    background-image:
+        radial-gradient(ellipse 900px 480px at 50% -180px, rgba(212, 175, 55, 0.16), rgba(212, 175, 55, 0) 65%),
+        linear-gradient(135deg, #0b0d10 0%, #1a1410 100%);
+    background-repeat: no-repeat;
     color: #fff;
     min-height: 100vh;
     display: flex;
@@ -20,21 +24,9 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* طبقة تعتيم فوق الخلفية عشان الكلام يبان بوضوح */
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(20,15,5,0.75) 100%);
-    z-index: -1;
-}
-
 .container {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1100px;
     text-align: center;
     padding: 40px 20px;
 }
@@ -79,7 +71,7 @@ header .dev {
     font-size: 0.85rem;
     color: #8b95a3;
     letter-spacing: 1px;
-    margin-bottom: 40px;
+    margin-bottom: 34px;
     opacity: 0.8;
 }
 
@@ -88,87 +80,185 @@ header .dev b {
     font-weight: 600;
 }
 
-/* نظام الشبكة للأزرار - Grid System */
+/* ===== شبكة الكروت - Gold Neon ===== */
 .cards-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
-    gap: 30px;
-    margin: 40px 0 50px;
-    flex-wrap: wrap;
+    gap: 24px;
+    max-width: 780px;
+    margin: 40px auto 50px;
 }
 
-/* تنسيق الكروت */
-.exploit-card {
-    background: rgba(20, 20, 20, 0.7);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border: 2px solid #D4AF37;
-    border-radius: 16px;
-    padding: 32px 26px;
-    width: 290px;
+/* الكارت الأساسي — خلفية صلبة سريعة الرسم (بدون شفافية أو blur) */
+.card {
+    position: relative;
+    width: 375px;
+    max-width: 100%;
+    background: #12161c;
+    border: 1px solid #2b3542;
+    border-radius: 18px;
     text-decoration: none;
     color: #fff;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), 0 0 18px rgba(212, 175, 55, 0.15);
-    transition: all 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
     overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.exploit-card::before {
+/* لمعة تمر خفيفة عند الـ hover — transform فقط (الأرخص على PS4) */
+.card::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
-    transition: left 0.6s ease;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(115deg, rgba(255,255,255,0) 35%, rgba(255,255,255,0.05) 46%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.05) 54%, rgba(255,255,255,0) 65%);
+    transform: translateX(-130%);
+    transition: transform 0.7s ease;
+    pointer-events: none;
 }
 
-.exploit-card:hover, .exploit-card:focus {
-    transform: translateY(-8px) scale(1.03);
-    border-color: #ffd700;
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4), 0 0 30px rgba(212, 175, 55, 0.3);
-    background: rgba(35, 28, 10, 0.85);
-    outline: none;
+.card:hover, .card:focus {
+    transform: translateY(-6px);
+    border-color: #D4AF37;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(212, 175, 55, 0.22);
 }
 
-.exploit-card:hover::before {
-    left: 100%;
+.card:hover::after, .card:focus::after {
+    transform: translateX(130%);
 }
 
-.exploit-card h2 {
-    font-size: 1.5rem;
-    color: #D4AF37;
-    margin: 0 0 12px 0;
-    font-weight: bold;
-    text-align: center;
+/* ===== رأس الكارت المتدرج (Accent Strip) ===== */
+.card-head {
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.28);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.20) 0%, rgba(212, 175, 55, 0.04) 55%, rgba(212, 175, 55, 0.10) 100%);
+}
+
+.card-tag {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #d8c07f;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.card-range {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 900;
     letter-spacing: 1px;
+    color: #f5f7fa;
+    text-shadow: 0 2px 12px rgba(212, 175, 55, 0.35);
+    direction: ltr;
+    text-align: right;
+    line-height: 1.25;
 }
 
-.exploit-card p {
+.card-range.rtl-range {
+    direction: rtl;
+    text-align: right;
+}
+
+/* ===== جسم الكارت ===== */
+.card-body {
+    padding: 18px 22px 8px;
+    flex: 1;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 14px;
+}
+
+.chip {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #d4af37;
+    background: rgba(212, 175, 55, 0.10);
+    border: 1px solid rgba(212, 175, 55, 0.38);
+    padding: 3px 11px;
+    border-radius: 20px;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+}
+
+.card-body p {
     font-size: 0.92rem;
-    color: #cbd5e1;
-    margin: 0 0 18px 0;
-    text-align: center;
-    line-height: 1.55;
+    color: #c3cbd7;
+    line-height: 1.65;
+    text-align: right;
+    margin: 0;
 }
 
-.exploit-card .badge {
+/* ===== شارة أسفل الكارت ===== */
+.card-badge {
+    margin: 14px 22px 20px;
+    align-self: flex-start;
     background: linear-gradient(135deg, #D4AF37, #ffd700);
     color: #0b0d10;
     font-weight: bold;
-    padding: 7px 16px;
+    padding: 6px 15px;
     border-radius: 20px;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.5);
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35);
+}
+
+/* ===== ألوان الأكسنت لكل نوع كارت ===== */
+/* كروت الجيلبريك — ذهبي (افتراضي) */
+
+/* كارت أداة نسخ الألعاب — أخضر */
+.card.accent-green {
+    border-color: #2c4a3a;
+}
+.card.accent-green .card-head {
+    border-bottom-color: rgba(56, 178, 122, 0.35);
+    background: linear-gradient(135deg, rgba(56, 178, 122, 0.18) 0%, rgba(56, 178, 122, 0.03) 55%, rgba(56, 178, 122, 0.10) 100%);
+}
+.card.accent-green .card-tag { color: #9fd8b8; }
+.card.accent-green .card-range { text-shadow: 0 2px 12px rgba(56, 178, 122, 0.35); }
+.card.accent-green .chip {
+    color: #7fd0a0;
+    background: rgba(56, 178, 122, 0.10);
+    border-color: rgba(56, 178, 122, 0.40);
+}
+.card.accent-green .card-badge {
+    background: linear-gradient(135deg, #38b67a, #57d99a);
+    box-shadow: 0 2px 10px rgba(56, 178, 122, 0.35);
+}
+.card.accent-green:hover, .card.accent-green:focus {
+    border-color: #38b67a;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(56, 178, 122, 0.22);
+}
+
+/* كارت ItemzFlow — سماوي */
+.card.accent-cyan {
+    border-color: #274658;
+}
+.card.accent-cyan .card-head {
+    border-bottom-color: rgba(56, 189, 248, 0.35);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.18) 0%, rgba(56, 189, 248, 0.03) 55%, rgba(56, 189, 248, 0.10) 100%);
+}
+.card.accent-cyan .card-tag { color: #a5dcf5; }
+.card.accent-cyan .card-range { text-shadow: 0 2px 12px rgba(56, 189, 248, 0.35); }
+.card.accent-cyan .chip {
+    color: #7cc8ee;
+    background: rgba(56, 189, 248, 0.10);
+    border-color: rgba(56, 189, 248, 0.40);
+}
+.card.accent-cyan .card-badge {
+    background: linear-gradient(135deg, #2e9fd0, #5cc2ec);
+    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.35);
+}
+.card.accent-cyan:hover, .card.accent-cyan:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(56, 189, 248, 0.22);
 }
 
 /* الفوتر وزر التواصل */
@@ -191,7 +281,7 @@ footer {
     margin-bottom: 18px;
     direction: ltr;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .contact-box:hover {
@@ -264,12 +354,16 @@ footer {
         width: 72px;
         height: 72px;
     }
-    .exploit-card {
+    .card {
         width: 100%;
-        max-width: 360px;
+        max-width: 380px;
+    }
+    .card-range {
+        font-size: 1.5rem;
     }
 }
 
+/* شريحة حالة الكاش */
 .offline-status {
     margin: 12px auto 0;
     max-width: 680px;
