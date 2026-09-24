@@ -1,204 +1,222 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" manifest="host.appcache">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الدراع بايظ - Eldra3bayz | PS4 Host (7.00 - 13.00 FW)</title>
-    <link rel="icon" type="image/png" href="../logo.png">
-    <link rel="stylesheet" href="../style.css">
-    <style>
-        .whatsapp-box {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 10px 20px;
-            border: 2px solid #25D366;
-            border-radius: 12px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            margin-bottom: 15px;
-            direction: ltr;
-        }
-        .whatsapp-icon {
-            width: 24px;
-            height: 24px;
-            fill: #25D366;
-        }
-        .whatsapp-number {
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            font-family: sans-serif;
-        }
-        /* صندوق الحالة */
-        .status-box {
-            text-align: center;
-            padding: 26px 18px;
-            margin: 18px 0;
-            background-color: rgba(0, 0, 0, 0.6);
-            border: 2px solid #D4AF37;
-            border-radius: 12px;
-        }
-        #msgs {
-            font-size: 21px;
-            color: #D4AF37;
-            margin: 0;
-            font-weight: bold;
-            line-height: 1.6;
-        }
-        .credits-box {
-            margin-top: 14px;
-            padding: 10px 16px;
-            background: rgba(0, 0, 0, 0.45);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            border-radius: 10px;
-            font-size: 12px;
-            color: #8b95a3;
-            line-height: 1.6;
-            text-align: center;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .credits-title {
-            color: #D4AF37;
-            font-weight: bold;
-            margin-bottom: 4px;
-            display: block;
-            font-size: 13px;
-        }
-        .credits-list {
-            color: #cbd5e1;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الدراع بايظ — جيلبريك 7.00 حتى 13.00</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; min-height:100%;
+               background: linear-gradient(160deg,#0b0d10 55%,#16110a 100%);
+               color:#c8ced8;
+               font:16px/1.7 "Segoe UI", Tahoma, system-ui, sans-serif; }
+  #brand { text-align:center; padding:9px 12px; background:#0e1116;
+           border-bottom:1px solid #1e2732;
+           display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  #brand .brand-center { display:inline-flex; align-items:center; gap:8px; flex:1; justify-content:center; min-width:0; }
+  #brand img { width:28px; height:28px; border-radius:50%; flex:none; }
+  #backlink { background:linear-gradient(135deg,#f0d060,#d4af37); color:#141005;
+              font-weight:800; text-decoration:none; border-radius:8px;
+              padding:7px 14px; font-size:13px; white-space:nowrap; flex:none;
+              letter-spacing:.3px; }
+  #backlink:hover { filter:brightness(1.08); }
+  #brand b { font-size:15px; font-weight:700; letter-spacing:.05em; color:#d4af37; }
+  .dev { font-size:11px; opacity:.65; color:#d4af37; letter-spacing:.5px; font-weight:500; }
+
+  /* ====== بطاقة مركزية ====== */
+  #hero { max-width:560px; margin:9vh auto 0; padding:0 18px; }
+  .panel { background:rgba(17,21,27,.92); border:1px solid #2b3542; border-radius:16px;
+           padding:26px 24px 22px; text-align:center;
+           box-shadow:0 8px 30px rgba(0,0,0,.45); }
+  .panel .ring { width:88px; height:88px; margin:0 auto 14px; border-radius:50%;
+           padding:5px; border:2px solid #d4af37;
+           background:#0b0d10; position:relative; }
+  .panel .ring img { width:100%; height:100%; border-radius:50%; display:block; }
+  .panel .ring::after { content:""; position:absolute; inset:-7px; border-radius:50%;
+           border:2px solid rgba(212,175,55,.28);
+           animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 0%{transform:scale(1);opacity:.9} 70%{transform:scale(1.12);opacity:0} 100%{opacity:0} }
+  h1 { color:#e8d090; font-size:21px; margin:0 0 4px; font-weight:800; }
+  .fwline { color:#8b95a3; font-size:13px; margin:0 0 14px; }
+  .fwline b { color:#d4af37; direction:ltr; unicode-bidi:embed; }
+
+  #state { font-size:19px; font-weight:800; margin:0 0 8px; color:#e6ebf2; min-height:29px; }
+  #state.ok { color:#7fd0a0; } #state.bad { color:#e08a7f; } #state.warn { color:#e0c77b; }
+  #det { font-size:13.5px; color:#8b95a3; margin:0 0 4px; }
+  #det b { color:#c8ced8; direction:ltr; unicode-bidi:embed; }
+  #det a { color:#f0d060; text-decoration:underline; }
+  #cache { font-size:12.5px; color:#5c6672; margin:0 0 14px; min-height:19px; }
+  #cache.cacheok { color:#7fd0a0; }
+
+  .xbtn { display:inline-flex; align-items:center; justify-content:center; gap:10px;
+          background:linear-gradient(135deg,#f0d060,#d4af37); color:#141005;
+          font-weight:900; font-size:18px; border-radius:12px;
+          padding:13px 30px; letter-spacing:.5px; direction:rtl;
+          animation:breathe 1.9s ease-in-out infinite; }
+  .xbtn .kx { display:inline-flex; align-items:center; justify-content:center;
+          width:30px; height:30px; border-radius:8px; background:#141005; color:#f0d060;
+          font-size:16px; font-weight:900; }
+  @keyframes breathe { 0%,100%{transform:scale(1);box-shadow:0 4px 18px rgba(212,175,55,.35)}
+                       50%{transform:scale(1.035);box-shadow:0 6px 26px rgba(212,175,55,.55)} }
+  .hint { font-size:12px; color:#5c6672; margin:12px 0 0; }
+  .bar { height:6px; border-radius:99px; background:#1a212b; overflow:hidden; margin:10px 0 4px; }
+  .bar i { display:block; height:100%; width:0%; border-radius:99px;
+           background:linear-gradient(90deg,#d4af37,#f0d060); transition:width .3s; }
+  #wrap .tags { margin-top:14px; }
+  .tag { display:inline-block; background:#1a2330; border:1px solid #2b3542; color:#aab4c0;
+         border-radius:99px; padding:3px 12px; font-size:11.5px; margin:2px; }
+</style>
 </head>
 <body>
-    <!-- شريط رجوع واضح ثابت أعلى الصفحة -->    
-    <div class="container">
-        <header>
-            <img src="../logo.png" alt="الدراع بايظ Logo" class="brand-logo">
-            <h1>الدراع بايظ</h1>
-            <p class="subtitle-en">ELDRA3BAYZ</p>
-            <p class="dev">by <b>H0sS</b> — Hossam Elgogary | PS4 Host (7.00 - 13.00 FW)</p>
-        </header>
-
-        <!-- صندوق الحالة الذي سيتم تحديثه عبر سكربت الفحص التلقائي -->
-        <div class="status-box">
-            <h2 id="msgs">جارى تحميل الجولدن هين... برجاء الانتظار — Loading GoldHEN... Please Wait</h2>
-        </div>
-
-        <footer>
-            <div class="bottom-back">
-                <a href="../index.html">&#10148; رجوع للصفحة الرئيسية</a>
-            </div>
-            <a href="https://wa.me/201008660201" class="whatsapp-box" target="_blank" rel="noopener">
-                <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-                </svg>
-                <span class="whatsapp-number">01008660201</span>
-            </a>
-            <p class="copyright">Designed by <b>H0sS</b> — Hossam Elgogary | الدراع بايظ - Eldra3bayz</p>
-            <div class="credits-box">
-                <span class="credits-title">Special thanks to the original exploit developers:</span>
-                <div class="credits-list">
-                    SiSTRo (GoldHEN) &bull; Sleirsgoevy &bull; ChendoChap &bull; Znullptr &bull; TheFlow &bull; The PS4 Scene Community &bull; Raw Game &bull; Gamer Hack
-                </div>
-            </div>
-        </footer>
+<div id="brand"><a id="backlink" href="../index.html" onclick="event.stopPropagation()" onkeydown="if(event.target===this)event.stopPropagation()">&#10148; رجوع للرئيسية</a><span class="brand-center"><img src="../logo.png" alt="" width="28" height="28"><b>الدراع بايظ</b> <span class="dev">by H0sS</span></span><span style="flex:none;width:1px"></span></div>
+<div id="wrap">
+  <div id="hero">
+    <div class="panel">
+      <div class="ring"><img src="../logo.png" alt="" width="78" height="78"></div>
+      <h1>جيلبريك PS4 — GoldHEN</h1>
+      <p class="fwline">السلسلة المدعومة: <b>7.00 - 13.00</b> — كل الإصدارات اللي بينهم</p>
+      <div id="state">جارٍ اكتشاف إصدار النظام...</div>
+      <div id="det"></div>
+      <div id="cache"></div>
+      <div class="bar"><i id="barfill"></i></div>
+      <div id="presswrap">
+        <span class="xbtn"><span class="kx">✕</span> اضغط زر X للتشغيل</span>
+        <p class="hint">أو المس الشاشة / اضغط أي زر بالماوس</p>
+      </div>
+      <div class="tags">
+        <span class="tag">PSFree · CSSFontFace · SlopKit</span>
+        <span class="tag">GoldHEN 2.4b18.10</span>
+        <span class="tag">سلاسل تختار الفيرموير لوحدها</span>
+        <span class="tag">يشتغل أوفلاين بعد أول مرة</span>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- سكربت الفحص التلقائي وتحميل الثغرات -->
-    <script>
+<script>
+(function () {
+    var stateEl = document.getElementById("state");
+    var detEl = document.getElementById("det");
+    var cacheEl = document.getElementById("cache");
+    var barfill = document.getElementById("barfill");
+    var presswrap = document.getElementById("presswrap");
+    function setState(t, c) { stateEl.textContent = t; stateEl.className = c || ""; }
+    function setCache(t, ok) { cacheEl.textContent = t; cacheEl.className = ok ? "cacheok" : ""; }
+    function setBar(p) { if (barfill) barfill.style.width = (p ? p : 0) + "%"; }
+    function hidePress() { if (presswrap) presswrap.style.display = "none"; }
+    function showPress() { if (presswrap) presswrap.style.display = ""; }
+    hidePress();
+
+    // نفس منطق الكشف القديم بالظبط (شغّال على أجهزة حقيقية من 7.00 لـ 13.00)
     var uaFull = navigator.userAgent;
     var match = uaFull.match(/PlayStation 4[ \/]([\d.]+)/i);
     var isPS4 = match !== null;
     var fwVersion = isPS4 ? match[1] : "Unknown";
     var fwNum = parseFloat(fwVersion);
-    var msgs = document.getElementById("msgs");
-    // H0sS: ?bin= means a tool payload (PKG-BackUP launcher) was requested --
-    // adjust the waiting message so the user knows the tool (not GoldHEN) is
-    // about to run.
-    var ovrBin = new URLSearchParams(location.search).get("bin");
-    if (ovrBin && msgs) {
-        msgs.innerHTML = "جارى تشغيل أداة نسخ الألعاب (PKG-BackUP)... برجاء الانتظار — Running PKG-BackUP... Please Wait";
-    }
 
-    function onScriptError() {
-        if(msgs) msgs.innerHTML = "المحتوى غير موجود! امسح بيانات المتصفح وأعد تثبيت الـ Cache — Content not Found! Clear Browser Data and Re-Install Cache ...";
-    }
-
-    function runExploit() {
-        if (fwNum >= 7.00 && fwNum <= 8.52) {
-            var script = document.createElement('script');
-            script.type = 'module';
-            script.src = "700/alert.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
-        } else if (fwNum >= 9.00 && fwNum <= 9.60) {
-            var script = document.createElement('script');
-            script.type = 'module';
-            script.src = "900/alert.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
-        } else if (fwNum >= 10.00 && fwNum <= 11.02) {
-            var cssScript = document.createElement('script');
-            cssScript.src = "css/main.js";
-            cssScript.onerror = onScriptError;
-            cssScript.onload = function () {
-                setTimeout(function () {
-                    if(typeof doJb === 'function') doJb();
-                }, 500);
-            };
-            document.head.appendChild(cssScript);
-        } else if (fwNum >= 11.50 && fwNum <= 12.02) {
-            var lapseScript = document.createElement('script');
-            lapseScript.type = 'module';
-            lapseScript.src = "slopkit/chain_lapse.js";
-            lapseScript.onerror = onScriptError;
-            document.head.appendChild(lapseScript);
-        } else if (fwNum >= 12.50 && fwNum <= 13.00) {
-            var poopsScript = document.createElement('script');
-            poopsScript.type = 'module';
-            poopsScript.src = "slopkit/chain_poops.js";
-            poopsScript.onerror = onScriptError;
-            document.head.appendChild(poopsScript);
-        } else if (msgs) {
-            msgs.innerHTML = 'فيرموير غير مدعوم: <span style="color: red;">' + fwVersion + '</span> — Unsupported Firmware';
-        }
-    }
-
-    function startAfterCache() {
-        if (!isPS4) {
-            if(msgs) msgs.innerHTML = "الموقع يعمل فقط على PS4 من فيرموير 7.00 لـ 13.00 — Only for PS4 with Firmware 7.00 to 13.00";
-            return;
-        }
-        if (navigator.onLine === false) {
-            if(msgs) msgs.innerHTML = "الكاش جاهز — Loading from offline cache...";
-            runExploit();
-            return;
-        }
-        if(msgs) msgs.innerHTML = "Cache ready — Loading GoldHEN...";
-        runExploit();
+    // نطاقات السلاسل — نفس شروط runExploit في صفحة التشغيل jb.html
+    function chainFor(fw) {
+        if (fw >= 7.00 && fw <= 8.52) return "PSFree (7.00 - 8.52)";
+        if (fw >= 9.00 && fw <= 9.60) return "PSFree (9.00 - 9.60)";
+        if (fw >= 10.00 && fw <= 11.02) return "CSSFontFace (10.00 - 11.02)";
+        if (fw >= 11.50 && fw <= 12.02) return "SlopKit (11.50 - 12.02)";
+        if (fw >= 12.50 && fw <= 13.00) return "SlopKit (12.50 - 13.00)";
+        return null;
     }
 
     if (!isPS4) {
-        startAfterCache();
-    } else {
-        var ac = window.applicationCache;
-        if (!ac || !document.documentElement.hasAttribute("manifest")) {
-            startAfterCache();
-        } else if (navigator.onLine === false || ac.status === ac.IDLE) {
-            startAfterCache();
-        } else {
-            if(msgs) msgs.innerHTML = "Installing offline cache — please wait...";
-            ac.addEventListener("cached", startAfterCache, false);
-            ac.addEventListener("noupdate", startAfterCache, false);
-            ac.addEventListener("error", function () {
-                if(msgs) msgs.innerHTML = "Cache failed — reconnect once, then reload.";
-            }, false);
-        }
+        setState("⚠️ الجهاز ده مش PS4", "bad");
+        detEl.innerHTML = "الصفحة دي مخصصة لأجهزة <b>PS4</b> بس — من فيرموير <b>7.00</b> لـ <b>13.00</b>";
+        setBar(0);
+        return;
     }
-    </script>
+
+    var chainName = chainFor(fwNum);
+    if (chainName === null) {
+        setState("⚠️ الإصدار غير مدعوم في القسم ده", "bad");
+        detEl.innerHTML = "إصدار جهازك: <b>" + fwVersion + "</b> — " +
+            (fwNum > 13.00
+                ? 'أحدث من نطاق القسم — افتح <a href="../13-13.52/index.html">قسم 13.02 - 13.52</a>'
+                : "أقدم من نطاق الموقع — الموقع بيدعم من 7.00 لـ 13.52");
+        setBar(0);
+        return;
+    }
+
+    detEl.innerHTML = 'إصدار جهازك: <b>' + fwVersion + '</b> — السلسلة: <b>' + chainName + '</b> — <b style="color:#7fd0a0">مدعوم بالكامل ✅</b>';
+
+    // صفحة التشغيل (شاشة التحميل + السلاسل) — بنمرر كل الباراميترات زي ?bin= للأدوات
+    var target = "jb.html" + location.search;
+    function go() {
+        setState("جارٍ فتح صفحة التشغيل...", "warn");
+        hidePress();
+        setBar(30);
+        location.replace(target);
+    }
+
+    function waitForTap(msg, action) {
+        setState(msg, "warn");
+        showPress();
+        function fire() {
+            window.removeEventListener("click", fire);
+            window.removeEventListener("keydown", fire);
+            action();
+        }
+        window.addEventListener("click", fire);
+        window.addEventListener("keydown", fire);
+    }
+
+    var ac = window.applicationCache;
+    if (!ac || !document.documentElement.hasAttribute("manifest")) {
+        setBar(60);
+        go();
+    } else if (!navigator.onLine) {
+        setCache("وضع بدون إنترنت — شغّال من الكاش المحفوظ ✅", true);
+        setBar(100);
+        go();
+    } else if (ac.status === ac.IDLE) {
+        setCache("الكاش جاهز — هتشتغل عادي من غير نت ✅", true);
+        go();
+    } else if (ac.status === ac.UPDATEREADY) {
+        try { ac.swapCache(); } catch (e) {}
+        setCache("نزل تحديث جديد للموقع ✅", true);
+        waitForTap("في تحديث جديد — اضغط X أو المس الشاشة للتحديث والتشغيل",
+                   function () { location.reload(); });
+    } else {
+        setCache("جارٍ فحص الكاش...");
+        ac.addEventListener("downloading",
+            function () { setCache("جارٍ حفظ الصفحة للعمل بدون إنترنت (أول مرة)..."); }, false);
+        ac.addEventListener("progress", function (e) {
+            if (e && e.total) {
+                var p = Math.round((e.loaded / e.total) * 100);
+                setCache("جارٍ الحفظ... " + p + "%");
+                setBar(p);
+            }
+        }, false);
+        ac.addEventListener("cached", function () {
+            setCache("اتحفظ كامل — المرة الجاية مش هتحتاج إنترنت ✅", true);
+            setBar(100);
+            waitForTap("تم الحفظ — اضغط X أو المس الشاشة لبدء الجيلبريك", go);
+        }, false);
+        ac.addEventListener("updateready", function () {
+            try { ac.swapCache(); } catch (e) {}
+            setCache("نزل تحديث جديد للموقع ✅", true);
+            waitForTap("في تحديث جديد — اضغط X أو المس الشاشة للتحديث والتشغيل",
+                       function () { location.reload(); });
+        }, false);
+        ac.addEventListener("noupdate", function () {
+            setCache("الكاش جاهز — هتشتغل عادي من غير نت ✅", true);
+            go();
+        }, false);
+        ac.addEventListener("error", function () {
+            setCache("الكاش مش متاح دلوقتي");
+            waitForTap("فحص الكاش فشل — اضغط X أو المس الشاشة للتشغيل على أي حال", go);
+        }, false);
+        ac.addEventListener("obsolete", function () {
+            setCache("النسخة المحفوظة قديمة");
+            waitForTap("الكاش قديم — اضغط X أو المس الشاشة للتشغيل", go);
+        }, false);
+    }
+})();
+</script>
 </body>
 </html>

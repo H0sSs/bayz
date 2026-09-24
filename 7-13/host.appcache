@@ -1,6 +1,6 @@
 CACHE MANIFEST
-# rev 20260926-7-13-host-v6-logo-dedup
-# (chains support ?bin= payload override: PKG-BackUP + fan-control + ps4debug)
+# rev 20260926-7-13-v7-arabic-gate
+# (شاشة تحميل عربية بعد X في jb.html — chains support ?bin= payload override: PKG-BackUP + fan-control + ps4debug)
 
 CACHE:
 ../tools/pkg-backup/ps4-pkg-backup_v13.bin
@@ -84,6 +84,7 @@ css/workers.js
 css.manifest
 goldhen_2.4b18.10.bin
 index.html
+jb.html
 slopkit/chain_lapse.js
 slopkit/chain_poops.js
 slopkit/core.js
@@ -96,7 +97,6 @@ slopkit/patches/1300.bin
 slopkit/ps4_offsets.js
 slopkit/rpc_worker.js
 slopkit.manifest
-style.css
 
 NETWORK:
 *
