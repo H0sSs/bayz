@@ -23,7 +23,10 @@ export let mem = null;
 // cache some constants
 const off_vector = view_m_vector / 4;
 const off_vector2 = (view_m_vector + 4) / 4;
-const isInteger = Number.isInteger;
+// [H0sS F3] PS4 WebKit (7.0x) lacks Number.isInteger -- portable check
+const isInteger = function (value) {
+  return typeof value === "number" && isFinite(value) && Math.floor(value) === value;
+};
 
 function init_module(memory) {
     mem = memory;

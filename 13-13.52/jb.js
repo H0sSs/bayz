@@ -11,19 +11,9 @@ let passCount = 0,
 const params = new URLSearchParams(location.search);
 const STOP_BEFORE_DOUBLE = params.get("stop") === "beforedouble";
 
-function post(tag, detail) {
-  try {
-    const x = new XMLHttpRequest();
-    x.open("POST", "/t", true);
-    x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    x.send(
-      "PS4-JB&tag=" +
-        encodeURIComponent(tag) +
-        "&detail=" +
-        encodeURIComponent(String(detail == null ? "" : detail)),
-    );
-  } catch (e) {}
-}
+// [H0sS F4] telemetry disabled: the "/t" collector endpoint does not
+// exist on GitHub Pages (404 on every run) -- dead network noise removed
+function post(tag, detail) {}
 
 const VERBOSE = params.get("verbose") === "1";
 const PROSE = [

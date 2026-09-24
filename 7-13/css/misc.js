@@ -1,4 +1,16 @@
 //#region Constants
+// [H0sS F3] old PS4 WebKit lacks the ES6 Number.* static validators --
+// portable equivalents so int64 parsing never throws on console
+function _isInteger(value) {
+  return typeof value === "number" && isFinite(value) && Math.floor(value) === value;
+}
+function _isSafeInteger(value) {
+  return _isInteger(value) && Math.abs(value) <= 9007199254740991;
+}
+function _isNaN(value) {
+  return typeof value === "number" && value !== value;
+}
+
 const logger = {
   seq: 0,
   verbose: true,
@@ -83,12 +95,12 @@ class BInt {
             lo = value ? 1 : 0;
             break;
           case "number":
-            if (Number.isNaN(value)) {
+            if (_isNaN(value)) {
               throw new TypeError("Number " + value + " is NaN");
             }
 
-            if (Number.isInteger(value)) {
-              if (!Number.isSafeInteger(value)) {
+            if (_isInteger(value)) {
+              if (!_isSafeInteger(value)) {
                 throw new RangeError("Integer " + value + " outside safe 53-bit range");
               }
 
@@ -126,7 +138,7 @@ class BInt {
             break;
           case "object":
             if (value !== null) {
-              if (Number.isInteger(value.lo) && Number.isInteger(value.hi)) {
+              if (_isInteger(value.lo) && _isInteger(value.hi)) {
                 lo = value.lo;
                 hi = value.hi;
                 break;
@@ -147,11 +159,11 @@ class BInt {
         hi = arguments[0];
         lo = arguments[1];
 
-        if (!Number.isInteger(hi)) {
+        if (!_isInteger(hi)) {
           throw new RangeError("hi value " + hi + " is not an integer !!");
         }
 
-        if (!Number.isInteger(lo)) {
+        if (!_isInteger(lo)) {
           throw new RangeError("lo value " + lo + " is not an integer !!");
         }
 

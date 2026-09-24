@@ -57,7 +57,15 @@ async function doJb() {
       return;
     }
 
-    var exploitChain = localStorage.getItem("exploitChain") || "lapse";
+    // [H0sS F2] PS4 WebKit storage can throw after kernel R/W -- guarded
+    // read with a whitelist (the only chains this page ships)
+    var exploitChain = "lapse";
+    try {
+      var savedChain = localStorage.getItem("exploitChain");
+      if (savedChain === "poops" || savedChain === "lapse") {
+        exploitChain = savedChain;
+      }
+    } catch (e) { }
     await load_script("css/" + exploitChain + ".js");
     logger.info("===" + exploitChain.toUpperCase() + "===");
 
@@ -121,7 +129,9 @@ async function doJb() {
       : "GoldHEN v2.4b18.10 Loaded ...";
     logger.info("===END===");
   } catch (e) {
-    msgs.innerHTML = "Failed to Load! Restart Your Console ...";
+    // [H0sS F6] unified failure guidance (Arabic-first, same wording as the
+    // 700/900 lapse chains)
+    msgs.innerHTML = 'فشل تحميل الجيلبريك — حدّث الصفحة (F5) وأعد المحاولة، ولو استمر الفشل اعمل ريستارت للجهاز';
     msgs.style.color = "yellow";
   }
 }

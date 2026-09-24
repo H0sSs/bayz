@@ -172,7 +172,9 @@ export function resolve_import(import_addr) {
 }
 
 export function init_syscall_array(syscall_array, libkernel_web_base, max_search_size) {
-  if (!Number.isInteger(max_search_size)) {
+  // [H0sS F3] PS4 WebKit (7.0x) lacks Number.isInteger -- inline portable check
+  if (!(typeof max_search_size === "number" && isFinite(max_search_size)
+        && Math.floor(max_search_size) === max_search_size)) {
     throw TypeError(`max_search_size is not a integer: ${max_search_size}`);
   }
   if (max_search_size < 0) {

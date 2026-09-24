@@ -49,8 +49,13 @@ function check_bcd(value) {
   return true;
 }
 
+// [H0sS F3] PS4 WebKit (7.0x) lacks Number.isInteger -- portable check
+function isInteger(value) {
+  return typeof value === "number" && isFinite(value) && Math.floor(value) === value;
+}
+
 export function set_target(value) {
-  if (!Number.isInteger(value)) {
+  if (!isInteger(value)) {
     throw TypeError(`value not an integer: ${value}`);
   }
 

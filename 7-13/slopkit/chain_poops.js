@@ -50,20 +50,16 @@ function hostOk() {
 function hostFail() {
     var m = document.getElementById("msgs");
     if (m) {
-        m.innerHTML = "Failed to Load! Restart Your Console ...";
+        // [H0sS F6] unified failure guidance (Arabic-first, same wording as
+        // the 700/900 lapse chains)
+        m.innerHTML = 'فشل تحميل الجيلبريك — حدّث الصفحة (F5) وأعد المحاولة، ولو استمر الفشل اعمل ريستارت للجهاز';
         m.style.color = "yellow";
     }
 }
 
-function post(tag, detail) {
-    try {
-        const x = new XMLHttpRequest();
-        x.open("POST", "t", true);
-        x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        x.send("PS4-S10&tag=" + encodeURIComponent(tag)
-             + "&detail=" + encodeURIComponent(String(detail == null ? "" : detail)));
-    } catch (e) { }
-}
+// [H0sS F4] telemetry disabled: the "t" collector endpoint does not
+// exist on GitHub Pages (404 on every run) -- dead network noise removed
+function post(tag, detail) { }
 
 const VERBOSE = params.get("verbose") === "1";
 const PROSE = [

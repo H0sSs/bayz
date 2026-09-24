@@ -16,7 +16,10 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 // cache some constants
-const isInteger = Number.isInteger;
+// [H0sS F3] PS4 WebKit (7.0x) lacks Number.isInteger -- portable check
+const isInteger = function (value) {
+  return typeof value === "number" && isFinite(value) && Math.floor(value) === value;
+};
 
 function check_not_in_range(x) {
   return !(isInteger(x) && -0x80000000 <= x && x <= 0xffffffff);
