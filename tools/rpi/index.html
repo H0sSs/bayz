@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>التثبيت اللاسلكي RPI — ابعت PKG من الموبايل للـ PS4 | الدراع بايظ</title>
+<link rel="icon" type="image/png" href="../../logo.png">
+<style>
+:root{color-scheme:dark;--bg:#0b0d10;--panel:#151a21;--line:#2b3542;--gold:#d4af37;--gold2:#f0d060;--muted:#aab4c0;--ok:#7fd0a0;--warn:#e0c77b;--bad:#e08a7f;--cyan:#38bdf8}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#0b0d10 0%,#1a1410 100%);color:#edf1f5;font:16px/1.8 "Segoe UI",Tahoma,sans-serif}
+main{width:min(94%,880px);margin:0 auto;padding:20px 0 34px}
+h1{color:var(--gold);font-size:clamp(24px,4.5vw,36px);margin:6px 0 2px}
+h2{color:var(--gold);font-size:22px;margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{color:var(--gold2);font-size:17px;margin:18px 0 6px}
+.sub{color:var(--muted);margin:0 0 10px}
+.page-topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;background:#0e1116;border-bottom:1px solid var(--line);padding:9px 14px}
+.page-topbar .back-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:800;border-radius:9px;padding:9px 22px;font-size:15px;letter-spacing:.5px;box-shadow:0 2px 10px rgba(212,175,55,.3);white-space:nowrap}
+.page-topbar .back-btn:hover{filter:brightness(1.08)}
+.page-topbar .topbar-title{color:var(--muted);font-size:13px;letter-spacing:.5px}
+.bottom-back{text-align:center;margin:26px 0 10px}
+.bottom-back a{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:800;border-radius:9px;padding:11px 26px;font-size:16px;box-shadow:0 2px 12px rgba(212,175,55,.3)}
+.bottom-back a:hover{filter:brightness(1.08)}
+@media(max-width:600px){.page-topbar .topbar-title{display:none}}
+.box{background:rgba(21,26,33,.92);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+.warning{border-color:#75622c;color:var(--warn)}
+.ok-box{border-color:#315b45;color:var(--ok)}
+.bad-box{border-color:#75332c;color:var(--bad)}
+code,pre{font-family:Consolas,Menlo,monospace;direction:ltr;text-align:left}
+code{background:#0b0d10;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:13.5px;color:#e8d090;word-break:break-all}
+a.ext{color:var(--cyan);text-decoration:none}
+a.ext:hover{text-decoration:underline}
+ol,ul{padding-right:26px;margin:8px 0}
+li{margin:9px 0}
+.small{font-size:13px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14.5px}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:right}
+th{background:#1a1410;color:var(--gold)}
+.steps{counter-reset:step;list-style:none;padding-right:0}
+.steps>li{counter-increment:step;position:relative;padding-right:52px;margin:14px 0}
+.steps>li::before{content:counter(step);position:absolute;right:0;top:2px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:#141005;font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center}
+hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+/* ===== نموذج الإرسال ===== */
+.sender{background:linear-gradient(180deg,rgba(21,26,33,.97),rgba(16,19,24,.97));border:2px solid #3d3421;border-radius:16px;padding:18px 20px;margin:16px 0}
+.sender label{display:block;color:var(--gold2);font-weight:800;font-size:14.5px;margin:12px 0 5px}
+.sender input{width:100%;direction:ltr;text-align:left;background:#0b0d10;border:1px solid var(--line);border-radius:10px;color:#edf1f5;font:15px Consolas,Menlo,monospace;padding:11px 14px}
+.sender input:focus{outline:none;border-color:var(--gold)}
+.tip{font-size:12.5px;color:var(--muted);margin:3px 0 0}
+#send{display:block;width:100%;margin-top:16px;background:linear-gradient(180deg,#f0d060,#d4af37);color:#141005;border:none;border-radius:12px;padding:16px;font-size:19px;font-weight:900;cursor:pointer;box-shadow:0 6px 22px rgba(212,175,55,.25);font-family:inherit}
+#send:hover{filter:brightness(1.07)}
+#localBtn{display:block;width:100%;margin-top:8px;background:#1a2430;color:#e8d090;border:1px solid var(--line);border-radius:10px;padding:9px;font-size:13.5px;cursor:pointer;font-family:inherit}
+#localBtn:hover{border-color:var(--gold)}
+#result{margin-top:12px;font-size:14.5px;line-height:1.8;display:none;border-radius:10px;padding:10px 14px}
+#result.ok{display:block;background:#16241c;border:1px solid #315b45;color:var(--ok)}
+#result.bad{display:block;background:#241514;border:1px solid #75332c;color:var(--bad)}
+#result.info{display:block;background:#1a2430;border:1px solid var(--line);color:#e8d090}
+.err{color:var(--bad);font-size:13px;margin-top:8px;display:none}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.mini{background:rgba(21,26,33,.8);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.mini b{color:var(--gold2)}
+</style>
+</head>
+<body>
+<nav class="page-topbar">
+<a class="back-btn" href="../../index.html">&#10148; رجوع للصفحة الرئيسية</a>
+<span class="topbar-title">التثبيت اللاسلكي — Remote Package Installer</span>
+</nav>
+<main>
+<h1>📡 التثبيت اللاسلكي (RPI)</h1>
+<p class="sub">ابعت أي ملف PKP للـ PS4 من الموبايل أو الكمبيوتر <b>من غير فلاشة نهائيًا</b> — الجهاز بينزّل اللعبة بنفسه من الإنترنت ويثبّتها. الخدمة مدمجة في GoldHEN وشغالة بعد الجيلبريك مباشرة</p>
+
+<!-- ============ الفكرة ============ -->
+<h2>إيه الفكرة؟</h2>
+<div class="box">
+<p style="margin-top:0">بعد الجيلبريك، GoldHEN بيشغّل <b>سيرفر تثبيت لاسلكي</b> جوه جهازك على المنفذ <b>12800</b> (خاصية Remote Package Install الرسمية). أي جهاز تاني على نفس الواي فاي — موبايلك أو كمبيوترك — يقدر يبعتله <b>لينك تحميل أي ملف PKG</b>، والـ PS4 ينزّله ويثبّته لوحده لحد ما يخلص.</p>
+<p><b>اللي بيوفره عليك:</b> مفيش تنزيل على الكمبيوتر ونقل بفلاشة ومساحة على الديسك — اللعبة بتروح من مصدرها للـ PS4 مباشرة على أسرع مسار، وبتشوف التقدم على شاشة الـ PS4 نفسها لحظة بلحظة.</p>
+<p style="margin-bottom:0"><b>الصفحة دي بتشتغل من الموبايل</b> — افتح هوسنا من موبايلك بعد ما تعمل جيلبريك للـ PS4، واملأ البيانات وابعت. (وتشتغل بعد كده أوفلاين — الصفحة بتتحفظ عندك تلقائيًا من أول زيارة).</p>
+</div>
+
+<!-- ============ المتطلبات ============ -->
+<h2>المتطلبات (كلها مجانية)</h2>
+<div class="grid2">
+<div class="mini"><b>1. جهاز PS4 مكسور:</b><span>الجيلبريك شغال بـ GoldHEN من هوستنا — السيرفر بيبقى شغال طالما HEN في الذاكرة (من غير ريستارت).</span></div>
+<div class="mini"><b>2. نفس الشبكة:</b><span>الموبايل/الكمبيوتر والـ PS4 واقفين على نفس الواي فاي/الراوتر.</span></div>
+<div class="mini"><b>3. لينك PKG مباشر:</b><span>رابط تحميل مباشر لملف اللعبة يبدأ بـ <code>http</code> أو <code>https</code> وينتهي بـ <code>.pkg</code>.</span></div>
+<div class="mini"><b>4. رقم IP الجهاز:</b><span>من إعدادات PS4 ← الشبكة ← عرض حالة الاتصال ← رقم IPv4 (زي <code>192.168.1.10</code>).</span></div>
+</div>
+
+<!-- ============ النموذج ============ -->
+<h2>١. ابعت الباكج ✉️</h2>
+<div class="sender">
+<label for="ip">رقم IP بتاع الـ PS4</label>
+<input id="ip" type="text" inputmode="decimal" placeholder="192.168.1.10" autocomplete="off">
+<p class="tip">من: إعدادات PS4 ← الشبكة ← عرض حالة الاتصال ← IPv4</p>
+
+<label for="url">لينك ملف الـ PKG (رابط تحميل مباشر)</label>
+<input id="url" type="text" placeholder="https://example.com/game.pkg" autocomplete="off" spellcheck="false">
+<p class="tip">لازم رابط مباشر بيلعب ملف .pkg — مش صفحة تحميل</p>
+
+<div class="err" id="err"></div>
+<button id="send" type="button">🚀 ابعت للـ PS4</button>
+<button id="localBtn" type="button" style="direction:rtl">💡 فاتح الصفحة من نفس الـ PS4؟ اضغط هنا عشان يستخدم 127.0.0.1 تلقائيًا</button>
+<div id="result"></div>
+</div>
+<p class="small" style="text-align:center;margin:10px 0 0">بعد الإرسال راقب شاشة الـ PS4 — التقدم بيظهر هناك. والموبايل تقدر تقفله عادي، التثبيت شغال على الجهاز.</p>
+
+<!-- ============ الخطوات ============ -->
+<h2>٢. الخطوات الكاملة بالترتيب</h2>
+<div class="box">
+<ol class="steps">
+<li><b>اعمل جيلبريك للـ PS4</b> من صفحة الهبوط — لحد ما GoldHEN يقولك إنه اتحمّل بنجاح (ده اللي بيفتح سيرفر التثبيت).</li>
+<li><b>هات رقم الـ IP</b>: إعدادات PS4 ← الشبكة ← عرض حالة الاتصال — دوّن رقم IPv4.</li>
+<li><b>افتح الصفحة دي من موبايلك/كمبيوترك</b> (نفس الواي فاي) — أو استمر من متصفح الـ PS4 نفسه مع زر 127.0.0.1.</li>
+<li><b>املأ الخانتين واضغط «ابعت للـ PS4»</b> — هيظهرلك نتيجة الإرسال فورًا (تفاصيلها تحت).</li>
+<li><b>راقب شاشة الـ PS4</b> — هتبدأ اللعبة في التنزيل والتثبيت تلقائيًا، وبعد ما تخلص تلاقيها في قائمة المحتوى.</li>
+</ol>
+</div>
+
+<!-- ============ النتيجة ============ -->
+<h2>٣. إزاي تقرا نتيجة الإرسال؟</h2>
+<div class="box">
+<p style="margin-top:0">السيرفر بيرد برسالة JSON بسيطة — الشكل بتاعها ومعناها:</p>
+<table>
+<tr><th>الرسالة اللي ظهرتلك</th><th>معناها</th></tr>
+<tr><td><code>{ "status": "success" }</code></td><td><b>✅ الإرسال تم!</b> — التنزيل بدأ على الـ PS4، تابع الشاشة</td></tr>
+<tr><td><code>{ "status": "fail", "error_code": 0x80990085 }</code></td><td><b>❌ المساحة مش كافية</b> — امسح ألعاب/ملفات وحرر مساحة وجرب تاني</td></tr>
+<tr><td><code>{ "status": "fail", "error_code": ... }</code></td><td>كود خطأ تاني — راجع جدول الحل تحت</td></tr>
+<tr><td>الصفحة رفضت تتصل / Timeout</td><td>السيرفر مش شغال — الجيلبريك وقع (اعملو تاني) أو الـ IP غلط أو مش نفس الشبكة</td></tr>
+</table>
+<p class="small" style="margin-bottom:0">💡 الرسالة بتظهر في تاب جديد من متصفح الموبايل — لو ظهر فيها success خلاص، ارجع للصفحة واطفي التاب.</p>
+</div>
+
+<!-- ============ حل المشاكل ============ -->
+<h2>حل المشاكل الشائعة</h2>
+<div class="box">
+<table>
+<tr><th>المشكلة</th><th>السبب والحل</th></tr>
+<tr><td>مش لاقي الـ IP / الرقم مش شغال</td><td>اتأكد إنك على نفس الواي فاي — وبعض الراوترات بتعزل الأجهزة عن بعض (AP Isolation): اقفله من إعدادات الراوتر</td></tr>
+<tr><td>الإرسال بيرفض من بدايته</td><td>الجيلبريك مش شغال — سيرفر 12800 بيموت مع أي ريستارت للجهاز. اعمل جيلبريك تاني وامسك نفس الـ IP</td></tr>
+<tr><td>error_code 0x80990085</td><td>مساحة الهارد مش كافية للعبة — امسح محتوى وحرر مكان</td></tr>
+<tr><td>التنزيل على PS4 بيقف في النص</td><td>اللينك بطيء أو بيقع — جرب مصدر تاني لنفس الملف (أي رابط مباشر لنفس PKG يشتغل)</td></tr>
+<tr><td>اللعبة اثبتت بس مش بتفتح</td><td>دي مش مشكلة RPI — الباكج نفسه محتاج تحديث متوافق أو نسخة معينة لفيرمويرك</td></tr>
+<tr><td>بيظهرلي تحذير «Not Secure» في المتصفح</td><td>طبيعي 100% — المتصفح بيعلّم إن الإرسال داخلي (HTTP للشبكة المنزلية) — كمّل عادي، ده الوضع المتعمد</td></tr>
+</table>
+</div>
+
+<!-- ============ ملاحظة فنية ============ -->
+<details>
+<summary>⚙️ التفاصيل التقنية (للمهتمين)</summary>
+<div class="box" style="margin-top:10px">
+<p style="margin-top:0">الأداة بتكلم واجهة الـ API الرسمية المدمجة في GoldHEN: <code>POST http://&lt;IP&gt;:12800/api/install</code> بجسم JSON بصيغة <code>{"type":"direct","packages":["<var>رابط-الـPKG</var>"]}</code> — نفس البروتوكول بالظبط اللي بستخدمه أدوات التثبيت المعروفة (زي DirectPackageInstaller).</p>
+<p>لأن صفحتنا بتشتغل بـ HTTPS والسيرفر بتاع الجهاز HTTP (شبكة منزلية)، بيتم الإرسال بـ <b>نموذج ملاحي مباشر</b> من المتصفح — الطريقة دي بتعدّي تحظرات الحماية (Mixed Content) اللي بتوقف أدوات الإرسال العادية، من غير أي تنازل في الأمان (البيانات بتروح لجهازك انت جوه شبكتك). وفوق كده الأداة بتجرب الاتصال المباشر الأول لو المتصفح سامح.</p>
+<p style="margin-bottom:0">البروتوكول من تطوير <b>flatz</b> والمدمج في GoldHEN — كل الفضل للمجتمع.</p>
+</div>
+</details>
+
+<div class="bottom-back"><a href="../../index.html">&#10148; رجوع للصفحة الرئيسية</a></div>
+</main>
+<script>
+(function () {
+  var ipEl = document.getElementById('ip');
+  var urlEl = document.getElementById('url');
+  var errEl = document.getElementById('err');
+  var resEl = document.getElementById('result');
+  var sendBtn = document.getElementById('send');
+  var localBtn = document.getElementById('localBtn');
+
+  function showErr(msg) { errEl.textContent = msg; errEl.style.display = 'block'; }
+  function clearErr() { errEl.style.display = 'none'; }
+  function show(cls, html) {
+    resEl.className = cls;
+    resEl.innerHTML = html;
+  }
+
+  localBtn.addEventListener('click', function () {
+    ipEl.value = '127.0.0.1';
+    show('info', 'تم ضبط الـ IP على <b>127.0.0.1</b> (نفس الجهاز) — بقت جاهز تبعث مباشرة من متصفح الـ PS4.');
+    clearErr();
+  });
+
+  function validate() {
+    var ip = ipEl.value.trim();
+    var url = urlEl.value.trim();
+    if (!/^\d{1,3}(\.\d{1,3}){3}$/.test(ip)) { showErr('اكتب رقم IP صحيح — 4 أرقام مفصولة بنقط (زي 192.168.1.10)'); return null; }
+    if (!/^https?:\/\/.+/i.test(url)) { showErr('اللينك لازم يبدأ بـ http:// أو https://'); return null; }
+    if (/[\"'\\\s]/.test(url)) { showErr('اللينك فيه رموز غير مسموحة (مسافات أو علامات تنصيص) — لازم رابط نظيف مباشر'); return null; }
+    clearErr();
+    return { ip: ip, url: url };
+  }
+
+  sendBtn.addEventListener('click', function () {
+    resEl.className = ''; resEl.innerHTML = '';
+    var v = validate();
+    if (!v) return;
+    var target = 'http://' + v.ip + ':12800/api/install';
+
+    // 1) محاولة اتصال مباشر (fetch no-cors) — تنجح في المتصفحات اللي بتسمح
+    var body = JSON.stringify({ type: 'direct', packages: [v.url] });
+    var done = false;
+    if (window.fetch) {
+      fetch(target, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: body, mode: 'no-cors' })
+        .then(function () {
+          done = true;
+          show('ok', '✅ <b>الإرسال تم!</b> — الطلب وصل للجهاز. راقب شاشة الـ PS4: التنزيل بيبان هناك (وتبويب جديد ممكن يظهر فيه رد السيرفر — لو فيه success يبقى تمام).');
+        })
+        .catch(function () { /* mixed content أو CORS — نكمل بالنموذج */ });
+    }
+    // 2) نموذج ملاحي مباشر — الطريقة اللي بتشتغل في كل المتصفحات
+    setTimeout(function () {
+      if (done) return;
+      var f = document.createElement('form');
+      f.method = 'POST';
+      f.action = target;
+      f.enctype = 'text/plain';
+      f.target = '_blank';
+      f.acceptCharset = 'utf-8';
+      f.style.display = 'none';
+      var i = document.createElement('input');
+      i.type = 'hidden';
+      // جسم JSON صحيح: الجزء الفاصل (=) بيقع جوه نص الرابط كـ #= — محايد تمامًا للسيرفر
+      i.name = '{"type":"direct","packages":["' + v.url + '#';
+      i.value = '"]}';
+      f.appendChild(i);
+      document.body.appendChild(f);
+      f.submit();
+      setTimeout(function () { document.body.removeChild(f); }, 3000);
+      show('info', '📡 <b>اتفتح تاب جديد فيه رد السيرفر:</b><br>لو شفت <code>{ "status": "success" }</code> يبقى التنزيل بدأ على الـ PS4 ✅<br>ولو ظهر <code>fail</code> مع كود خطأ — راجع جدول الحل فوق.');
+    }, 900);
+  });
+})();
+</script>
+</body>
+</html>

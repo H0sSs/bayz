@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>التحكم في مراوح PS4 — تبريد أقوى وصوت أقل | الدراع بايظ</title>
+<link rel="icon" type="image/png" href="../../logo.png">
+<style>
+:root{color-scheme:dark;--bg:#0b0d10;--panel:#151a21;--line:#2b3542;--gold:#d4af37;--gold2:#f0d060;--muted:#aab4c0;--ok:#7fd0a0;--warn:#e0c77b;--bad:#e08a7f;--cyan:#38bdf8}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#0b0d10 0%,#1a1410 100%);color:#edf1f5;font:16px/1.8 "Segoe UI",Tahoma,sans-serif}
+main{width:min(94%,880px);margin:0 auto;padding:20px 0 34px}
+h1{color:var(--gold);font-size:clamp(24px,4.5vw,36px);margin:6px 0 2px}
+h2{color:var(--gold);font-size:22px;margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{color:var(--gold2);font-size:17px;margin:18px 0 6px}
+.sub{color:var(--muted);margin:0 0 10px}
+.page-topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;background:#0e1116;border-bottom:1px solid var(--line);padding:9px 14px}
+.page-topbar .back-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:800;border-radius:9px;padding:9px 22px;font-size:15px;letter-spacing:.5px;box-shadow:0 2px 10px rgba(212,175,55,.3);white-space:nowrap}
+.page-topbar .back-btn:hover{filter:brightness(1.08)}
+.page-topbar .topbar-title{color:var(--muted);font-size:13px;letter-spacing:.5px}
+.bottom-back{text-align:center;margin:26px 0 10px}
+.bottom-back a{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:800;border-radius:9px;padding:11px 26px;font-size:16px;box-shadow:0 2px 12px rgba(212,175,55,.3)}
+.bottom-back a:hover{filter:brightness(1.08)}
+@media(max-width:600px){.page-topbar .topbar-title{display:none}}
+.box{background:rgba(21,26,33,.92);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+.warning{border-color:#75622c;color:var(--warn)}
+.ok-box{border-color:#315b45;color:var(--ok)}
+a.button{display:inline-block;background:var(--gold);color:#0b0d10;text-decoration:none;font-weight:800;border-radius:9px;padding:10px 18px;margin:4px 4px 4px 0;font-size:15px}
+a.button:hover{background:var(--gold2)}
+a.ext{color:var(--cyan);text-decoration:none}
+a.ext:hover{text-decoration:underline}
+.meta{color:var(--muted);font-size:13px;word-break:break-all}
+ol,ul{padding-right:26px;margin:8px 0}
+li{margin:9px 0}
+.small{font-size:13px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14.5px}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:right}
+th{background:#1a1410;color:var(--gold)}
+.steps{counter-reset:step;list-style:none;padding-right:0}
+.steps>li{counter-increment:step;position:relative;padding-right:52px;margin:14px 0}
+.steps>li::before{content:counter(step);position:absolute;right:0;top:2px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:#141005;font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center}
+hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+/* ===== لوحة اختيار درجة الحرارة ===== */
+.temps{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:10px;margin:12px 0}
+.temp{position:relative;background:rgba(21,26,33,.9);border:2px solid var(--line);border-radius:12px;padding:12px 8px 10px;text-align:center;cursor:pointer;user-select:none}
+.temp:hover{border-color:var(--gold);filter:brightness(1.1)}
+.temp.sel{border-color:var(--gold);background:linear-gradient(180deg,#2a2312,#1a1410)}
+.temp .deg{font-size:30px;font-weight:900;color:var(--gold2);line-height:1.2}
+.temp .lbl{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.5}
+.temp .ic{font-size:19px}
+.temp.sel .lbl{color:#e8d090}
+#launch{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:16px 0 4px}
+#launch a{flex:1 1 260px;text-align:center;background:linear-gradient(180deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:900;border-radius:12px;padding:15px 12px;font-size:16.5px;box-shadow:0 5px 18px rgba(212,175,55,.25)}
+#launch a:hover{filter:brightness(1.07)}
+#status{text-align:center;color:var(--gold2);font-size:14.5px;margin-top:6px}
+</style>
+</head>
+<body>
+<nav class="page-topbar">
+<a class="back-btn" href="../../index.html">&#10148; رجوع للصفحة الرئيسية</a>
+<span class="topbar-title">التحكم في مراوح PS4 — Fan Threshold</span>
+</nav>
+<main>
+<h1>🌀 التحكم في مراوح PS4</h1>
+<p class="sub">أداة فورية من المتصفح — اضبط درجة حرارة تشغيل المراوح على جهازك بنقرة واحدة، من غير تثبيت أي حاجة. البيلود بيتحمل من الهوست بتاعنا مباشرة وشغال مع كل الفيرمويرات المدعومة</p>
+
+<!-- ============ الفكرة ============ -->
+<h2>إيه الفكرة؟ (ليه المراوح بتزعّج؟)</h2>
+<div class="box">
+<p style="margin-top:0">سوني بتحط <b>حدّ حرارة مرتفع</b> قبل ما المراوح تزيد سرعتها — النتيجة: الجهاز يسخن بصمت والمراوح تفضل نايمة لحد ما توصل الحرارة للحد العالي ده، وبعدين تنفجر صوت فجأة. ده أكبر سبب لمشاكل <b>السخونة والافتراق الحراري</b> في أجهزة PS4 القديمة بالمنطقة العربية (خصوصًا مع جو الصيف).</p>
+<p><b>البيلود بتاعنا بيوصل مباشرة لتحكم المراوح</b> ويغيّر الحدّ ده للدرجة اللي تختارها:
+<b>درجة أقل = تبريد أقوى ومراوح أعلى صوت</b> — <b>درجة أعلى = جهاز أهدأ بس أسخن</b>.</p>
+<p style="margin-bottom:0">البيلود شغال بنظام <b>ICC Fan Threshold</b> — نفس آلية أدوات درجة الحرارة المشهورة في مجتمع PS4، وبيوصل للجهاز من غير تعديل أي ملفات دائمة. لو الجهاز اتعمل له ريستارت، الإعداد يرجع لوضع سوني الأصلي وتقدر تضبطه تاني في ثواني.</p>
+</div>
+
+<!-- ============ اختيار الدرجة ============ -->
+<h2>١) اختار درجة الحرارة</h2>
+<div class="box">
+<div class="temps" id="temps">
+<div class="temp sel" data-t="55"><div class="ic">❄️</div><div class="deg">55°</div><div class="lbl">أقصى تبريد<br>مراوح دائمًا قوية</div></div>
+<div class="temp" data-t="60"><div class="ic">🧊</div><div class="deg">60°</div><div class="lbl">تبريد قوي جدًا<br>للأجهزة السخنة</div></div>
+<div class="temp" data-t="65"><div class="ic">✅</div><div class="deg">65°</div><div class="lbl">التوصية الرسمية<br>توازن ممتاز</div></div>
+<div class="temp" data-t="70"><div class="ic">⚖️</div><div class="deg">70°</div><div class="lbl">متوازن هادئ<br>معقول للشتاء</div></div>
+<div class="temp" data-t="75"><div class="ic">🌙</div><div class="deg">75°</div><div class="lbl">هادئ جدًا<br>للاعبين بالليل</div></div>
+<div class="temp" data-t="80"><div class="ic">🔇</div><div class="deg">80°</div><div class="lbl">أهدى وضع<br>⚠️ للـ Pro بس</div></div>
+</div>
+<p class="small" style="margin:8px 0 0">💡 <b>القاعدة الذهبية:</b> 65° هي الدرجة اللي بيوصى بيها مجتمع PS4 لكل الأجهزة — لو جهازك بيقطع فجأة أو الجسم سخن، نزّل لـ 60 أو 55. درجات 75-80 للـ PS4 Pro اللي تبريده أقوى أصلًا، و<b>ممنوع تعدي 80° أبدًا</b>.</p>
+</div>
+
+<!-- ============ التشغيل ============ -->
+<h2>٢) شغّل البيلود من قسم فيرمويرك</h2>
+<div class="box">
+<div id="launch">
+<a id="go713" href="../../7-13/index.html?bin=../tools/fan-control/55.bin">▶ شغّل من قسم 7.00 – 13.00</a>
+<a id="go1352" href="../../13-13.52/index.html?bin=../tools/fan-control/55.bin">▶ شغّل من قسم 13.02 – 13.52</a>
+</div>
+<div id="status">درجة مختارة حاليًا: <b>55°</b> — الروابط فوق جاهزة على الدرجة دي</div>
+<ol class="steps" style="margin-top:14px">
+<li><b>اختار درجتك</b> من الأزرار فوق (هتلاقي الروابط اتحدثت على طول).</li>
+<li><b>اضغط زر قسمك</b> — الصفحة هتفتح وتبدأ سلسلة الجيلبريك تلقائيًا لو الجهاز لسه مش مكسور، أو تبعت البيلود مباشرة لو الجيلبريك شغال خلاص.</li>
+<li><b>استنّى الإشعار</b> — هتظهرلك رسالة على شاشة الـ PS4: <code>Fan Threshold Set to 65</code> — كده التغيير تم ✅</li>
+<li><b>متحطش فلاشة ولا حاجة</b> — البيلود شغال من المتصفح، والصفحة نفسها محفوظة عندك للعمل أوفلاين في أي وقت.</li>
+</ol>
+</div>
+
+<!-- ============ ملاحظات أمان ============ -->
+<h2>٣) ملاحظات مهمة قبل التشغيل</h2>
+<div class="box warning">
+<ul style="margin:0">
+<li><b>النطاق الآمن 55 – 80 فقط:</b> الأداة مش هتسمحلك تختار بره النطاق ده أصلًا — درجات أعلى = جهاز يسخن بجد، وأقل = المراوح على أقصى سرعة طول الوقت (زعيق وعمر أقصر للمراوح).</li>
+<li><b>البيلود مؤقت:</b> بعد إعادة تشغيل الجهاز يرجع الإعداد الافتراضي — أعد الضبط بعد كل ريستارت (تانية واحدة من الصفحة دي).</li>
+<li><b>لو عندك GoldHEN شغال</b> البيلود بيشتغل عادي معاه — الترتيب مش مهم، بس لو الجهاز لسه مش مكسور، السلسلة هتكسره الأول وتشغّل البيلود على طول.</li>
+<li><b>جهاز بيقطع أو يسخن جدًا؟</b> نزّل على 55/60 وراجع التنظيف — البيلود بيحسّن التبريد بس مش بيعالج عوافي ضعيفة أو معجون ناشف.</li>
+</ul>
+</div>
+
+<!-- ============ جدول ============ -->
+<h2>جدول المقارنة السريع</h2>
+<div class="box">
+<table>
+<tr><th>الدرجة</th><th>قوة التبريد</th><th>الصوت</th><th>مناسب لمين؟</th></tr>
+<tr><td><b>55°</b></td><td>🔥🔥🔥🔥🔥</td><td>عالي</td><td>أجهزة بتقطع في الحر / بث وستريمينج</td></tr>
+<tr><td><b>60°</b></td><td>🔥🔥🔥🔥</td><td>متوسط-عالي</td><td>أجهزة الصيف أو القديمة (2013-2016)</td></tr>
+<tr><td><b>65°</b> ⭐</td><td>🔥🔥🔥</td><td>متوسط</td><td><b>التوصية العامة لكل الأجهزة</b></td></tr>
+<tr><td><b>70°</b></td><td>🔥🔥</td><td>هادئ</td><td>أجهزة مبردة كويس / جو الشتاء</td></tr>
+<tr><td><b>75°</b></td><td>🔥</td><td>هادئ جدًا</td><td>لعب بالليل وما تزعّجش حد</td></tr>
+<tr><td><b>80°</b></td><td>أدنى</td><td>شبه صامت</td><td>PS4 Pro بس — وما تنساش تراقبه</td></tr>
+</table>
+</div>
+
+<!-- ============ المصادر ============ -->
+<h2>المصادر والتقدير</h2>
+<div class="box">
+<p class="small" style="margin:0">البيلودات مبنية على مشروع <a class="ext" href="https://github.com/Scene-Collective/ps4-fan-threshold" rel="noopener">Scene-Collective/ps4-fan-threshold</a> (بحث ICC لـ <b>Zer0xFF</b>) مع مجمّع بيلودات <a class="ext" href="https://github.com/toxxic407/PS4-fan-control-payloads" rel="noopener">toxxic407</a> — آلية الوصول عبر <code>/dev/icc_fan</code> مش بتتأثر بنسخة الفيرموير، فالبيلود واحد لكل الأجهزة المكسورة. كل الفضل للمجتمع الأصلي 💛</p>
+</div>
+
+<div class="bottom-back"><a href="../../index.html">&#10148; رجوع للصفحة الرئيسية</a></div>
+</main>
+<script>
+(function () {
+  var temps = document.querySelectorAll('.temp');
+  var go713 = document.getElementById('go713');
+  var go1352 = document.getElementById('go1352');
+  var status = document.getElementById('status');
+  var cur = '55';
+  function upd() {
+    var bin = '../tools/fan-control/' + cur + '.bin';
+    go713.href = '../../7-13/index.html?bin=' + bin;
+    go1352.href = '../../13-13.52/index.html?bin=' + bin;
+    status.innerHTML = 'درجة مختارة حاليًا: <b>' + cur + '°</b> — الروابط فوق جاهزة على الدرجة دي';
+  }
+  for (var i = 0; i < temps.length; i++) {
+    temps[i].addEventListener('click', function () {
+      for (var j = 0; j < temps.length; j++) temps[j].classList.remove('sel');
+      this.classList.add('sel');
+      cur = this.getAttribute('data-t');
+      upd();
+    });
+  }
+  upd();
+})();
+</script>
+</body>
+</html>

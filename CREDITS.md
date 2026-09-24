@@ -17,6 +17,16 @@
 - **PKG-BackUP v1.3** — kmeps4 — https://github.com/kmeps4/PKG-BackUP (محفوظ كما نُشر من غير تعديل)
 - **ItemzFlow** — LightningMods والمساهمون — https://github.com/LightningMods/Itemzflow (صفحة تعريف وتثبيت بالعربي فقط — التطبيق بيتحمّل من المصدر الرسمي pkg-zone.com/details/ITEM00001)
 
+## أدوات المرحلة 2
+
+- **Fan Control ICC payloads** — Scene-Collective (ps4-fan-threshold) + بحث Zer0xFF لأجهزة ICC — مجمّعة بواسطة toxxic407 — https://github.com/toxxic407/PS4-fan-control-payloads (6 بيلودات threshold محفوظة كما نُشرت من غير تعديل)
+- **ps4debug v1.1.19** — golden، محدّث بواسطة ctn123 وSiSTRo — https://github.com/GoldHEN/ps4debug (البيلود محفوظ كما نُشر من غير تعديل)
+- **GoldHEN Plugins Repository v1.210** — فريق GoldHEN — https://github.com/GoldHEN/GoldHEN_Plugins_Repository (الحزمة الرسمية مستضافة كما نُشرت مع هاشات التحقق)
+- **Remote Package Installer (بروتوكول RPI)** — flatz — https://github.com/flatz/ps4_remote_pkg_installer (صفحة واجهة إرسال عربية أصلية بتكلم نفس الـ API — بورت 12800)
+- **PS-DNS-Block list** — Misl3d (عن قوائم depressive_monk وAl-Azif) — https://github.com/Misl3d/PS-dns-block (قائمة الدومينات مستخدمة في دليل منع التحديثات)
+- **GoldHEN Cheat Menu** — ctn123 وShinigami (ScriptSK) وSiSTRo — التوثيق الرسمي https://github.com/GoldHEN/GoldHEN/blob/master/CHEATMENU.md
+- **Apollo Save Tool** و**PS4 Xplorer** — صفحات إرشادية تشير للمصادر الرسمية (مش مضمنة كملفات)
+
 ## تنويه قانوني
 
 - الأدوات والسلاسل دي لأغراض تعليمية وأبحاث الأمن والنسخ الاحتياطي للمحتوى الشخصي فقط.

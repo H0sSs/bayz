@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 20260923-landing-cache-v5-compact-centered-buttons
+# rev 20260925-landing-cache-v6-nine-tools-phase2
 
 CACHE:
 index.html
@@ -9,6 +9,19 @@ tools/pkg-backup/index.html
 tools/pkg-backup/ps4-pkg-backup_v13.bin
 tools/pkg-backup/config.cfg
 tools/itemzflow/index.html
+tools/dns-block/index.html
+tools/rpi/index.html
+tools/goldhen-plugins/index.html
+tools/goldhen-plugins/GoldPlugins-1.210.zip
+tools/fan-control/index.html
+tools/fan-control/55.bin
+tools/fan-control/60.bin
+tools/fan-control/65.bin
+tools/fan-control/70.bin
+tools/fan-control/75.bin
+tools/fan-control/80.bin
+tools/cheats/index.html
+tools/cheats/ps4debug_v1.1.19.bin
 
 FALLBACK:
 /bayz/ /bayz/index.html

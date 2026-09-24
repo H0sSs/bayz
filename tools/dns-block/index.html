@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>منع تحديثات سوني — حماية جهازك من التحديثات الإجبارية | الدراع بايظ</title>
+<link rel="icon" type="image/png" href="../../logo.png">
+<style>
+:root{color-scheme:dark;--bg:#0b0d10;--panel:#151a21;--line:#2b3542;--gold:#d4af37;--gold2:#f0d060;--muted:#aab4c0;--ok:#7fd0a0;--warn:#e0c77b;--bad:#e08a7f;--cyan:#38bdf8}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#0b0d10 0%,#1a1410 100%);color:#edf1f5;font:16px/1.8 "Segoe UI",Tahoma,sans-serif}
+main{width:min(94%,880px);margin:0 auto;padding:20px 0 34px}
+h1{color:var(--gold);font-size:clamp(24px,4.5vw,36px);margin:6px 0 2px}
+h2{color:var(--gold);font-size:22px;margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{color:var(--gold2);font-size:17px;margin:18px 0 6px}
+.sub{color:var(--muted);margin:0 0 10px}
+.page-topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;background:#0e1116;border-bottom:1px solid var(--line);padding:9px 14px}
+.page-topbar .back-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:800;border-radius:9px;padding:9px 22px;font-size:15px;letter-spacing:.5px;box-shadow:0 2px 10px rgba(212,175,55,.3);white-space:nowrap}
+.page-topbar .back-btn:hover{filter:brightness(1.08)}
+.page-topbar .topbar-title{color:var(--muted);font-size:13px;letter-spacing:.5px}
+.bottom-back{text-align:center;margin:26px 0 10px}
+.bottom-back a{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:800;border-radius:9px;padding:11px 26px;font-size:16px;box-shadow:0 2px 12px rgba(212,175,55,.3)}
+.bottom-back a:hover{filter:brightness(1.08)}
+@media(max-width:600px){.page-topbar .topbar-title{display:none}}
+.box{background:rgba(21,26,33,.92);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+.warning{border-color:#75622c;color:var(--warn)}
+.ok-box{border-color:#315b45;color:var(--ok)}
+.bad-box{border-color:#75332c;color:var(--bad)}
+code,pre{font-family:Consolas,Menlo,monospace;direction:ltr;text-align:left}
+code{background:#0b0d10;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:13.5px;color:#e8d090;word-break:break-all}
+pre{background:#0b0d10;border:1px solid var(--line);border-radius:10px;padding:12px 14px;overflow-x:auto;font-size:13.5px}
+a.button{display:inline-block;background:var(--gold);color:#0b0d10;text-decoration:none;font-weight:800;border-radius:9px;padding:10px 18px;margin:4px 4px 4px 0;font-size:15px}
+a.button:hover{background:var(--gold2)}
+a.ext{color:var(--cyan);text-decoration:none}
+a.ext:hover{text-decoration:underline}
+.meta{color:var(--muted);font-size:13px;word-break:break-all}
+ol,ul{padding-right:26px;margin:8px 0}
+li{margin:9px 0}
+.small{font-size:13px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14.5px}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:right}
+th{background:#1a1410;color:var(--gold)}
+.steps{counter-reset:step;list-style:none;padding-right:0}
+.steps>li{counter-increment:step;position:relative;padding-right:52px;margin:14px 0}
+.steps>li::before{content:counter(step);position:absolute;right:0;top:2px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:#141005;font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center}
+hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+.tag{display:inline-block;background:#233024;color:var(--ok);border:1px solid #315b45;border-radius:99px;padding:2px 12px;font-size:12.5px;margin:2px}
+.tag.warn{background:#2c2813;color:var(--warn);border-color:#75622c}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.mini{background:rgba(21,26,33,.8);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.mini b{color:var(--gold2)}
+.copybtn{background:#233024;border:1px solid #315b45;color:var(--ok);border-radius:7px;padding:5px 14px;font-size:13px;cursor:pointer;margin-inline-start:8px}
+.copybtn:hover{filter:brightness(1.15)}
+</style>
+</head>
+<body>
+<nav class="page-topbar">
+<a class="back-btn" href="../../index.html">&#10148; رجوع للصفحة الرئيسية</a>
+<span class="topbar-title">منع تحديثات سوني — الدرع الواقي لجهازك</span>
+</nav>
+<main>
+<h1>🛡️ منع تحديثات سوني</h1>
+<p class="sub">دليل عربي كامل لحماية جهازك من التحديثات الإجبارية — النقطة دي أهم خطوة بعد الجيلبريك، لأن أي تحديث من سوني هيقفل الثغرة ويضيّع الجيلبريك نهائيًا</p>
+
+<!-- ============ ليه؟ ============ -->
+<h2>ليه لازم تمنع التحديثات؟</h2>
+<div class="box">
+<p style="margin-top:0">الجيلبريك شغال على <b>نسخة فيرموير محددة</b> — سوني بتطلع تحديثات جديدة بشكل دوري خصيصًا لسد الثغرات. لو جهازك اتحدّث بالغلط (أو بسبب لعبة طالبة تحديث إجباري) هتخسر:</p>
+<ul style="margin-bottom:0">
+<li><b>الجيلبريك نفسه:</b> مش هتقدر ترجع ليه إلا لو نزلت لفيرموير أقدم — وده غالبًا مستحيل بعد تحديث معين.</li>
+<li><b>كل الأدوات:</b> GoldHEN والألعاب المثبتة خارج المتجر والبيلودات كلها هتتوقف عن الشغل.</li>
+<li><b>خطر الـ CMOS:</b> أجهزة PS4 المعروفة بمشكلة CE-30391-6 بتظهر بعد التحديث مع بطارية فارغة.</li>
+</ul>
+</div>
+
+<!-- ============ طب الحماية 3 طبقات ============ -->
+<h2>الحماية الكاملة = 3 طبقات</h2>
+<div class="grid2">
+<div class="mini"><b>الطبقة 1 — GoldHEN:</b><span>بيمنع التحديث تلقائيًا طالما شغال في ذاكرة الجهاز (خاصية <b>FW Update Block</b> مدمجة). دي حماية مؤقتة بتشتغل مع كل جلسة جيلبريك.</span></div>
+<div class="mini"><b>الطبقة 2 — الراوتر:</b><span>حجب سيرفرات التحديث على مستوى الشبكة كلها — أقوى حماية وبتشتغل حتى لو الجهاز من غير جيلبريك. الطريقة مشروحة تحت بالتفصيل.</span></div>
+<div class="mini"><b>الطبقة 3 — عاداتك:</b><span>متفتحش قائمة «تحديث برنامج النظام» أبدًا، واقفل «التحديث التلقائي» من الإعدادات (تحت بالخطوات).</span></div>
+</div>
+
+<!-- ============ خطوة إعداد الجهاز نفسه ============ -->
+<h2>الخطوة صفر: إعدادات جهازك نفسه (دقيقتين)</h2>
+<div class="box">
+<ol class="steps">
+<li><b>اقفل التنزيل التلقائي:</b> من قائمة الـ PS4: <b>الإعدادات ← إدارة النظام ← التنزيل التلقائي/التحديث</b> — شيل علامة ✔ من «تحديث برنامج النظام تلقائيًا».</li>
+<li><b>اقفل الإرسال التلقائي للتشغيل:</b> من نفس القائمة شيل ✔ من «إرسال بيانات التشغيل للإنترنت».</li>
+<li><b>متستخدمش خيار «تحديث» في الألعاب:</b> لو لعبة طلبت تحديث فيرموير عشان تشتغل — لازم تلعبها على فيرموير الجيلبريك من غير تحديث، أو استخدم نسخ اللعبة المطابقة لفيرمويرك (النسخ CD/فلاشة المتوافقة مع جهازك).</li>
+</ol>
+</div>
+
+<!-- ============ الطريقة 1: الراوتر ============ -->
+<h2>الطريقة الأولى (الأقوى): الحجب من الراوتر 🏆</h2>
+<div class="box">
+<p style="margin-top:0">الحجب على مستوى الراوتر معناه إن <b>أي جهاز في البيت</b> مش هيوصل لسيرفرات تحديث سوني — أقوى وأدوم حماية، وبتشتغل حتى لو الجيلبريك مش معمول. الطريقة تختلف حسب نوع الراوتر:</p>
+<h3>لو راوترك فيه «فلترة دومينات / رقابة أبوية / Domain Blocking»</h3>
+<ol>
+<li>افتح صفحة إعدادات الراوتر من المتصفح (غالبًا <code>192.168.1.1</code> أو <code>192.168.0.1</code>).</li>
+<li>ادور على قسم <b>Parental Control / URL Filter / Domain Blocking</b> (الاسم يختلف حسب الماركة — TP-Link اسمه «Access Control»، D-Link اسمه «Website Filter»).</li>
+<li>أضف الدومينات اللي في الجدول اللي تحت (أو على الأقل نمط الحجب العام <code>ps4.update.playstation.net</code> لو الراوتر بيدعم حجز جزئي).</li>
+</ol>
+<h3>لو عندك PiHole أو نظام حجب متقدم</h3>
+<p>أضف كل الدومينات التالية لقاعدة الحجب — دي <b>القائمة الكاملة الرسمية</b> لسيرفرات تحديث PS4 لكل المناطق (39 سيرفر إقليمي + 6 خاصة):</p>
+<button class="copybtn" id="copyAll" type="button">📋 نسخ كل الدومينات</button>
+<pre id="allDomains">dau01.ps4.update.playstation.net
+dbr01.ps4.update.playstation.net
+dcn01.ps4.update.playstation.net
+deu01.ps4.update.playstation.net
+dhk01.ps4.update.playstation.net
+djp01.ps4.update.playstation.net
+dkr01.ps4.update.playstation.net
+dmx01.ps4.update.playstation.net
+dru01.ps4.update.playstation.net
+dsa01.ps4.update.playstation.net
+dtw01.ps4.update.playstation.net
+duk01.ps4.update.playstation.net
+dus01.ps4.update.playstation.net
+fau01.ps4.update.playstation.net
+fbr01.ps4.update.playstation.net
+fcn01.ps4.update.playstation.net
+feu01.ps4.update.playstation.net
+fhk01.ps4.update.playstation.net
+fjp01.ps4.update.playstation.net
+fkr01.ps4.update.playstation.net
+fmx01.ps4.update.playstation.net
+fru01.ps4.update.playstation.net
+fsa01.ps4.update.playstation.net
+ftw01.ps4.update.playstation.net
+fuk01.ps4.update.playstation.net
+fus01.ps4.update.playstation.net
+hau01.ps4.update.playstation.net
+hbr01.ps4.update.playstation.net
+hcn01.ps4.update.playstation.net
+heu01.ps4.update.playstation.net
+hhk01.ps4.update.playstation.net
+hjp01.ps4.update.playstation.net
+hkr01.ps4.update.playstation.net
+hmx01.ps4.update.playstation.net
+hru01.ps4.update.playstation.net
+hsa01.ps4.update.playstation.net
+htw01.ps4.update.playstation.net
+huk01.ps4.update.playstation.net
+hus01.ps4.update.playstation.net
+ps4-eb.ww.np.dl.playstation.net
+ps4-system.sec.np.dl.playstation.net
+ps4.updptl.sp-int.community.playstation.net
+ps4updptl.eu.np.community.playstation.net
+ps4updptl.jp.sp-int.community.playstation.net
+ps4updptl.uk.np.community.playstation.net</pre>
+<p class="small">القائمة دي مجمعة من مشروع صيانة مجتمع PS4 (Misl3d/PS-dns-block) — كل سيرفرات التحديث الإقليمية (أمريكا/أوروبا/آسيا/الشرق الأوسط) + سيرفرات التحديث الخاصة. حرف <code>d/f/h</code> الأول = مجموعة سيرفرات، والحرفين بعده = المنطقة (us=أمريكا، eu=أوروبا، sa=السعودية، hk=هونج كونج... إلخ).</p>
+</div>
+
+<div class="box ok-box">
+<h3 style="margin-top:0">💡 حسب منطقتك — لو الراوتر بيقبل عدد محدود من الدومينات</h3>
+<p style="margin:4px 0 8px">أجهزة المنطقة العربية بتتصل غالبًا بسيرفرات <b>أوروبا (eu)</b> أو <b>السعودية (sa)</b> أو <b>هونج كونج (hk)</b> حسب أصل الجهاز. لو مضطر تختار، ركّز على دومينات منطقتك الأول:</p>
+<ul style="margin:0">
+<li>أجهزة أوروبا/الشرق الأوسط (الشائعة عندنا): <code>deu01</code> + <code>feu01</code> + <code>heu01</code> + <code>dsa01</code> + <code>fsa01</code> + <code>hsa01</code></li>
+<li>أجهزة آسيا (ياباني/خليجي مستورد): <code>djp01</code>/<code>dhk01</code> + <code>fjp01</code>/<code>fhk01</code> + <code>hjp01</code>/<code>hhk01</code></li>
+<li><b>الأحسن برضه:</b> حجب القائمة كلها — أي دومين متسرب ممكن يكون باب التحديث.</li>
+</ul>
+</div>
+
+<!-- ============ تحذير DNS العامة ============ -->
+<h2>⚠️ تحذير مهم من «سيرفرات DNS الجاهزة» في الفيديوهات</h2>
+<div class="box bad-box">
+<p style="margin-top:0">في فيديوهات كتير بتنصح تكتب أرقام DNS «جاهزة» في إعدادات الـ PS4 عشان تمنع التحديث. <b>احذر:</b> الأرقام دي سيرفرات مجتمعية مش رسمية — اللي يشغّلها يقدر يوجّه جهازك لأي موقع تاني (خطر اختراق حقيقي)، وأغلبها بيقع من الشغل بعد شهور. <b>الأمان الحقيقي</b> هو حجب الدومينات عندك في راوترك انت — كده مفيش حد تاني واقف في النص. لو هتستخدم DNS من ثالث، لازم يكون من مصدر تثق فيه ثقة كاملة، وتأكد بعد كده من صفحة النتائج إن الجهاز لسه بيوصل للإنترنت العادي.</p>
+</div>
+
+<!-- ============ التحقق ============ -->
+<h2>✅ إزاي تتأكد إن الحماية شغالة؟</h2>
+<div class="box">
+<ol class="steps">
+<li><b>اختبار المتصفح:</b> من متصفح الـ PS4 افتح: <code>https://dus01.ps4.update.playstation.net</code> — المفروض تظهر رسالة خطأ اتصال (لأن السيرفر محجوب). لو الصفحة ردّت أو فتحت، الحجب مش شغال.</li>
+<li><b>اختبار القائمة:</b> من قائمة الـ PS4: <b>الإعدادات ← تحديث برنامج النظام</b> — هتلاقيه بيقول «أنت على آخر نسخة» حتى لو في تحديث أحدث، أو يفشل الاتصال. <b>بس خلي بالك:</b> ده مجرد اختبار — متعملش تحديث فعل لو ظهرلك خيار!</li>
+<li><b>اختبار GoldHEN:</b> بعد الجيلبريك، هتلاقي خاصية منع التحديث مذكورة في إعدادات GoldHEN — دي بتشتغل مع كل جلسة تلقائيًا.</li>
+</ol>
+<div class="ok-box box" style="margin-bottom:0">
+<b>النتيجة المطلوبة:</b> الجهاز يفضل على فيرموير الجيلبريك ✚ الألعاب والأدوات تكمل شغالة ✚ الإنترنت العادي (متجر؟ لأ — المتبر محظور للجيلبريك عادي، بس المتصفح والألعاب الأونلاين حسب الحالة) يفضل شغال.
+</div>
+</div>
+
+<!-- ============ جدول ملخص ============ -->
+<h2>ملخص الطرق كلها</h2>
+<div class="box">
+<table>
+<tr><th>الطريقة</th><th>قوة الحماية</th><th>محتاج إيه؟</th><th>ملاحظات</th></tr>
+<tr><td><b>GoldHEN (FW Update Block)</b></td><td>⭐⭐ متوسطة</td><td>الجيلبريك من هوستنا بس</td><td>تلقائية مع كل جلسة — أول حماية وأسهلها</td></tr>
+<tr><td><b>حجب الراوتر</b></td><td>⭐⭐⭐ أقوى</td><td>الدخول على إعدادات الراوتر</td><td>تحمي كل أجهزة البيت وبتشتغل دايمًا</td></tr>
+<tr><td><b>إعدادات الجهاز + عاداتك</b></td><td>⭐ أساسية</td><td>دقيقتين من قائمة PS4</td><td>قفل التنزيل التلقائي وتجنب قائمة التحديث</td></tr>
+<tr><td><b>DNS من طرف ثالث</b></td><td>⭐⭐ متوسطة</td><td>—</td><td><b>غير موصى بيها</b> — خطر أمني حسب مصدرها</td></tr>
+</table>
+<p class="small" style="margin-bottom:0">التوليفة المثالية عندنا: <span class="tag">GoldHEN من هوستنا</span> <span class="tag">+ حجب الراوتر</span> <span class="tag">+ قفل التلقائي</span> — بالثلاثة مع بعض، فرصة التحديث بالغلط بتقرب من الصفر.</p>
+</div>
+
+<div class="bottom-back"><a href="../../index.html">&#10148; رجوع للصفحة الرئيسية</a></div>
+</main>
+<script>
+(function () {
+  var btn = document.getElementById('copyAll');
+  btn.addEventListener('click', function () {
+    var txt = document.getElementById('allDomains').textContent.trim();
+    function fallbackCopy() {
+      var ta = document.createElement('textarea');
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); btn.textContent = '✔ اتنسخت!'; } catch (e) { btn.textContent = '⚠ اعمل تحديد ونصخ يدويًا'; }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(function () { btn.textContent = '✔ اتنسخت!'; }).catch(fallbackCopy);
+    } else {
+      fallbackCopy();
+    }
+  });
+})();
+</script>
+</body>
+</html>

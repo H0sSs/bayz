@@ -412,6 +412,182 @@ footer {
     filter: brightness(1.08);
 }
 
+/* ===== عناوين الأقسام في صفحة الهبوط (9 كروت / 3 أقسام) ===== */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    max-width: 790px;
+    margin: 18px auto 6px;
+    color: #d4af37;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+}
+.section-title::before,
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.45), transparent);
+}
+
+/* ===== الكروت المدمجة للأدوات (شبكة 3 أعمدة) ===== */
+.cards-container.tools {
+    max-width: 790px;
+    gap: 12px;
+    margin: 10px auto 14px;
+}
+.card.tool {
+    width: 245px;
+    border-radius: 13px;
+}
+.card.tool .card-head {
+    padding: 9px 14px 7px;
+}
+.card.tool .card-tag {
+    font-size: 0.62rem;
+    margin-bottom: 2px;
+    letter-spacing: 1.4px;
+}
+.card.tool .card-range.tool-title {
+    font-size: 1.02rem;
+    line-height: 1.35;
+}
+.card.tool .card-body {
+    padding: 8px 14px 4px;
+}
+.card.tool .chips {
+    gap: 5px;
+    margin: 0 0 6px;
+}
+.card.tool .chip {
+    font-size: 0.62rem;
+    padding: 1px 8px;
+}
+.card.tool .card-body p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+.card.tool .card-badge.tool-badge {
+    margin: 8px 12px 10px;
+    padding: 7px 12px;
+    font-size: 0.78rem;
+    border-radius: 9px;
+}
+
+/* ===== ألوان الأكسنت الجديدة للأدوات ===== */
+/* المراوح — برتقالي */
+.card.accent-orange { border-color: #4d3a20; }
+.card.accent-orange .card-head {
+    border-bottom-color: rgba(235, 150, 50, 0.35);
+    background: linear-gradient(135deg, rgba(235, 150, 50, 0.18) 0%, rgba(235, 150, 50, 0.03) 55%, rgba(235, 150, 50, 0.10) 100%);
+}
+.card.accent-orange .card-tag { color: #f0c9a0; }
+.card.accent-orange .card-range { text-shadow: 0 2px 12px rgba(235, 150, 50, 0.35); }
+.card.accent-orange .chip {
+    color: #ebaa6e;
+    background: rgba(235, 150, 50, 0.10);
+    border-color: rgba(235, 150, 50, 0.40);
+}
+.card.accent-orange .card-badge {
+    background: linear-gradient(135deg, #eb8c2e, #f5b260);
+    box-shadow: 0 2px 10px rgba(235, 150, 50, 0.35);
+}
+.card.accent-orange:hover, .card.accent-orange:focus {
+    border-color: #eb8c2e;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(235, 150, 50, 0.22);
+}
+
+/* الشيتات — أحمر وردى */
+.card.accent-red { border-color: #4a2a2a; }
+.card.accent-red .card-head {
+    border-bottom-color: rgba(224, 105, 105, 0.35);
+    background: linear-gradient(135deg, rgba(224, 105, 105, 0.18) 0%, rgba(224, 105, 105, 0.03) 55%, rgba(224, 105, 105, 0.10) 100%);
+}
+.card.accent-red .card-tag { color: #f0bcbc; }
+.card.accent-red .card-range { text-shadow: 0 2px 12px rgba(224, 105, 105, 0.35); }
+.card.accent-red .chip {
+    color: #e89c9c;
+    background: rgba(224, 105, 105, 0.10);
+    border-color: rgba(224, 105, 105, 0.40);
+}
+.card.accent-red .card-badge {
+    background: linear-gradient(135deg, #d46060, #eb8888);
+    box-shadow: 0 2px 10px rgba(224, 105, 105, 0.35);
+}
+.card.accent-red:hover, .card.accent-red:focus {
+    border-color: #d46060;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(224, 105, 105, 0.22);
+}
+
+/* البلجنات — ذهبي داكن */
+.card.accent-gold { border-color: #4d411e; }
+.card.accent-gold .card-head {
+    border-bottom-color: rgba(240, 208, 96, 0.4);
+    background: linear-gradient(135deg, rgba(240, 208, 96, 0.2) 0%, rgba(240, 208, 96, 0.04) 55%, rgba(240, 208, 96, 0.12) 100%);
+}
+.card.accent-gold .card-tag { color: #f0e2b0; }
+.card.accent-gold .card-range { text-shadow: 0 2px 12px rgba(240, 208, 96, 0.4); }
+.card.accent-gold .chip {
+    color: #ecd890;
+    background: rgba(240, 208, 96, 0.10);
+    border-color: rgba(240, 208, 96, 0.42);
+}
+.card.accent-gold .card-badge {
+    background: linear-gradient(135deg, #e0c050, #f0d060);
+    box-shadow: 0 2px 10px rgba(240, 208, 96, 0.35);
+}
+.card.accent-gold:hover, .card.accent-gold:focus {
+    border-color: #e0c050;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(240, 208, 96, 0.22);
+}
+
+/* التثبيت اللاسلكي — أزرق */
+.card.accent-blue { border-color: #273758; }
+.card.accent-blue .card-head {
+    border-bottom-color: rgba(90, 130, 230, 0.35);
+    background: linear-gradient(135deg, rgba(90, 130, 230, 0.18) 0%, rgba(90, 130, 230, 0.03) 55%, rgba(90, 130, 230, 0.10) 100%);
+}
+.card.accent-blue .card-tag { color: #bccdf5; }
+.card.accent-blue .card-range { text-shadow: 0 2px 12px rgba(90, 130, 230, 0.35); }
+.card.accent-blue .chip {
+    color: #94aeee;
+    background: rgba(90, 130, 230, 0.10);
+    border-color: rgba(90, 130, 230, 0.40);
+}
+.card.accent-blue .card-badge {
+    background: linear-gradient(135deg, #4a72d0, #7296e8);
+    box-shadow: 0 2px 10px rgba(90, 130, 230, 0.35);
+}
+.card.accent-blue:hover, .card.accent-blue:focus {
+    border-color: #4a72d0;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(90, 130, 230, 0.22);
+}
+
+/* منع التحديثات — بنفسجي */
+.card.accent-violet { border-color: #3e2a55; }
+.card.accent-violet .card-head {
+    border-bottom-color: rgba(160, 110, 230, 0.35);
+    background: linear-gradient(135deg, rgba(160, 110, 230, 0.18) 0%, rgba(160, 110, 230, 0.03) 55%, rgba(160, 110, 230, 0.10) 100%);
+}
+.card.accent-violet .card-tag { color: #d8c5f5; }
+.card.accent-violet .card-range { text-shadow: 0 2px 12px rgba(160, 110, 230, 0.35); }
+.card.accent-violet .chip {
+    color: #bfa4ee;
+    background: rgba(160, 110, 230, 0.10);
+    border-color: rgba(160, 110, 230, 0.40);
+}
+.card.accent-violet .card-badge {
+    background: linear-gradient(135deg, #8a5cd0, #ac86e8);
+    box-shadow: 0 2px 10px rgba(160, 110, 230, 0.35);
+}
+.card.accent-violet:hover, .card.accent-violet:focus {
+    border-color: #8a5cd0;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(160, 110, 230, 0.22);
+}
+
 /* التجاوب مع الموبايل والشاشات الصغيرة */
 @media (max-width: 768px) {
     header h1 {
@@ -425,6 +601,14 @@ footer {
     .card {
         width: 100%;
         max-width: 380px;
+    }
+    .card.tool {
+        width: 100%;
+        max-width: 300px;
+    }
+    .section-title {
+        font-size: 0.85rem;
+        max-width: 94%;
     }
     .card-range {
         font-size: 1.3rem;
