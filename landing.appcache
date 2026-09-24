@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 20260925-landing-cache-v6-nine-tools-phase2
+# rev 20260925-landing-cache-v7-cheats-localdb
 
 CACHE:
 index.html
@@ -20,10 +20,10 @@ tools/fan-control/65.bin
 tools/fan-control/70.bin
 tools/fan-control/75.bin
 tools/fan-control/80.bin
-tools/cheats/index.html
-tools/cheats/ps4debug_v1.1.19.bin
+tools/cheats/offline-note.html
 
 FALLBACK:
+tools/cheats/index.html tools/cheats/offline-note.html
 /bayz/ /bayz/index.html
 
 NETWORK:

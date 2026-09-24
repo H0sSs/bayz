@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" manifest="cheats.appcache">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>الشيتات والتاينرز — Cheats لكل ألعابك | الدراع بايظ</title>
+<title>الشيتات والتاينرز — قاعدة كاملة محفوظة عندك | الدراع بايظ</title>
 <link rel="icon" type="image/png" href="../../logo.png">
 <style>
 :root{color-scheme:dark;--bg:#0b0d10;--panel:#151a21;--line:#2b3542;--gold:#d4af37;--gold2:#f0d060;--muted:#aab4c0;--ok:#7fd0a0;--warn:#e0c77b;--bad:#e08a7f;--cyan:#38bdf8}
@@ -24,7 +24,6 @@ h3{color:var(--gold2);font-size:17px;margin:18px 0 6px}
 @media(max-width:600px){.page-topbar .topbar-title{display:none}}
 .box{background:rgba(21,26,33,.92);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
 .warning{border-color:#75622c;color:var(--warn)}
-.ok-box{border-color:#315b45;color:var(--ok)}
 code,pre{font-family:Consolas,Menlo,monospace;direction:ltr;text-align:left}
 code{background:#0b0d10;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:13.5px;color:#e8d090;word-break:break-all}
 a.button{display:inline-block;background:var(--gold);color:#0b0d10;text-decoration:none;font-weight:800;border-radius:9px;padding:10px 18px;margin:4px 4px 4px 0;font-size:15px}
@@ -44,7 +43,6 @@ hr{border:none;border-top:1px solid var(--line);margin:26px 0}
 .biglink{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
 .biglink a{flex:1 1 240px;text-align:center;background:linear-gradient(180deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:900;border-radius:12px;padding:15px 12px;font-size:16px;box-shadow:0 5px 18px rgba(212,175,55,.25)}
 .biglink a:hover{filter:brightness(1.07)}
-.biglink a.alt{background:linear-gradient(180deg,#2b3542,#1a2430);color:#e8d090;box-shadow:none;border:1px solid var(--gold)}
 .path{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0}
 .path .step-chip{background:#233024;color:var(--ok);border:1px solid #315b45;border-radius:8px;padding:4px 12px;font-size:13.5px}
 .tag{display:inline-block;background:#233024;color:var(--ok);border:1px solid #315b45;border-radius:99px;padding:1px 11px;font-size:12px;margin:2px;white-space:nowrap}
@@ -52,6 +50,43 @@ hr{border:none;border-top:1px solid var(--line);margin:26px 0}
 .tag.bad{background:#33201d;color:var(--bad);border-color:#75332c}
 details{background:rgba(21,26,33,.7);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}
 summary{cursor:pointer;color:var(--gold2);font-weight:700}
+/* ====== قاعدة البيانات المحلية ====== */
+.dbstats{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
+.dbstats .st{background:#2c2413;color:var(--gold2);border:1px solid #75622c;border-radius:99px;padding:3px 14px;font-size:13px;white-space:nowrap}
+.dbapp{background:rgba(21,26,33,.92);border:1px solid #75622c;border-radius:12px;padding:16px 18px;margin:14px 0}
+.dbapp h3{margin-top:0}
+.searchbar input{width:100%;background:#0b0d10;border:1px solid var(--line);border-radius:10px;color:#edf1f5;padding:13px 16px;font-size:17px;direction:ltr;text-align:left;font-family:Consolas,Menlo,monospace}
+.searchbar input:focus{outline:none;border-color:var(--gold)}
+.searchbar input:disabled{opacity:.5}
+.dbstatus{margin:10px 0 0;padding:8px 12px;border-radius:8px;font-size:13.5px;background:#233024;color:var(--ok);border:1px solid #315b45;line-height:1.6}
+.dbstatus.busy{background:#2c2413;color:var(--gold2);border-color:#75622c}
+.dbstatus.err{background:#33201d;color:var(--bad);border-color:#75332c}
+.hintchips{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 0}
+.hintchips .hc{background:linear-gradient(180deg,#233024,#1a2430);color:var(--ok);border:1px solid #315b45;border-radius:8px;padding:4px 13px;font-size:13px;cursor:pointer}
+.hintchips .hc:hover{border-color:var(--gold);color:var(--gold2)}
+.results{margin:12px 0 0}
+.grow{border:1px solid var(--line);border-radius:10px;margin:8px 0;padding:10px 14px;background:rgba(11,13,16,.5)}
+.grow:hover{border-color:#75622c}
+.gname{font-weight:700;font-size:16.5px;color:#e8d090;direction:ltr;text-align:left}
+.gmeta{color:var(--muted);font-size:12.5px;margin:2px 0 6px;direction:ltr;text-align:left}
+.vchips{display:flex;flex-wrap:wrap;gap:6px}
+.vchip{background:linear-gradient(180deg,#233024,#1a2430);color:var(--ok);border:1px solid #315b45;border-radius:8px;padding:4px 12px;font-size:13px;cursor:pointer;font-family:Consolas,Menlo,monospace;direction:ltr}
+.vchip:hover{border-color:var(--gold);color:var(--gold2)}
+.vchip.alt{border-color:#75622c;color:var(--gold2)}
+.detail{border:1px solid #75622c;border-radius:12px;padding:14px 16px;margin:12px 0;background:rgba(44,36,19,.35)}
+.dhead{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.dname{font-weight:800;font-size:19px;color:var(--gold2);direction:ltr;text-align:left}
+.dchips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.mods{max-height:340px;overflow-y:auto;border:1px solid var(--line);border-radius:8px;background:#0b0d10;padding:6px 12px;margin:10px 0}
+.modrow{padding:6px 4px;border-bottom:1px solid #1e2630;direction:ltr;text-align:left;font-size:14px}
+.modrow:last-child{border-bottom:none}
+.modcnt{color:var(--muted);font-size:13px;margin:6px 0 0}
+.dbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+a.dlbtn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:900;border-radius:10px;padding:11px 22px;font-size:15px;box-shadow:0 3px 14px rgba(212,175,55,.3)}
+a.dlbtn:hover{filter:brightness(1.07)}
+button.cpbtn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,#2b3542,#1a2430);color:#e8d090;border:1px solid var(--gold);border-radius:10px;padding:11px 22px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+button.cpbtn:hover{border-color:var(--gold2);color:var(--gold2)}
+.dfileinfo{color:var(--muted);font-size:12.5px;margin:8px 0 0;direction:ltr;text-align:left}
 </style>
 </head>
 <body>
@@ -61,45 +96,70 @@ summary{cursor:pointer;color:var(--gold2);font-weight:700}
 </nav>
 <main>
 <h1>🎮 الشيتات والتاينرز</h1>
-<p class="sub">طريقتين كاملتين بالعربي لتشغيل الشيتات على ألعابك: القائمة المدمجة في GoldHEN (الأسهل — شغالة على كل الفيرمويرات) وأداة ps4debug للمستوى المتقدم (فيرمويرات 7.00 – 12.02)</p>
+<p class="sub">قاعدة شيتات كاملة <b>محفوظة عندنا ومتحملة عندك</b> — دور على لعبتك، نزّل ملف الشيت بتاع نسختك بالظبط، وارفعه مرة واحدة على الجهاز. طريقة تانية متقدمة بـ ps4debug للي بيصنع شيتاته بنفسه.</p>
 
 <!-- ============ نظرة عامة ============ -->
 <h2>الطريقتين — نظرة سريعة</h2>
 <div class="box">
 <table>
-<tr><th></th><th>⭐ قائمة GoldHEN (الأسهل)</th><th>🔧 ps4debug (المتقدم)</th></tr>
-<tr><td><b>إيه هي؟</b></td><td>قائمة شيتات مدمجة في GoldHEN نفسه — بتظهر جوه اللعبة</td><td>مصحّح (Debugger) كامل بيتصل بيه من الكمبيوتر</td></tr>
-<tr><td><b>الصعوبة</b></td><td>سهلة جدًا — رفع ملفات جاهزة بس</td><td>متقدمة — أدوات PC وتعديل قيم بنفسك</td></tr>
+<tr><th></th><th>⭐ قائمة GoldHEN من قاعدتنا (الأسهل)</th><th>🔧 ps4debug (المتقدم)</th></tr>
+<tr><td><b>إيه هي؟</b></td><td>قاعدة كاملة عندنا بتدور فيها على لعبتك وتنزّل ملفها — بتشتغل من قائمة جوه اللعبة</td><td>مصحّح (Debugger) كامل بيتصل بيه من الكمبيوتر</td></tr>
+<tr><td><b>الصعوبة</b></td><td>سهلة جدًا — بحث + تحميل + رفع مرة واحدة</td><td>متقدمة — أدوات PC وتعديل قيم بنفسك</td></tr>
 <tr><td><b>الفيرموير</b></td><td><span class="tag">كل الفيرمويرات 7.00 – 13.52</span></td><td><span class="tag bad">7.00 – 12.02 بس</span></td></tr>
-<tr><td><b>محتاج إيه؟</b></td><td>ملفات الشيتات + FTP</td><td>بيلود ps4debug + برنامج PC + لعبة شغالة</td></tr>
+<tr><td><b>محتاج إيه؟</b></td><td>البحث اللي فوق في الصفحة دي + FTP</td><td>بيلود ps4debug + برنامج PC + لعبة شغالة</td></tr>
 <tr><td><b>بتعمل إيه؟</b></td><td>شغّل/اطفي شيتات جاهزة (نفس الأزرار في اللعبة)</td><td>ابحث في ذاكرة اللعبة وعدّل أي قيمة بنفسك</td></tr>
 </table>
 <p class="small" style="margin:0">💡 <b>نصيحتنا:</b> ابدأ بالطريقة الأولى — 90% من المستخدمين مش محتاجين أكتر من كده. الطريقة التانية لللي عايز يصنع شيتاته بنفسه.</p>
 </div>
 
 <!-- ============ الطريقة 1 ============ -->
-<h2>الطريقة الأولى: قائمة GoldHEN للشيتات ⭐ (الأسهل)</h2>
+<h2>الطريقة الأولى: قاعدة الشيتات المحلية عندنا ⭐ (الأسهل)</h2>
 <div class="box">
-<p style="margin-top:0"><b>GoldHEN عنده قائمة شيتات مدمجة</b> بتفتحها <b>وإنت جوه اللعبة</b> — بضغطة طويلة على زر <b>Share</b> — وتشغّل/تطفي أي شيت فوريًا من غير برنامج ولا كمبيوتر. الشيتات بتيجي في ملفات جاهزة بترفعها مرة واحدة وتفضل محفوظة عندك.</p>
+<p style="margin-top:0"><b>القاعدة كلها بقيت عندنا.</b> مفيش مواقع خارجية ولا بحث في GitHub — <b>1197 لعبة و1877 ملف شيت</b> من المستودع الرسمي لـ GoldHEN، محفوظين جوه الموقع ومتحملين عندك مع أول زيارة: بعد أول مرة بتفتح فيها الصفحة دي وأنت واصل نت، البحث والتحميل بيشتغلوا من غير نت خالص.</p>
+<div class="dbstats">
+<span class="st">🎮 1197 لعبة</span>
+<span class="st">📁 1877 ملف شيت</span>
+<span class="st">💾 ~8 ميجا تت حمل مرة واحدة</span>
+<span class="st">📴 أوفلاين بالكامل بعد أول زيارة</span>
+</div>
 <div class="path">
-<span class="step-chip">١. نزّل ملف الشيت</span>
-<span class="step-chip">٢. ارفعه بـ FTP</span>
-<span class="step-chip">٣. افتح اللعبة</span>
-<span class="step-chip">٤. زر Share مطوّل = القائمة</span>
+<span class="step-chip">١. دوّر على لعبتك تحت</span>
+<span class="step-chip">٢. حمّل ملف النسخة بتاعتك</span>
+<span class="step-chip">٣. ارفعه بـ FTP مرة واحدة</span>
+<span class="step-chip">٤. جوه اللعبة: Share مطوّل</span>
 </div>
 
-<h3>الخطوة 1: نزّل ملف الشيت بتاع لعبتك</h3>
-<ul>
-<li><b>الموقع الأول (الأسهل):</b> <a class="ext" href="https://hencheats.vercel.app/" rel="noopener">HEN Cheats Collection</a> — موقع بحث جاهز: اكتب اسم اللعبة، لاقي الشيتات، وحمّل اللي يخص نسختك (بيشمل PS4 + PS5).</li>
-<li><b>المصدر الرسمي:</b> <a class="ext" href="https://github.com/GoldHEN/GoldHEN_Cheat_Repository" rel="noopener">GoldHEN Cheat Repository</a> — أكبر مجموعة رسمية (ألف+ ملف) مرتبة بـ Title ID.</li>
-</ul>
-<p class="small"><b>إزاي تعرف ملفك؟</b> اسم الملف لازم يطابق لعبتك بالظبط: <code>CUSA12345_01.00.json</code> — يعني لعبة بالكود <b>CUSA12345</b> نسخة <b>01.00</b>. كود اللعبة (Title ID) بتلاقيه على غلاف اللعبة أو من GoldHEN، ورقم النسخة من عنوان اللعبة عند الضغط عليها في قائمة المحتوى (Options ← Information).</p>
+<h3>الخطوة 1: دوّر على لعبتك ونزّل ملف الشيت</h3>
+<div class="dbapp">
+<h3>🔎 قاعدة الشيتات المحلية</h3>
+<div class="dbstats" id="dbtotals" style="margin:0 0 10px"></div>
+<div class="searchbar">
+<input type="text" id="q" placeholder="Game name or CUSA code… (GTA, Red Dead, CUSA00411)" disabled autocomplete="off" spellcheck="false">
+</div>
+<div class="small" id="acstatus" style="margin:10px 0 0;color:var(--ok)"></div>
+<div class="dbstatus busy" id="dbstatus">جاري تحميل فهرس القاعدة…</div>
+<div class="hintchips" id="hintchips" style="display:none">
+<span class="small" style="align-self:center">شائع:</span>
+<span class="hc" data-q="GTA">GTA</span>
+<span class="hc" data-q="Red Dead">Red Dead</span>
+<span class="hc" data-q="Minecraft">Minecraft</span>
+<span class="hc" data-q="FIFA">FIFA</span>
+<span class="hc" data-q="Call of Duty">Call of Duty</span>
+<span class="hc" data-q="God of War">God of War</span>
+<span class="hc" data-q="WWE">WWE</span>
+<span class="hc" data-q="Elden Ring">Elden Ring</span>
+</div>
+<div class="results" id="results"></div>
+<div class="detail" id="detail" style="display:none"></div>
+<p class="small" style="margin:10px 0 0">💡 اكتب <b>اسم اللعبة بالإنجليزي</b> (اختصارات زي GTA و RDR2 و FIFA شغالة) أو <b>كود CUSA</b>. كل نتيجة بتوري ملفات الشيت لكل نسخة من اللعبة — اختار نسختك بالظبط. لو راجع من تاني، حرف كبير/صغير مفيش فرق.</p>
+</div>
 
 <h3>الخطوة 2: ارفع الملف على الجهاز (FTP)</h3>
 <ol>
 <li>بعد الجيلبريك، GoldHEN بيشغّل FTP تلقائيًا — رقم الـ IP بيظهر في رسالة GoldHEN (أو: إعدادات PS4 ← الشبكة ← معلومات الاتصال).</li>
-<li>من الكمبيوتر بم برنامج زي <a class="ext" href="https://filezilla-project.org/download.php?type=client" rel="noopener">FileZilla</a> (مجاني): اتصل بالـ IP على المنفذ <b>2121</b> (يوزر <code>anonymous</code> من غير باسورد).</li>
-<li>ارفع ملف الشيت للمسار ده بالظبط:<br><b><code>/user/data/GoldHEN/cheats/json/</code></b> (لملفات .json) — أو <code>.../cheats/shn/</code> و <code>.../cheats/mc4/</code> للصيغ التانية.</li>
+<li>من الكمبيوتر أو الموبايل ببرنامج زي <a class="ext" href="https://filezilla-project.org/download.php?type=client" rel="noopener">FileZilla</a> (كمبيوتر) أو أي تطبيق FTP للموبايل: اتصل بالـ IP على المنفذ <b>2121</b> (يوزر <code>anonymous</code> من غير باسورد).</li>
+<li>ارفع ملف الشيت اللي نزّلته من البحث فوق للمسار ده بالظبط:<br><b><code>/user/data/GoldHEN/cheats/json/</code></b></li>
+<li>ممكن ترفع كذا ملف مرة واحدة (شيتات لكل ألعابك) — القاعدة كلها متاحة عندك.</li>
 </ol>
 
 <h3>الخطوة 3: افتح اللعبة والعب</h3>
@@ -109,7 +169,7 @@ summary{cursor:pointer;color:var(--gold2);font-weight:700}
 <li>حرّك بالأسهم، واضغط <b>X</b> عشان تشغّل/تطفي الشيت اللي عايزه — القيمة بتتطبق فورًا على اللعبة.</li>
 </ol>
 <div class="box warning" style="margin-bottom:0">
-<b>ملاحظات مهمة:</b> الصيغ المدعومة <code>.json</code> و <code>.shn</code> و <code>.mc4</code> — بس <b>صيغة واحدة لكل لعبة+نسخة</b> (لو عندك .json خليك فيها). والقائمة دي لسه رسميًا «تجريبية» من فريق GoldHEN — لو شيت مش اشتغل، المشكلة غالبًا في ملف الشيت نفسه (نسخة مش مطابقة) مش في جهازك.
+<b>ملاحظات مهمة:</b> الصيغة عندنا <code>.json</code> (الرسمية لقائمة GoldHEN). والقائمة دي لسه رسميًا «تجريبية» من فريق GoldHEN — لو شيت مش اشتغل، المشكلة غالبًا في ملف الشيت نفسه (نسخة مش مطابقة) مش في جهازك. لو عايز تتأكد إن ملفك أحدث من اللي عندنا، المستودع الرسمي موجود هنا: <a class="ext" href="https://github.com/GoldHEN/GoldHEN_Cheat_Repository" rel="noopener">GoldHEN Cheat Repository</a>.
 </div>
 </div>
 
@@ -130,7 +190,7 @@ summary{cursor:pointer;color:var(--gold2);font-weight:700}
 <li><b>شغّل لعبتك</b> — لازم اللعبة تكون فاتحة وشغالة (ps4debug بيتصل بالألعاب المشغّلة).</li>
 <li><b>افتح أداة الكمبيوتر:</b> المشهورة في المجتمع: <b>Reaper Studio</b> (تصنيع تاينرز + شيتات جاهزة) أو <b>PS4 Cheater</b> (بحث في الذاكرة) — بيتوزعوا عبر <a class="ext" href="https://discord.gg/pR5NTEVBGt" rel="noopener">ديسكورد GoldHEN الرسمي</a> (قسم Downloads).</li>
 <li><b>اكتب IP جهازك</b> في الأداة واعمل Attach على اللعبة — من هنا بقت الذاكرة قدامك: ابحث بالقيمة الحالية (مثلاً 5000 فلوس)، غيّرها في اللعبة، ابحث تاني… لحد ما يظبطلك العنوان، وعدّله لأي رقم.</li>
-<li><b>احفظ شيتك</b> بصيغة .json وارفعه بطريقة GoldHEN فوق — يبقى عندك شيتك الخاص 😎</li>
+<li><b>احفظ شيتك</b> بصيغة .json — وتقدر ترفعه على جهازك من قاعدتنا فوق في الطريقة الأولى 😎</li>
 </ol>
 <details>
 <summary>⚙️ تفاصيل تقنية ل ps4debug (للمهتمين)</summary>
@@ -144,7 +204,7 @@ summary{cursor:pointer;color:var(--gold2);font-weight:700}
 </table>
 </details>
 <div class="box bad-box" style="margin-bottom:0;border-color:#75332c;color:#e08a7f">
-<b>⚠️ حدود مهمة:</b> ps4debug <b>مش بيدعم</b> فيرمويرات <b>13.00 – 13.52</b> — لو جهازك على النسخ دي استخدم <b>الطريقة الأولى</b> (قائمة GoldHEN) فهي شغالة معاك تمامًا. ودي أداة متقدمة فعلًا: أي تعديل غلط في الذاكرة ممكن يعلّق اللعبة (مش الجهاز — اقفل اللعبة وافتحها تاني وخلاص).
+<b>⚠️ حدود مهمة:</b> ps4debug <b>مش بيدعم</b> فيرمويرات <b>13.00 – 13.52</b> — لو جهازك على النسخ دي استخدم <b>الطريقة الأولى</b> (قاعدة GoldHEN عندنا) فهي شغالة معاك تمامًا. ودي أداة متقدمة فعلًا: أي تعديل غلط في الذاكرة ممكن يعلّق اللعبة (مش الجهاز — اقفل اللعبة وافتحها تاني وخلاص).
 </div>
 </div>
 
@@ -155,7 +215,9 @@ summary{cursor:pointer;color:var(--gold2);font-weight:700}
 <tr><th>المشكلة</th><th>السبب والحل</th></tr>
 <tr><td>القائمة مش بتفتح بـ Share</td><td>تأكد إن GoldHEN شغال (اعمل الجيلبريك قبل اللعبة)، وإن الضغطة <b>مطوّلة</b> مش سريعة</td></tr>
 <tr><td>الشيت مش ظاهر في القائمة</td><td>اسم الملف مش مطابق — لازم نفس Title ID <b>ونسخة اللعبة</b>، والملف في المسار الصح <code>/user/data/GoldHEN/cheats/json/</code></td></tr>
-<tr><td>الشيت ظاهر بس مش شغال</td><td>ملف الشيت نفسه مش متوافق مع نسختك (الشيتات حساسة للنسخة) — دور على ملف مطابق أو حدّث اللعبة لنسخة الشيت المتاحة</td></tr>
+<tr><td>الشيت ظاهر بس مش شغال</td><td>ملف الشيت نفسه مش متوافق مع نسختك (الشيتات حساسة للنسخة) — نزّل ملف النسخة الصح من البحث فوق أو حدّث لعبتك لنسخة متاحة</td></tr>
+<tr><td>مفيش نتيجة للعبتك في البحث</td><td>اكتب اسم اللعبة <b>بالإنجليزي</b> أو كود <b>CUSA</b> — وكود اللعبة (Title ID) بتلاقيه على غلاف اللعبة أو من Options ← Information جوه اللعبة</td></tr>
+<tr><td>الصفحة مش شغالة من غير نت</td><td>لازم تفتح الصفحة دي <b>مرة واحدة وأنت واصل نت</b> عشان قاعدة الشيتات (8 ميجا) تتحفظ عندك — بعد كده شغالة أوفلاين نهائيًا</td></tr>
 <tr><td>اللعبة علقت بعد شيت</td><td>طبيعي مع بعض الشيتات — اقفل اللعبة وافتحها، وجرّب تشغّل شيت واحد كل مرة</td></tr>
 <tr><td>متحكمش تجيب IP الجهاز</td><td>إعدادات PS4 ← الشبكة ← «عرض حالة الاتصال» — الرقم اللي قدام IPv4</td></tr>
 </table>
@@ -163,5 +225,235 @@ summary{cursor:pointer;color:var(--gold2);font-weight:700}
 
 <div class="bottom-back"><a href="../../index.html">&#10148; رجوع للصفحة الرئيسية</a></div>
 </main>
+<script>
+(function(){
+"use strict";
+var IDX=null, GROUPS=[], CHUNKS={}, CBQ={}, DTEXT="", LASTURL=null, LASTFILE=null;
+var URLAPI=window.URL||window.webkitURL;
+var qEl=document.getElementById("q"), resEl=document.getElementById("results"),
+    detEl=document.getElementById("detail"), stEl=document.getElementById("dbstatus"),
+    acEl=document.getElementById("acstatus"), totEl=document.getElementById("dbtotals"),
+    hintEl=document.getElementById("hintchips");
+
+function st(txt,cls){ stEl.textContent=txt; stEl.className="dbstatus"+(cls?" "+cls:""); }
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return c==="&"?"&amp;":c==="<"?"&lt;":c===">"?"&gt;":"&quot;"; }); }
+function key(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9\u0600-\u06ff ]/g," ").replace(/ +/g," ").replace(/^ | $/g,""); }
+function initials(k){ var w=String(k).split(" "),o=[],i; for(i=0;i<w.length;i++){ if(w[i]) o.push(w[i].charAt(0)); } return o.join(""); }
+
+/* ---- حالة الكاش (AppCache على PS4) ---- */
+var AC=window.applicationCache;
+if(AC&&AC.addEventListener){
+  var acMap={0:["القاعدة لسه مش محفوظة — افتح الصفحة وأنت واصل نت (مرة واحدة بس)","busy"],
+             1:["",""], 2:["بفحص التحديثات…","busy"], 3:["جاري حفظ القاعدة عندك… (مرة واحدة بس)","busy"],
+             4:["في تحديث جاهز — اعمل تحديث للصفحة","busy"], 5:["نسخة قديمة — افتحها وأنت واصل نت مرة","busy"]};
+  function acTxt(txt,cls){ acEl.textContent=txt; acEl.style.color=(cls==="busy")?"#e0c77b":(cls==="err"?"#e08a7f":"#7fd0a0"); }
+  function upd(){ var m=acMap[AC.status]; if(m) acTxt(m[0],m[1]); }
+  AC.addEventListener("checking",upd);
+  AC.addEventListener("noupdate",upd);
+  AC.addEventListener("downloading",upd);
+  AC.addEventListener("progress",function(ev){ if(ev&&ev.lengthComputable) acTxt("جاري الحفظ: ملف "+ev.loaded+" من "+ev.total+" — الجزء الكبير بياخد شوية وقت، استنى…","busy"); });
+  AC.addEventListener("cached",function(){ acTxt("خلص الحفظ! القاعدة كلها محفوظة عندك ✓ — شغالة من غير نت نهائيًا",""); });
+  AC.addEventListener("updateready",function(){ try{AC.swapCache();}catch(e){} acTxt("اتحدّثت لآخر نسخة ✓ — اعمل تحديث للصفحة",""); });
+  AC.addEventListener("error",function(){ if(AC.status!==1) acTxt("الكاش مش اكتمل — اقفل وافتح الصفحة تاني وأنت واصل نت","err"); });
+  AC.addEventListener("obsolete",function(){ acTxt("القاعدة اتشالت من السيرفر — هترجع أول ما تشبك نت","err"); });
+  upd();
+} else if(AC===undefined) {
+  acEl.textContent="على متصفح PS4 القاعدة بتتحفظ عندك تلقائي وتشتغل من غير نت — هنا شغالة مباشرة.";
+}
+
+/* ---- تحميل الفهرس وبناء المجموعات ---- */
+function init(){
+  var x=new XMLHttpRequest();
+  x.open("GET","db/index.json",true);
+  x.onload=function(){
+    try{ IDX=JSON.parse(x.responseText); }
+    catch(e2){ st("فهرس القاعدة تالف — اعمل تحديث للصفحة (امسح الكاش لو المشكلة اتكررت)","err"); return; }
+    var i,e,tid,map={},list=[];
+    for(i=0;i<IDX.files.length;i++){
+      e=IDX.files[i]; e.i=i; tid=String(e.f).split("_")[0];
+      if(!map[tid]){ map[tid]={tid:tid,name:String(e.g||e.f),files:[]}; list.push(map[tid]); }
+      map[tid].files.push(e);
+      if(e.g&&String(e.g).length<map[tid].name.length) map[tid].name=String(e.g);
+    }
+    for(i=0;i<list.length;i++){
+      list[i].key=key(list[i].name);
+      list[i].ini=initials(list[i].key);
+      list[i].tidlow=String(list[i].tid).toLowerCase();
+    }
+    list.sort(function(a,b){ return a.key<b.key?-1:(a.key>b.key?1:0); });
+    GROUPS=list;
+    totEl.innerHTML='<span class="st">🎮 '+String(IDX.games)+' لعبة</span><span class="st">📁 '+String(IDX.n)+' ملف شيت</span><span class="st">📅 تحديث '+String(IDX.date)+'</span><span class="st">📦 من مستودع GoldHEN الرسمي</span>';
+    qEl.disabled=false;
+    hintEl.style.display="flex";
+    st("القاعدة جاهزة ✓ — دوّر على لعبتك","");
+    search();
+  };
+  x.onerror=function(){ st("مش قادر أقرا القاعدة — الصفحة دي بتتحفظ مرة واحدة وأنت واصل نت وبعدها تشتغل من غير نت خالص","err"); };
+  try{ x.send(); }catch(e3){ st("المتصفح رفض قراءة الفهرس","err"); }
+}
+
+/* ---- البحث ---- */
+function search(){
+  var q=key(qEl.value), i, g, out=[], h="";
+  if(!q){ resEl.innerHTML=""; return; }
+  for(i=0;i<GROUPS.length&&out.length<60;i++){
+    g=GROUPS[i];
+    if(g.key.indexOf(q)>=0||g.ini.indexOf(q)>=0||g.tidlow.indexOf(q)>=0) out.push(g);
+  }
+  if(!out.length){
+    resEl.innerHTML='<div class="grow"><div class="gname" style="color:var(--muted);font-size:15px">No results — مفيش نتيجة</div><div class="small" style="direction:rtl;text-align:right">جرب اسم اللعبة <b>بالإنجليزي</b> (اختصارات زي GTA و RDR2 شغالة) أو كود <b>CUSA</b> من غلاف اللعبة / Options ← Information</div></div>';
+    return;
+  }
+  for(i=0;i<out.length;i++){
+    var gr=out[i], chips=[], j, e, base, parts, ver, extra, labTxt;
+    for(j=0;j<gr.files.length;j++){
+      e=gr.files[j];
+      base=String(e.f).replace(/\.json$/,"");
+      parts=base.split("_");
+      ver=parts[1]||"—";
+      extra=parts.slice(2).join("_");
+      labTxt=ver+(extra?" ("+extra+")":"");
+      chips.push('<span class="vchip'+(extra?" alt":"")+'" data-i="'+e.i+'">'+esc(labTxt)+'</span>');
+    }
+    h+='<div class="grow"><div class="gname">'+esc(gr.name)+'</div><div class="gmeta">'+esc(gr.tid)+' · '+gr.files.length+' file'+(gr.files.length>1?"s":"")+'</div><div class="vchips">'+chips.join("")+'</div></div>';
+  }
+  resEl.innerHTML=h;
+}
+
+/* ---- قراءة ملف الشيت من أجزاء القاعدة ---- */
+function ensureChunk(c,cb){
+  if(CHUNKS[c]){ cb(true); return; }
+  if(CBQ[c]){ CBQ[c].push(cb); return; }
+  CBQ[c]=[cb];
+  st("جاري قراءة جزء من القاعدة… (أول مرة بياخد ثواني)","busy");
+  function done(ok,msg){
+    var q2=CBQ[c]; CBQ[c]=null;
+    st(ok?"القاعدة جاهزة ✓ — دوّر على لعبتك":msg,""+(ok?"":"err"));
+    if(q2) for(var i=0;i<q2.length;i++) q2[i](ok);
+  }
+  var x=new XMLHttpRequest();
+  x.open("GET","db/bundle"+c+".bin",true);
+  x.responseType="arraybuffer";
+  x.onload=function(){
+    if(x.response&&x.response.byteLength>1000){ CHUNKS[c]=x.response; done(true,""); }
+    else done(false,"الملف اللي اتحمل مش سليم — اعمل تحديث للصفحة");
+  };
+  x.onerror=function(){ done(false,"تعذر تحميل الجزء — لو إنت فاصل نت افتح الصفحة مرة وأنت واصل نت"); };
+  try{ x.send(); }catch(e){ done(false,"المتصفح رفض التحميل"); }
+}
+
+function openFile(e){
+  LASTFILE=e;
+  detEl.style.display="block";
+  detEl.innerHTML='<div class="dhead"><span class="dname">'+esc(e.g||e.f)+'</span></div><div class="dbstatus busy" style="margin-top:8px">جاري قراءة ملف الشيت من القاعدة…</div>';
+  try{ detEl.scrollIntoView(false); }catch(e5){}
+  ensureChunk(e.c,function(ok){
+    if(!ok){
+      detEl.innerHTML='<div class="dhead"><span class="dname">'+esc(e.g||e.f)+'</span></div><div class="dbstatus err" style="margin-top:8px">تعذر تحميل ملفات القاعدة — الصفحة بتتحفظ مرة واحدة وأنت واصل نت وبعدها تشتغل من غير نت</div>';
+      return;
+    }
+    var u8=new Uint8Array(CHUNKS[e.c],8+e.o,e.l);
+    var fr=new FileReader();
+    fr.onload=function(){ renderDetail(e,fr.result); };
+    fr.onerror=function(){ renderDetail(e,null); };
+    try{ fr.readAsText(new Blob([u8],{type:"text/plain"}),"utf-8"); }
+    catch(e4){ renderDetail(e,null); }
+  });
+}
+
+function renderDetail(e,text){
+  var d=null;
+  if(text){ try{ d=JSON.parse(text); }catch(e2){ d=null; } }
+  DTEXT=text||"";
+  var name=(d&&d.name)||e.g||e.f;
+  var tid=(d&&d.id)||String(e.f).split("_")[0];
+  var ver=(d&&d.version)||"";
+  var proc=(d&&d.process)||"";
+  var credits="";
+  if(d&&d.credits){
+    credits=Object.prototype.toString.call(d.credits)==="[object Array]"?d.credits.join(" · "):String(d.credits);
+  }
+  var mods=[], i, k;
+  if(d&&d.mods){
+    if(Object.prototype.toString.call(d.mods)==="[object Array]"){
+      for(i=0;i<d.mods.length;i++){ if(d.mods[i]&&d.mods[i].name) mods.push(d.mods[i].name); }
+    } else if(typeof d.mods==="object"){
+      for(k in d.mods){ if(d.mods.hasOwnProperty&&d.mods.hasOwnProperty(k)) mods.push(k); }
+    }
+  }
+  var rows="", cnt="";
+  if(mods.length){
+    var cap=mods.length<120?mods.length:120, rh=[];
+    for(i=0;i<cap;i++){ rh.push('<div class="modrow">'+esc(mods[i])+'</div>'); }
+    if(mods.length>cap) rh.push('<div class="modrow" style="color:var(--muted)">+ '+(mods.length-cap)+' more…</div>');
+    rows='<div class="mods">'+rh.join("")+'</div>';
+    cnt='<p class="modcnt">'+mods.length+' شيت جاهز جوه الملف — بتشغّلهم من قائمة Share جوه اللعبة</p>';
+  } else {
+    rows='<div class="mods"><div class="modrow" style="color:var(--muted)">'+(d?"(ملف بصيغة متقدمة — نزّله عادي وشغّله عادة)":"معاينة الملف مش متاحة — نزّله عادي، هو شغال زي ما هو")+'</div></div>';
+  }
+  var chips='<span class="tag hi">'+esc(tid)+'</span>';
+  if(ver) chips+='<span class="tag">'+esc(ver)+'</span>';
+  if(proc) chips+='<span class="tag">'+esc(proc)+'</span>';
+  if(credits) chips+='<span class="tag">by '+esc(credits)+'</span>';
+  if(LASTURL&&URLAPI&&URLAPI.revokeObjectURL){ try{ URLAPI.revokeObjectURL(LASTURL); }catch(e3){} LASTURL=null; }
+  if(CHUNKS[e.c]&&URLAPI&&URLAPI.createObjectURL&&window.Blob){
+    try{
+      var u8b=new Uint8Array(CHUNKS[e.c],8+e.o,e.l);
+      LASTURL=URLAPI.createObjectURL(new Blob([u8b],{type:"application/octet-stream"}));
+    }catch(e4){ LASTURL=null; }
+  }
+  var dlHtml=LASTURL
+    ? '<a class="dlbtn" href="'+LASTURL+'" download="'+esc(e.f)+'">⬇ تحميل ملف الشيت (.json)</a>'
+    : '<span class="small" style="align-self:center">زر التحميل هيظهر بعد ما الجزء يتحمّل — جرّب تاني</span>';
+  detEl.innerHTML=
+    '<div class="dhead"><span class="dname">'+esc(name)+'</span></div>'+
+    '<div class="dchips">'+chips+'</div>'+
+    rows+cnt+
+    '<div class="dbtns">'+dlHtml+'<button type="button" class="cpbtn" id="cpbtn">📋 نسخ المحتوى</button></div>'+
+    '<p class="dfileinfo">'+esc(e.f)+' · '+e.l+' bytes · جزء '+(e.c+1)+' من 4</p>'+
+    '<p class="small" style="margin:6px 0 0;direction:rtl;text-align:right">لو إنت فاتح الصفحة على متصفح الـ PS4 نفسه: حمّل الملف من الموبايل أو الكمبيوتر (نفس الصفحة دي) وارفعه بـ FTP — متصفح PS4 مش بينزّل ملفات لمكان يوصلها الجهاز.</p>';
+  var cp=document.getElementById("cpbtn");
+  if(cp&&cp.addEventListener) cp.addEventListener("click",copyText);
+}
+
+function copyText(){
+  if(!DTEXT) return;
+  var ok=false, ta=document.createElement("textarea");
+  ta.value=DTEXT;
+  ta.style.position="absolute"; ta.style.right="-9999px";
+  document.body.appendChild(ta);
+  try{ ta.select(); ok=document.execCommand("copy"); }catch(e){}
+  document.body.removeChild(ta);
+  var fname=LASTFILE?LASTFILE.f:"cheat.json";
+  if(ok){ st("اتنسخ المحتوى ✓ — الصقه في ملف نصي وسميه "+fname,""); }
+  else if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(DTEXT).then(function(){ st("اتنسخ المحتوى ✓ — الصقه في ملف نصي وسميه "+fname,""); },function(){ st("النسخ مش متاح في المتصفح ده — استخدم زر التحميل","err"); });
+  } else { st("النسخ مش متاح في المتصفح ده — استخدم زر التحميل","err"); }
+}
+
+/* ---- الربط ---- */
+function el(ev){ return ev.target||ev.srcElement; }
+if(resEl.addEventListener){
+  resEl.addEventListener("click",function(ev){
+    var t=el(ev);
+    if(t&&t.getAttribute&&String(t.className).indexOf("vchip")>=0){
+      var i=parseInt(t.getAttribute("data-i"),10);
+      if(IDX&&IDX.files[i]) openFile(IDX.files[i]);
+    }
+  });
+}
+if(hintEl.addEventListener){
+  hintEl.addEventListener("click",function(ev){
+    var t=el(ev);
+    if(t&&t.getAttribute&&t.getAttribute("data-q")){ qEl.value=t.getAttribute("data-q"); search(); }
+  });
+}
+var deb=null;
+function onQ(){ if(deb) clearTimeout(deb); deb=setTimeout(search,150); }
+if(qEl.addEventListener){ qEl.addEventListener("input",onQ); qEl.addEventListener("keyup",onQ); }
+else if(qEl.attachEvent){ qEl.attachEvent("onpropertychange",onQ); }
+init();
+})();
+</script>
 </body>
 </html>

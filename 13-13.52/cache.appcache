@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 20260924-goldhen-aio-v4-phase1-stability
+# rev 20260925-goldhen-aio-v5-offline-payloads
 
 index.html #02d0b6df2636d6641c386538aeb1ab1b5bffa115a6537e37e5c7c277c915ea56
 jb.html #b24497e35c6a30997f92b30991c08b1f80c7a05a4ccae0eca91c47851fe5e2a5
@@ -16,6 +16,12 @@ patches/1302.bin #235a051f5a066daa546253de6eb61c1223a2682cb34edd916fc4565bb2c02f
 patches/1350.bin #f771c196d012496c01f575674e95a74d7b00b7c1bc22325c7321f3ab6eb77b56
 patches/1352.bin #adfb9771904f71cd1f5a82cbded8ac46c7ffeb3df974579535cf711904ac347e
 ../tools/pkg-backup/ps4-pkg-backup_v13.bin #05f044b5c2d2e8e09615d59a3ff57d791289cb71ba08833ed428eef57c044298
+../tools/fan-control/55.bin #b376ee9441f31acf1222f29f00f8b938625a55550804f7f7da425d706b158d40
+../tools/fan-control/60.bin #6c5bd5c354a1d28b5800b80bdee987dd840edd74d107789d0b9aedd11a7fafb6
+../tools/fan-control/65.bin #25d327c6a9c711ba36ab1cc81329a88ebce0dcff6f2c3ccc1edf6847d24b9605
+../tools/fan-control/70.bin #1ee8daec1361b82e348774810cbee884cbf980389db148dbf0a05e81d6b2b972
+../tools/fan-control/75.bin #211d031cfa26de0405f29f333a67cc74124c6d2519adabfedadf0e24064c9816
+../tools/fan-control/80.bin #77033fa9b75a95254c8cd8c817ac754b12b83d9b04fda030c4bec59f357b4363
 core.js?v=10 #a76c52afbc19b05d176be2059048a3c6a4fb61db084d56434cef2b17da00b2b3
 jb.js?v=10 #12e74a019b8dc4137eb0566c334adb663a3c7e34465360de254f843660561a96
 

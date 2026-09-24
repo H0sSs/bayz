@@ -1,9 +1,16 @@
 CACHE MANIFEST
-# rev 20260924-7-13-host-v4-phase1-stability
-# (chains now support ?bin= payload override for the PKG-BackUP tool)
+# rev 20260925-7-13-host-v5-offline-payloads
+# (chains support ?bin= payload override: PKG-BackUP + fan-control + ps4debug)
 
 CACHE:
 ../tools/pkg-backup/ps4-pkg-backup_v13.bin
+../tools/fan-control/55.bin
+../tools/fan-control/60.bin
+../tools/fan-control/65.bin
+../tools/fan-control/70.bin
+../tools/fan-control/75.bin
+../tools/fan-control/80.bin
+../tools/cheats/ps4debug_v1.1.19.bin
 ../logo.png
 ../style.css
 700/alert.js

@@ -1,0 +1,18 @@
+CACHE MANIFEST
+# rev 20260925-cheats-v1-localdb — قاعدة الشيتات المحلية عندنا (1197 لعبة / 1877 ملف / ~8MB)
+# الصفحة دي ليها كاش خاص بيها منفصل عن الهبوط — بيتحمل أول ما المستخدم يفتح صفحة الشيتات
+# (عشان الهبوط تخفيفها زي ما هي والـ 8 ميجا دول اختياريين للي عايز الشيتات)
+
+CACHE:
+index.html
+../../logo.png
+ps4debug_v1.1.19.bin
+db/index.json
+db/bundle0.bin
+db/bundle1.bin
+db/bundle2.bin
+db/bundle3.bin
+db/LICENSE
+
+NETWORK:
+*
