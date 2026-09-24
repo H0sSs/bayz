@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 20260925-7-13-host-v5-offline-payloads
+# rev 20260926-7-13-host-v6-logo-dedup
 # (chains support ?bin= payload override: PKG-BackUP + fan-control + ps4debug)
 
 CACHE:
@@ -84,7 +84,6 @@ css/workers.js
 css.manifest
 goldhen_2.4b18.10.bin
 index.html
-logo.png
 slopkit/chain_lapse.js
 slopkit/chain_poops.js
 slopkit/core.js

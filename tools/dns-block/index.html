@@ -51,6 +51,8 @@ hr{border:none;border-top:1px solid var(--line);margin:26px 0}
 .mini b{color:var(--gold2)}
 .copybtn{background:#233024;border:1px solid #315b45;color:var(--ok);border-radius:7px;padding:5px 14px;font-size:13px;cursor:pointer;margin-inline-start:8px}
 .copybtn:hover{filter:brightness(1.15)}
+.dnsbox{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;direction:ltr;background:#0b0d10;border:1px solid #315b45;border-radius:12px;padding:14px 10px;margin:8px 0}
+.bigip{font-size:30px;font-weight:900;color:#e8d090;background:transparent;border:none;padding:0;letter-spacing:1px}
 </style>
 </head>
 <body>
@@ -61,6 +63,43 @@ hr{border:none;border-top:1px solid var(--line);margin:26px 0}
 <main>
 <h1>🛡️ منع تحديثات سوني</h1>
 <p class="sub">دليل عربي كامل لحماية جهازك من التحديثات الإجبارية — النقطة دي أهم خطوة بعد الجيلبريك، لأن أي تحديث من سوني هيقفل الثغرة ويضيّع الجيلبريك نهائيًا</p>
+
+<!-- ============ الطريقة الأولى: DNS الحاجز ============ -->
+<h2>الطريقة الأولى (الأسرع والأشهر): DNS الحاجز 🚀</h2>
+<div class="box ok-box">
+<h3 style="margin-top:0">رقم DNS أساسي — معروف وموثّق في مشهد PS4 من 2025</h3>
+<div class="dnsbox">
+  <code class="bigip" id="ipVal">62.210.38.117</code>
+  <button class="copybtn" id="copyIp" type="button">📋 نسخ الرقم</button>
+</div>
+<p style="margin:10px 0 8px">الرقم ده هو <b>DNS الحاجز (Nomadic DNS)</b> — أشهر سيرفر مجتمعي مخصص لمنع تحديثات PS4 وPS5، ومعروف وموثّق في أدلة مشهد الجيلبريك (psx-place + consolemods) واتشرح في فيديوهات MODDED_WARFARE المشهورة. طريقة عمله: بيعترض طلبات جهازك لسيرفرات تحديث سوني ويحجبها، وبيسيب باقي الإنترنت شغال عادي.</p>
+<p style="margin:0"><b>أهم مميزاته:</b> <span class="tag">بيانفض بعد الريستارت</span> <span class="tag">2 دقيقة بس</span> <span class="tag">شغال على كل الفيرمويرات</span> <span class="tag">بيمنع تحديث الألعاب كمان</span></p>
+</div>
+<div class="box">
+<h3 style="margin-top:0">خطوات الضبط على PS4 (دقيقتين)</h3>
+<ol class="steps">
+<li>من القائمة الرئيسية: <b>الإعدادات ← الشبكة ← إعداد اتصال الإنترنت</b> (Settings ← Network ← Set Up Internet Connection).</li>
+<li>اختار اتصالك (Wi-Fi أو الكابل) وادوس عليه زر <b>خيارات (Options)</b> ← <b>إعدادات متقدمة / Advanced Settings</b>... أو اختار الاتصال وسطر الإعدادات يفتحلك نموذج الإعداد — في الحالتين اختار <b>Custom (مخصص)</b> بدل Easy.</li>
+<li>املأ كالآتي: <b>عنوان IP:</b> تلقائي (Automatic) &bull; <b>DHCP:</b> عدم تحديد (Do Not Specify) &bull; <b>إعدادات DNS:</b> <b>يدوي (Manual)</b>.</li>
+<li>في خانة <b>Primary DNS</b> اكتب: <code>62.210.38.117</code> — <b>وخانة Secondary DNS سيبها فاضية زي ما هي</b> (لو كتبت فيها رقم تاني، التحديث ممكن يتسرب منها لو السيرفر الأول وقع!).</li>
+<li>كمّل: <b>MTU:</b> تلقائي (Automatic) &bull; <b>البروكسي:</b> عدم استخدام (Do Not Use) — وبعدين اختبر الاتصال (Test Internet Connection).</li>
+</ol>
+<div class="ok-box box" style="margin-bottom:0">
+<b>✅ علامة نجاح الاختبار:</b> الاتصال بيظهر «نجح» والإنترنت شغال — ولو دخلت على <b>الإعدادات ← تحديث برنامج النظام</b> هتلاقيه بيقول «لا يمكن الاتصال» أو «أنت على آخر نسخة» حتى لو في تحديث أحدث. <b>متضغطش تحديث</b> لو ظهرلك خيار!</div>
+</div>
+<div class="box warning">
+<h3 style="margin-top:0">ملاحظات مهمة على طريقة الـ DNS</h3>
+<ul style="margin:0">
+<li><b>بتحجب تحديثات الألعاب كمان:</b> ده مطلوب عند أغلب مستخدمي الجيلبريك (يحمي الألعاب المثبتة من التحديث المفروض) — بس خد بالك منها.</li>
+<li><b>خدمات PSN:</b> ممكن بعض خدمات سوني (تسجيل دخول/متجر) متشتغلش مع الحجب — ودي عادي على أجهزة الجيلبريك أصلًا.</li>
+<li><b>بعض شركات الإنترنت بتمنع DNS الخارجي:</b> لو النت وقف تمامًا بعد الضبط، ارجع لنفس الخطوات وخلّي DNS على <b>تلقائي (Automatic)</b> — وشوف عوّضها بطريقة الراوتر تحت.</li>
+<li><b>السيرفر مجتمعي مش رسمي:</b> عشان كده بنطلب منك تختبر الحجب بعد الضبط (خطوة النجاح فوق) — ولو حسّيت إنه باظ بعد فترة، اعمل خطوات الشيل وارجع له تاني أو اعتمد على الراوتر.</li>
+</ul>
+</div>
+<div class="box">
+<h3 style="margin-top:0">إزاي تشيله لو احتجت؟</h3>
+<p style="margin:0">نفس مسار الخطوات: <b>الإعدادات ← الشبكة ← إعداد اتصال الإنترنت ← اختار اتصالك ← إعدادات ← Custom</b> — وحط <b>إعدادات DNS: تلقائي (Automatic)</b> بدل يدوي، وبعدها اختبر الاتصال. كده رجع كل حاجة زي ما كانت.</p>
+</div>
 
 <!-- ============ ليه؟ ============ -->
 <h2>ليه لازم تمنع التحديثات؟</h2>
@@ -73,12 +112,13 @@ hr{border:none;border-top:1px solid var(--line);margin:26px 0}
 </ul>
 </div>
 
-<!-- ============ طب الحماية 3 طبقات ============ -->
-<h2>الحماية الكاملة = 3 طبقات</h2>
+<!-- ============ طب الحماية 4 طبقات ============ -->
+<h2>الحماية الكاملة = 4 طبقات</h2>
 <div class="grid2">
-<div class="mini"><b>الطبقة 1 — GoldHEN:</b><span>بيمنع التحديث تلقائيًا طالما شغال في ذاكرة الجهاز (خاصية <b>FW Update Block</b> مدمجة). دي حماية مؤقتة بتشتغل مع كل جلسة جيلبريك.</span></div>
-<div class="mini"><b>الطبقة 2 — الراوتر:</b><span>حجب سيرفرات التحديث على مستوى الشبكة كلها — أقوى حماية وبتشتغل حتى لو الجهاز من غير جيلبريك. الطريقة مشروحة تحت بالتفصيل.</span></div>
-<div class="mini"><b>الطبقة 3 — عاداتك:</b><span>متفتحش قائمة «تحديث برنامج النظام» أبدًا، واقفل «التحديث التلقائي» من الإعدادات (تحت بالخطوات).</span></div>
+<div class="mini"><b>الطبقة 1 — DNS الحاجز:</b><span>رقم واحد تتكتبه في إعدادات الشبكة (دقيقتين) — أسرع طبقة وبتفضل شغالة بعد الريستارت. دي الطريقة الأساسية عندنا فوق.</span></div>
+<div class="mini"><b>الطبقة 2 — GoldHEN:</b><span>بيمنع التحديث تلقائيًا طالما شغال في ذاكرة الجهاز (خاصية <b>FW Update Block</b> مدمجة). حماية تلقائية مع كل جلسة جيلبريك.</span></div>
+<div class="mini"><b>الطبقة 3 — الراوتر:</b><span>حجب سيرفرات التحديث على مستوى الشبكة كلها — أقوى حماية وبتشتغل حتى لو الجهاز من غير جيلبريك. الطريقة مشروحة تحت بالتفصيل.</span></div>
+<div class="mini"><b>الطبقة 4 — عاداتك:</b><span>متفتحش قائمة «تحديث برنامج النظام» أبدًا، واقفل «التحديث التلقائي» من الإعدادات (تحت بالخطوات).</span></div>
 </div>
 
 <!-- ============ خطوة إعداد الجهاز نفسه ============ -->
@@ -91,10 +131,10 @@ hr{border:none;border-top:1px solid var(--line);margin:26px 0}
 </ol>
 </div>
 
-<!-- ============ الطريقة 1: الراوتر ============ -->
-<h2>الطريقة الأولى (الأقوى): الحجب من الراوتر 🏆</h2>
+<!-- ============ الطريقة 2: الراوتر ============ -->
+<h2>الطريقة الثانية (الأقوى والأدوم): الحجب من الراوتر 🏆</h2>
 <div class="box">
-<p style="margin-top:0">الحجب على مستوى الراوتر معناه إن <b>أي جهاز في البيت</b> مش هيوصل لسيرفرات تحديث سوني — أقوى وأدوم حماية، وبتشتغل حتى لو الجيلبريك مش معمول. الطريقة تختلف حسب نوع الراوتر:</p>
+<p style="margin-top:0">الحجب على مستوى الراوتر معناه إن <b>أي جهاز في البيت</b> مش هيوصل لسيرفرات تحديث سوني — أقوى وأدوم حماية، وبتشتغل حتى لو الجيلبريك مش معمول، ومش معتمدة على أي سيرفر خارجي. طريقة الـ DNS فوق أسهل وأسرع، لكن لو عايز حماية عمرها ما تبان: اعتمد على الراوتر. الطريقة تختلف حسب نوع الراوتر:</p>
 <h3>لو راوترك فيه «فلترة دومينات / رقابة أبوية / Domain Blocking»</h3>
 <ol>
 <li>افتح صفحة إعدادات الراوتر من المتصفح (غالبًا <code>192.168.1.1</code> أو <code>192.168.0.1</code>).</li>
@@ -163,9 +203,9 @@ ps4updptl.uk.np.community.playstation.net</pre>
 </div>
 
 <!-- ============ تحذير DNS العامة ============ -->
-<h2>⚠️ تحذير مهم من «سيرفرات DNS الجاهزة» في الفيديوهات</h2>
+<h2>⚠️ ليه رقم واحد بس — ومتستخدمش أرقام الفيديوهات العشوائية؟</h2>
 <div class="box bad-box">
-<p style="margin-top:0">في فيديوهات كتير بتنصح تكتب أرقام DNS «جاهزة» في إعدادات الـ PS4 عشان تمنع التحديث. <b>احذر:</b> الأرقام دي سيرفرات مجتمعية مش رسمية — اللي يشغّلها يقدر يوجّه جهازك لأي موقع تاني (خطر اختراق حقيقي)، وأغلبها بيقع من الشغل بعد شهور. <b>الأمان الحقيقي</b> هو حجب الدومينات عندك في راوترك انت — كده مفيش حد تاني واقف في النص. لو هتستخدم DNS من ثالث، لازم يكون من مصدر تثق فيه ثقة كاملة، وتأكد بعد كده من صفحة النتائج إن الجهاز لسه بيوصل للإنترنت العادي.</p>
+<p style="margin-top:0">أي رقم DNS تاني شايفه في فيديوهات (غير <code>62.210.38.117</code> الموثّق فوق) خد بالك معاه: اللي يشغّل سيرفر DNS يقدر يوجّه جهازك لأي موقع تاني (خطر اختراق حقيقي)، وأغلب الأرقام دي بتقع من الشغل بعد شهور وماحدشيش محدّثها. <b>إحنا موثقين رقم واحد بس</b> لأنه المعروف والمتداول في مشهد PS4 من 2025 (اسمه Nomadic DNS) ومصدره أدلة معروفة — ومع ذلك بنطلب منك <b>تختبره</b> بعد الضبط بالخطوات فوق. <b>والأمان المضمون 100%</b> يفضل حجب الدومينات عندك في راوترك انت — كده مفيش حد تاني واقف في النص.</p>
 </div>
 
 <!-- ============ التحقق ============ -->
@@ -186,33 +226,42 @@ ps4updptl.uk.np.community.playstation.net</pre>
 <div class="box">
 <table>
 <tr><th>الطريقة</th><th>قوة الحماية</th><th>محتاج إيه؟</th><th>ملاحظات</th></tr>
+<tr><td><b>DNS الحاجز 62.210.38.117</b> <span class="tag">الأسرع</span></td><td>⭐⭐ قوية</td><td>دقيقتين — بدون راوتر</td><td>بيستمر بعد الريستارت + بيمنع تحديثات الألعاب كمان — <b>الاختيار الأساسي عندنا</b></td></tr>
 <tr><td><b>GoldHEN (FW Update Block)</b></td><td>⭐⭐ متوسطة</td><td>الجيلبريك من هوستنا بس</td><td>تلقائية مع كل جلسة — أول حماية وأسهلها</td></tr>
-<tr><td><b>حجب الراوتر</b></td><td>⭐⭐⭐ أقوى</td><td>الدخول على إعدادات الراوتر</td><td>تحمي كل أجهزة البيت وبتشتغل دايمًا</td></tr>
+<tr><td><b>حجب الراوتر</b></td><td>⭐⭐⭐ أقوى</td><td>الدخول على إعدادات الراوتر</td><td>تحمي كل أجهزة البيت وبتشتغل دايمًا — الأدوم والمضمونة</td></tr>
 <tr><td><b>إعدادات الجهاز + عاداتك</b></td><td>⭐ أساسية</td><td>دقيقتين من قائمة PS4</td><td>قفل التنزيل التلقائي وتجنب قائمة التحديث</td></tr>
-<tr><td><b>DNS من طرف ثالث</b></td><td>⭐⭐ متوسطة</td><td>—</td><td><b>غير موصى بيها</b> — خطر أمني حسب مصدرها</td></tr>
 </table>
-<p class="small" style="margin-bottom:0">التوليفة المثالية عندنا: <span class="tag">GoldHEN من هوستنا</span> <span class="tag">+ حجب الراوتر</span> <span class="tag">+ قفل التلقائي</span> — بالثلاثة مع بعض، فرصة التحديث بالغلط بتقرب من الصفر.</p>
+<p class="small" style="margin-bottom:0">التوليفة المثالية عندنا: <span class="tag">DNS الحاجز</span> <span class="tag">+ GoldHEN من هوستنا</span> <span class="tag">+ قفل التلقائي</span> — بالثلاثة مع بعض، فرصة التحديث بالغلط بتقرب من الصفر. ولو عندك دخول للراوتر: ضيف حجب الراوتر وتبقى محمي لدرجة الصفر حرفيًا.</p>
 </div>
 
 <div class="bottom-back"><a href="../../index.html">&#10148; رجوع للصفحة الرئيسية</a></div>
 </main>
 <script>
 (function () {
-  var btn = document.getElementById('copyAll');
-  btn.addEventListener('click', function () {
-    var txt = document.getElementById('allDomains').textContent.trim();
-    function fallbackCopy() {
-      var ta = document.createElement('textarea');
-      ta.value = txt; document.body.appendChild(ta); ta.select();
-      try { document.execCommand('copy'); btn.textContent = '✔ اتنسخت!'; } catch (e) { btn.textContent = '⚠ اعمل تحديد ونصخ يدويًا'; }
-      document.body.removeChild(ta);
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(txt).then(function () { btn.textContent = '✔ اتنسخت!'; }).catch(fallbackCopy);
-    } else {
-      fallbackCopy();
-    }
-  });
+  function wireCopy(btnId, getText, okMsg) {
+    var btn = document.getElementById(btnId);
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var txt = getText();
+      function fallbackCopy() {
+        var ta = document.createElement('textarea');
+        ta.value = txt; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); btn.textContent = okMsg; } catch (e) { btn.textContent = '⚠ اعمل تحديد ونسخ يدويًا'; }
+        document.body.removeChild(ta);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(function () { btn.textContent = okMsg; }).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+    });
+  }
+  wireCopy('copyAll', function () {
+    return document.getElementById('allDomains').textContent.trim();
+  }, '✔ اتنسخت!');
+  wireCopy('copyIp', function () {
+    return '62.210.38.117';
+  }, '✔ الرقم اتنسخ!');
 })();
 </script>
 </body>

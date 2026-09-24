@@ -24,6 +24,7 @@
 - **GoldHEN Plugins Repository v1.210** — فريق GoldHEN — https://github.com/GoldHEN/GoldHEN_Plugins_Repository (الحزمة الرسمية مستضافة كما نُشرت مع هاشات التحقق)
 - **Remote Package Installer (بروتوكول RPI)** — flatz — https://github.com/flatz/ps4_remote_pkg_installer (صفحة واجهة إرسال عربية أصلية بتكلم نفس الـ API — بورت 12800)
 - **PS-DNS-Block list** — Misl3d (عن قوائم depressive_monk وAl-Azif) — https://github.com/Misl3d/PS-dns-block (قائمة الدومينات مستخدمة في دليل منع التحديثات)
+- **Nomadic DNS (62.210.38.117)** — سيرفر DNS الحاجز المجتمعي المعروف في مشهد PS4/PS5 (موثّق في أدلة psx-place وconsolemods وشرح MODDED_WARFARE) — الرقم مذكور في دليل منع التحديثات كطريقة أساسية سريعة
 - **GoldHEN Cheat Menu** — ctn123 وShinigami (ScriptSK) وSiSTRo — التوثيق الرسمي https://github.com/GoldHEN/GoldHEN/blob/master/CHEATMENU.md
 - **GoldHEN_Cheat_Repository (نسخة محلية كاملة)** — مجتمع مساهمي GoldHEN — https://github.com/GoldHEN/GoldHEN_Cheat_Repository — لقطة commit 373e281 بتاريخ 2026-09-24: **1197 لعبة / 1877 ملف `.json`** منسوخة**حرفيًا بايت ببايت** من غير أي تعديل ومحفوظة في `tools/cheats/db/` (الأجزاء bundle0-3.bin + الفهرس index.json). المصدر مرخّص **GPL-3.0** ونص الترخيص مرفق في `tools/cheats/db/LICENSE` — إعادة التوزيع دي بتلتزم بشروط الترخيص (نُسخة كاملة + إشارة المصدر + إتاحة الكود الأصلي عبر الرابط). للتحديث: نعيد بناء القاعدة من المستودع الرسمي وبن bump rev في cheats.appcache.
 - **Apollo Save Tool** و**PS4 Xplorer** — صفحات إرشادية تشير للمصادر الرسمية (مش مضمنة كملفات)
