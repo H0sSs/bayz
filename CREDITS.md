@@ -29,6 +29,13 @@
 - **GoldHEN_Cheat_Repository (نسخة محلية كاملة)** — مجتمع مساهمي GoldHEN — https://github.com/GoldHEN/GoldHEN_Cheat_Repository — لقطة commit 373e281 بتاريخ 2026-09-24: **1197 لعبة / 1877 ملف `.json`** منسوخة**حرفيًا بايت ببايت** من غير أي تعديل ومحفوظة في `tools/cheats/db/` (الأجزاء bundle0-3.bin + الفهرس index.json). المصدر مرخّص **GPL-3.0** ونص الترخيص مرفق في `tools/cheats/db/LICENSE` — إعادة التوزيع دي بتلتزم بشروط الترخيص (نُسخة كاملة + إشارة المصدر + إتاحة الكود الأصلي عبر الرابط). للتحديث: نعيد بناء القاعدة من المستودع الرسمي وبن bump rev في cheats.appcache.
 - **Apollo Save Tool** و**PS4 Xplorer** — صفحات إرشادية تشير للمصادر الرسمية (مش مضمنة كملفات)
 
+## دليل حل مشكلة قفل الجهاز
+
+- **GoldHEN GitHub Issue #187** (تقرير المشكلة الرسمي: الجهاز مش بيقفل بعد HEN + الحلول المتأكد منها من المستخدمين على 9.00–11.00) — https://github.com/GoldHEN/GoldHEN/issues/187
+- **r/PS4Mods + r/ps4homebrew (سبتمبر 2026)** — ثريدات المشكلة على جيلبريك 13.xx الجديد + الحل المتكرر (قفل النت + إبطال Rest Mode Support + فصل التخزين الخارجي) — https://www.reddit.com/r/PS4Mods/comments/1woefgu/ و https://www.reddit.com/r/ps4homebrew/comments/1wmhba2/
+- **consolemods wiki (PS4:GoldHEN)** — توثيق خاصية «Rest Mode Support: Keeps GoldHEN alive after suspension» — https://consolemods.org/wiki/PS4:GoldHEN
+- الحل المجمّع في `tools/shutdown-fix/` أصل عربي مبني على المصادر دي — من غير أي كود خارجي
+
 ## تنويه قانوني
 
 - الأدوات والسلاسل دي لأغراض تعليمية وأبحاث الأمن والنسخ الاحتياطي للمحتوى الشخصي فقط.

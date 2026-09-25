@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>حل مشكلة قفل الجهاز بعد الجيلبريك (GoldHEN) | الدراع بايظ</title>
+<link rel="icon" type="image/png" href="../../logo.png">
+<style>
+:root{color-scheme:dark;--bg:#0b0d10;--panel:#151a21;--line:#2b3542;--gold:#d4af37;--gold2:#f0d060;--muted:#aab4c0;--ok:#7fd0a0;--warn:#e0c77b;--bad:#e08a7f;--cyan:#38bdf8}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#0b0d10 0%,#1a1410 100%);color:#edf1f5;font:16px/1.8 "Segoe UI",Tahoma,sans-serif}
+main{width:min(94%,880px);margin:0 auto;padding:20px 0 34px}
+h1{color:var(--gold);font-size:clamp(24px,4.5vw,36px);margin:6px 0 2px}
+h2{color:var(--gold);font-size:22px;margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{color:var(--gold2);font-size:17px;margin:18px 0 6px}
+.sub{color:var(--muted);margin:0 0 10px}
+.page-topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;background:#0e1116;border-bottom:1px solid var(--line);padding:9px 14px}
+.page-topbar .back-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:800;border-radius:9px;padding:9px 22px;font-size:15px;letter-spacing:.5px;box-shadow:0 2px 10px rgba(212,175,55,.3);white-space:nowrap}
+.page-topbar .back-btn:hover{filter:brightness(1.08)}
+.page-topbar .topbar-title{color:var(--muted);font-size:13px;letter-spacing:.5px}
+.bottom-back{text-align:center;margin:26px 0 10px}
+.bottom-back a{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:800;border-radius:9px;padding:11px 26px;font-size:16px;box-shadow:0 2px 12px rgba(212,175,55,.3)}
+.bottom-back a:hover{filter:brightness(1.08)}
+@media(max-width:600px){.page-topbar .topbar-title{display:none}}
+.box{background:rgba(21,26,33,.92);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+.warning{border-color:#75622c;color:var(--warn)}
+.ok-box{border-color:#315b45;color:var(--ok)}
+.bad-box{border-color:#75332c;color:var(--bad)}
+a.button{display:inline-block;background:var(--gold);color:#0b0d10;text-decoration:none;font-weight:800;border-radius:9px;padding:10px 18px;margin:4px 4px 4px 0;font-size:15px}
+a.button:hover{background:var(--gold2)}
+a.ext{color:var(--cyan);text-decoration:none}
+a.ext:hover{text-decoration:underline}
+ol,ul{padding-right:26px;margin:8px 0}
+li{margin:9px 0}
+.small{font-size:13px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14.5px}
+th,td{border:1px solid var(--line);padding:7px 11px;text-align:right}
+th{background:#1a1410;color:var(--gold)}
+.steps{counter-reset:step;list-style:none;padding-right:0}
+.steps>li{counter-increment:step;position:relative;padding-right:52px;margin:14px 0}
+.steps>li::before{content:counter(step);position:absolute;right:0;top:2px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:#141005;font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center}
+hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+.tag{display:inline-block;background:#233024;color:var(--ok);border:1px solid #315b45;border-radius:99px;padding:2px 12px;font-size:12.5px;margin:2px}
+.tag.warn{background:#2c2813;color:var(--warn);border-color:#75622c}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.mini{background:rgba(21,26,33,.8);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.mini b{color:var(--gold2)}
+b{color:#e8d090}
+.symptom{display:flex;gap:10px;align-items:flex-start;background:rgba(21,26,33,.8);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0}
+.symptom .ic{flex:none;font-size:20px}
+</style>
+</head>
+<body>
+<nav class="page-topbar">
+<a class="back-btn" href="../../index.html">&#10148; رجوع للصفحة الرئيسية</a>
+<span class="topbar-title">حل مشكلة قفل الجهاز بعد الجيلبريك — الدليل الأكيد</span>
+</nav>
+<main>
+<h1>🔌 حل مشكلة قفل الجهاز بعد الجيلبريك</h1>
+<p class="sub">الجهاز مش بيقفل واللمبة بتفضل نور بعد تفعيل GoldHEN؟ دي مشكلة معروفة وموثّقة عالميًا — وليها حل أكيد خطوة بخطوة. الدليل ده يشتغل على كل الإصدارات المدعومة (13.02 → 13.52 وكمان 7.00 → 13.00)</p>
+
+<!-- ============ المشكلة بالظبط ============ -->
+<h2>المشكلة بالظبط هيّه؟</h2>
+<div class="box">
+<p style="margin-top:0">بعد تشغيل الجيلبريك وتفعيل <b>GoldHEN</b> على الأجهزة، لما بتدوس «إيقاف تشغيل PS4» من قايمة الطاقة، الجهاز مش بيكمل عملية القفل: الشاشة بتقعد سودة أو الجهاز يفضل «معلّق»، و<b>لمبة الباور بتفضل نور</b> — والطريقة الوحيدة اللي بتقفل الجهاز هي الضغطة المطوّلة على زر الباور.</p>
+<div class="symptom"><span class="ic">❗</span><span>بتحصل غالبًا على الفيرمويرات من <b>13.02 لـ 13.52</b>، وموثّقة كمان على إصدارات أقدم (9.00 / 10.01 / 11.00) من أيام إصدارات GoldHEN السابقة.</span></div>
+<div class="symptom"><span class="ic">📋</span><span>المشكلة متسجّلة رسميًا عند مطوّري GoldHEN نفسهم على GitHub (Issue #187) — يعني <b>مش عيب في جهازك ولا في جهاز حد بعينه</b>، ومش من الموقع عندنا كمان.</span></div>
+<div class="symptom"><span class="ic">🧩</span><span>السبب: الثغرة بتعدّل في ذاكرة النظام عشان تشغّل الجولدن هين، وبعض خدمات GoldHEN (خصوصًا خاصية «دعم وضع السكون» والخدمات الشبكية) بتخلّي مسار القفل الطبيعي يعلّق. <b>التعرّف على السبب = عرفنا الحل.</b></span></div>
+</div>
+<div class="box ok-box">
+<b>اطمّن الأول:</b> الجهاز <b>مبيبوظش</b> من المشكلة دي ولا من الضغطة المطولة — دي آلية قلق اضطراري رسمية من سوني نفسها للأنظمة العالقة، والفحص اللي بييجي بعد التشغيل فحص طبيعي 100%. بس الهدف دلوقتي إنك <b>متوصلش للحالة دي أصلًا</b> — وده اللي الخطوات الجاية بتعمله.
+</div>
+
+<!-- ============ الحل الأكيد ============ -->
+<h2>الحل الأكيد: 3 خطوات قبل ما تقفل الجهاز (40 ثانية)</h2>
+<p class="sub">دي الخطوات اللي اتأكد منها مستخدمين على إصدارات مختلفة (9.00 و 10.01 و 11.00 و 13.xx) — نفس المشكلة، نفس الحل. اعملها مرة واحدة قبل القفل، وبعدها القفل بيمشي من قايمة الطاقة عادي:</p>
+<div class="box">
+<ol class="steps">
+<li><b>اقفل الاتصال بالإنترنت:</b> من القايمة الرئيسية: <b>الإعدادات ← الشبكة (Network)</b> — وشيل علامة ✔ من أول سطر: <b>«الاتصال بالإنترنت» (Connect to the Internet)</b>. دي أهم خطوة في الحل كله، وأكتر واحدة متأكد منها في كل المصادر — خدمات الشبكة المفتوحة بعد الجيلبريك بتمنع النظام يكمّل مسار القفل.</li>
+<li><b>اقفل «دعم وضع السكون» من GoldHEN:</b> افتح <b>الإعدادات (Settings)</b> — هتلاقي قسم <b>GoldHEN</b> ظهر فوق خالص (بيبان بس بعد تشغيل الجيلبريك) ← <b>GoldHEN Settings</b> ← شيل علامة ✔ من <b>Rest Mode Support (دعم وضع السكون)</b>. الخاصية دي وظيفتها إن GoldHEN يفضل شغال وقت السكون — وهي بالظبط اللي بتعطّل مسار القفل الطبيعي للطاقة.</li>
+<li><b>افصل الـ USB الخارجي واقفل الجهاز:</b> افصل أي هارد أو فلاشة خارجية موصولة، اقفل كل الألعاب والتطبيقات وارجع للقايمة الرئيسية، وبعدين اقفل الجهاز من: <b>زر PS مطوّل ← الطاقة/Power ← إيقاف تشغيل PS4 (Turn Off PS4)</b>.</li>
+</ol>
+<div class="ok-box box" style="margin-bottom:0">
+<b>النتيجة المتوقّعة:</b> الجهاز بيقفل طبيعي من القايمة نفسها — من غير تعليق ومن غير لمبة فاضلة. ولو سألك الجهاز «هل تريد إغلاق التطبيقات المفتوحة؟» وافق وسيبه يكمّل لحد ما يقفل.
+</div>
+</div>
+<div class="box">
+<h3 style="margin-top:0">طيب والنت يرجع إزاي لما أحتاجه؟</h3>
+<p style="margin:0">نفس مكانك بالظبط: <b>الإعدادات ← الشبكة</b> — وحط ✔ تاني على «الاتصال بالإنترنت». عشان كده بنقولك اعملها بعد ما تخلّص شغلك اللي محتاج نت (تنزيل لعبة / أداة / أي حاجة)، وقبل ما تقفل الجهاز. ولو هتفتح الجهاز تاني للعب أوفلاين — متفتحش النت أصلًا، وكده مفيش خطوة زيادة عليك خالص.</p>
+</div>
+
+<!-- ============ لو الجهاز معلق دلوقتي ============ -->
+<h2>الجهاز معلّق دلوقتي واللمبة نورا؟ القفل الآمن في 7 ثواني ⛑️</h2>
+<div class="box">
+<p style="margin-top:0">لو واقف دلوقتي قدام جهاز معلّق (الشاشة سودة / القايمة مجمدة واللمبة بيضا مولّعة) — اعمل ده:</p>
+<ol class="steps">
+<li><b>اضغط زر الباور على الجهاز نفسه وكمّل ماسك عليه</b> (متشيلش صباعك).</li>
+<li>هتسمع <b>«بيب» أول بعد ثانية واحدة</b> — <b>كمّل ماسك برضه</b> (ده معناه إن الجهاز بدأ القفل الاضطراري).</li>
+<li>هتسمع <b>«بيب» تاني بعد حوالي 7 ثواني</b> من أول ضغطة — ساعتها اسب، الجهاز <b>هيقفل</b> واللمبة هتطفي.</li>
+</ol>
+<p style="margin-bottom:0"><b>ملاحظات مهمة:</b></p>
+<ul style="margin-bottom:0">
+<li>دي <b>الطريقة الرسمية الآمنة</b> للأنظمة العالقة — مش «خراب» ولا حاجة تخاف منها. متسحبش كابل الكهربا من الكهربا مباشرة إلا لو زر الباور نفسه مش بستجاب خالص.</li>
+<li>على <b>PS4 Slim / Pro</b> زر الباور لمسي — المهم إنك تفضل ماسك بضغطة متواصلة من غير ما تشيل صباعك لحد «البيب» التاني.</li>
+</ul>
+</div>
+<div class="box ok-box">
+<h3 style="margin-top:0">شاشة زرقا بعد التشغيل؟ دي طبيعية 100%</h3>
+<p style="margin:0">أول ما تشغّل الجهاز بعد القفل الاضطراري، ممكن تظهر شاشة <b>«جارٍ فحص مساحة تخزين النظام» (Checking System Storage)</b> أو رسالة إن الجهاز اتقفل بشكل غير صحيح. <b>متعملش حاجة — خليه يخلّص لوحده</b> (من ثواني لشوية دقايق حسب مساحة الهارد) — ده فحص بيانات روتيني، وبياناتك وألعابك كلها بتفضل زي ما هي.</p>
+</div>
+<div class="box">
+<h3 style="margin-top:0">بديل ألطف لو مش مستعجل: «ريستارت» بدل «قفل»</h3>
+<p style="margin:0">ملاحظة متكررة في المجتمع إن <b>«إعادة تشغيل PS4» (Restart PS4)</b> كتير من المرات بتعدّي عادي حتى لو «إيقاف التشغيل» بيعلّق. فلو مش مستعجل: جرب <b>Restart</b> من قايمة الطاقة — وبعد ما الجهاز يفتح تاني (وراجع من غير جيلبريك)، اقفله من القايمة عادي. كده بتجنّب القفل الاضطراري خالص.</p>
+</div>
+
+<!-- ============ قواعد دهب ============ -->
+<h2>قواعد الدهب بعد الحل (كل مرة جيلبريك)</h2>
+<div class="grid2">
+<div class="mini"><b>1. متستخدمش «وضع السكون» نهائي:</b><span>السكون (Rest Mode) + GoldHEN = أشهر وصفة للتعليق على كل الإصدارات. بعد أي جلسة جيلبريك: قلق كامل (Turn Off PS4) بس.</span></div>
+<div class="mini"><b>2. قفل النت عادة عندك:</b><span>سيب «الاتصال بالإنترنت» مقفول ما دام مش محتاجه — وافتحه بس وقت التنزيل أو الأدوات. كده القفل بيمشي نضيف كل مرة.</span></div>
+<div class="mini"><b>3. الجيلبريك بيروح مع القفل — وده طبيعي:</b><span>على سلسلة 13.xx الجيلبريك مؤقت ويرجع بعد الريستارت. أول ما تشغّل: افتح الموقع من المتصفح وشغّله من جديد بنفس خطواتك.</span></div>
+<div class="mini"><b>4. البلجنات والخدمات الزيادة:</b><span>لو التعليق استمر رغم كل حاجة: جرب تقفل البلجنات (Plugins) والـ FTP من إعدادات GoldHEN — كل خدمة إضافية بتزوّد فرصة التعليق في مسار الطاقة.</span></div>
+</div>
+
+<!-- ============ ليه بيحصل ============ -->
+<h2>ليه بيحصل ده أصلًا؟ (السبب ببساطة)</h2>
+<div class="box">
+<p style="margin-top:0">أي جيلبريك بيتصفح شغال بنفس الفكرة: بنستخدم ثغرة عشان نوصل لصلاحيات النظام ونشغّل GoldHEN جوّه الذاكرة. GoldHEN بعدها بيربط نفسه بخدمات نظام مختلفة عشان يقدّم مميزاته (مانع التحديث / قايمة الشيتات / FTP / محمّل البيلودات...).</p>
+<p>المشكلة إن خاصية <b>«دعم وضع السكون»</b> بتركّب نفسها جوّه <b>مسار إدارة الطاقة</b> عشان تفضل شغالة والجهاز نايم — فلما تيجي تقفل الجهاز، النظام بيستنى كل الخدمات دي تسلّم نفسها، ووحدة منها بتعلّق، فالنظام بيفضل «واقف في نص الطريق»: مش قافل ومش شغال — واللمبة فاضلة. واتصال الشبكة المفتوح بيضاعف الفرصة دي لأن خوادم GoldHEN الصغيرة بتفضل صاحية وماسكة منافذ.</p>
+<p style="margin-bottom:0">عشان كده الحل بيقفل المصادر دي كلها قبل القفل (نت + خاصية السكون + USB + التطبيقات) — في مسار القفل الطبيعي بيمشي نضيف من غير ما يستنى حد. ده مش «ترقيع» — ده نفس التوصية المتداولة في المجتمع والمصادر الرسمية بالحرف.</p>
+</div>
+
+<!-- ============ جدول ملخص ============ -->
+<h2>ملخص سريع — كل الحالات</h2>
+<div class="box">
+<table>
+<tr><th>الحالة</th><th>تعمل إيه؟</th><th>تاخد قد إيه؟</th></tr>
+<tr><td>الجهاز مش بيقفل بعد الجيلبريك</td><td>الخطوات التلاتة فوق (قفل النت + قفل دعم السكون + USB وتطبيقات) وبعدين Turn Off PS4</td><td>40 ثانية</td></tr>
+<tr><td>الجهاز معلّق دلوقتي واللمبة نورا</td><td>ضغطة مطوّلة على زر الباور لحد «البيب» التاني — الطريقة الرسمية الآمنة</td><td>7 ثواني</td></tr>
+<tr><td>شاشة «فحص مساحة التخزين» بعد التشغيل</td><td>استنى بس يخلّص — فحص طبيعي 100% ومش بيبوّظ حاجة</td><td>ثواني لشوية دقايق</td></tr>
+<tr><td>عايز تتجنّب المشكلة من الأساس</td><td>قفل النت عادة + عمرِك ما تستخدم وضع السكون بعد جيلبريك</td><td>—</td></tr>
+</table>
+<p class="small" style="margin-bottom:0">شغّال على: <span class="tag">13.02 → 13.52</span> <span class="tag">7.00 → 13.00</span> <span class="tag">كل أجهزة PS4 (Fat/Slim/Pro)</span></p>
+</div>
+
+<!-- ============ المصادر ============ -->
+<h2>المصادر والتوثيق (شفافية كاملة)</h2>
+<div class="box">
+<p style="margin-top:0">مشكلة القفل دي مش حكر على حد — دي معروفة وموثّقة في كل مكان، والحل اللي فوق مجمّع من نفس المصادر دي (افتحها من الكمبيوتر أو الموبايل مش من متصفح PS4):</p>
+<ul>
+<li><b>تقرير المشكلة الرسمي على GitHub بتاع GoldHEN (Issue #187):</b> شكاوى من نفس الأعراض بالظبط (اللمبة المولّعة + القفل بالضغطة المطولة) على إصدارات 9.00-11.00 + شهادات مستخدمين إن قفل النت و«إبطال دعم وضع السكون» حلّوها — <a class="ext" href="https://github.com/GoldHEN/GoldHEN/issues/187" target="_blank" rel="noopener">github.com/GoldHEN/GoldHEN/issues/187</a></li>
+<li><b>مجتمع r/PS4Mods (سبتمبر 2026):</b> ثريد «PS4 not powering off after jailbreak» عن نفس المشكلة على الجيلبريك الجديد 13.xx — ونفس الوصفة: قفل النت + قفل Rest Mode Support + فصل أي تخزين خارجي — <a class="ext" href="https://www.reddit.com/r/PS4Mods/comments/1woefgu/ps4_not_powering_off_after_jailbreak/" target="_blank" rel="noopener">reddit.com/r/PS4Mods</a></li>
+<li><b>مجتمع r/ps4homebrew (سبتمبر 2026):</b> تأكيد إن «التعليق عند القفل/الريستارت مشكلة معروفة حاليًا مع GoldHEN على 13.52» — مع نفس الحل — <a class="ext" href="https://www.reddit.com/r/ps4homebrew/comments/1wmhba2/what_am_i_doing_wrong/" target="_blank" rel="noopener">reddit.com/r/ps4homebrew</a></li>
+<li><b>ويكي consolemods (توثيق خاصية Rest Mode Support):</b> «بيخلّي GoldHEN يفضل شغال بعد السكون» — وبيوصي بإعدادات معينة للاستقرار — <a class="ext" href="https://consolemods.org/wiki/PS4:GoldHEN" target="_blank" rel="noopener">consolemods.org/wiki/PS4:GoldHEN</a></li>
+</ul>
+<p class="small" style="margin-bottom:0">آخر تحديث للدليل: سبتمبر 2026 — والإصدار اللي بنشغّل عندنا <b>GoldHEN 2.4b18.12</b> (آخر إصدار متاح للسلسلة 13.02-13.52 — متطابق بايت-ببايت مع المصدر الرسمي).</p>
+</div>
+
+<div class="bottom-back"><a href="../../index.html">&#10148; رجوع للصفحة الرئيسية</a></div>
+</main>
+</body>
+</html>
