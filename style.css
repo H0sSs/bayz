@@ -7,13 +7,14 @@
     outline: none;
 }
 
+/* ====== خلفية المنارة الذهبية (بدل السودا: كحلي عميق + توهج ذهبي حي) ====== */
 body {
-    /* تدرج ثابت خفيف — بدون صور وبدون blur عشان أقصى سرعة على متصفح PS4 */
     background-color: #0b0d10;
     background-image:
-        radial-gradient(ellipse 900px 480px at 50% -180px, rgba(212, 175, 55, 0.16), rgba(212, 175, 55, 0) 65%),
-        linear-gradient(135deg, #0b0d10 0%, #1a1410 100%);
+        radial-gradient(ellipse 1000px 520px at 50% -200px, rgba(212, 175, 55, 0.17), rgba(212, 175, 55, 0) 65%),
+        linear-gradient(165deg, #06080b 0%, #0b0d10 52%, #1a1308 100%);
     background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #fff;
     min-height: 100vh;
     display: flex;
@@ -24,54 +25,122 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* توهجات الأورورا — ثابتة (متحركش عشان الصفحة مليانة محتوى على متصفح PS4 الضعيف) */
+.aurora {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+.aurora.a1 {
+    width: 620px;
+    height: 620px;
+    top: -240px;
+    right: -180px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.13) 0%, rgba(212, 175, 55, 0) 70%);
+}
+.aurora.a2 {
+    width: 560px;
+    height: 560px;
+    bottom: -220px;
+    left: -170px;
+    background: radial-gradient(circle, rgba(64, 102, 178, 0.11) 0%, rgba(64, 102, 178, 0) 70%);
+}
+
 .container {
     width: 90%;
     max-width: 1100px;
     text-align: center;
     padding: 18px 20px 26px;
+    position: relative;
+    z-index: 1;
 }
 
-/* شعار الموقع */
-.brand-logo {
-    width: 68px;
-    height: 68px;
+/* ====== الشعار بمدار ذهبي دوّار ====== */
+.brand-orbit {
+    position: relative;
+    width: 92px;
+    height: 92px;
+    margin: 0 auto 12px;
+}
+
+.brand-orbit .brand-logo {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 76px;
+    height: 76px;
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.45);
-    margin: 0 auto 10px;
+    box-shadow: 0 0 26px rgba(212, 175, 55, 0.45);
     display: block;
     border: 2px solid #D4AF37;
     background: #0b0d10;
 }
 
-/* تنسيق العنوان الرئيسي */
+.brand-orbit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #f0d060;
+    border-left-color: rgba(212, 175, 55, 0.35);
+    animation: orbit 3.4s linear infinite;
+}
+.brand-orbit::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    border: 2px solid rgba(212, 175, 55, 0.38);
+    animation: ripple 2.7s ease-out infinite;
+}
+@keyframes orbit { to { transform: rotate(360deg); } }
+@keyframes ripple { 0% { transform: scale(0.92); opacity: 0.85; } 75% { transform: scale(1.22); opacity: 0; } 100% { opacity: 0; } }
+
+/* ====== العنوان الرئيسي — الدراع بايظ ====== */
 header h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
+    font-size: 2.8rem;
+    font-weight: 900;
     letter-spacing: 2px;
-    background: linear-gradient(45deg, #D4AF37, #fff, #D4AF37);
+    background: linear-gradient(180deg, #f8e7ae 0%, #ecc45c 55%, #c2902e 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 4px;
-    text-shadow: 0px 4px 18px rgba(212, 175, 55, 0.4);
+    margin-bottom: 6px;
+    text-shadow: 0px 6px 26px rgba(212, 175, 55, 0.35);
     direction: rtl;
 }
 
+/* الاسم اللاتيني ELDRA3BAYZ — شارة ذهبية */
 header .subtitle-en {
-    font-size: 0.9rem;
-    color: #D4AF37;
-    letter-spacing: 3px;
-    margin-bottom: 4px;
+    display: inline-block;
+    font-size: 1rem;
+    color: #f0d060;
+    letter-spacing: 7px;
+    margin-bottom: 8px;
     text-transform: uppercase;
-    opacity: 0.9;
-    font-weight: 600;
+    font-weight: 800;
+    padding: 4px 22px 4px 16px;
+    background: rgba(212, 175, 55, 0.09);
+    border: 1px solid rgba(212, 175, 55, 0.42);
+    border-radius: 99px;
+    box-shadow: 0 0 18px rgba(212, 175, 55, 0.18), 0 0 0 3px rgba(212, 175, 55, 0.05);
+    text-shadow: 0 0 14px rgba(240, 208, 96, 0.4);
+    direction: ltr;
 }
 
 header .dev {
     font-size: 0.82rem;
     color: #8b95a3;
     letter-spacing: 1px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     opacity: 0.8;
 }
 
@@ -80,7 +149,67 @@ header .dev b {
     font-weight: 600;
 }
 
-/* ===== شبكة الكروت - Gold Neon ===== */
+/* ===== شريحة حالة الكاش — حبة بنقطة نابضة ===== */
+.offline-status {
+    display: inline-block;
+    margin: 4px auto 0;
+    max-width: 680px;
+    color: #d8c07f;
+    font-size: 0.85rem;
+    text-align: center;
+    background: rgba(19, 25, 38, 0.85);
+    border: 1px solid #2b3542;
+    border-radius: 99px;
+    padding: 5px 18px;
+}
+
+.offline-status::before {
+    content: '';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d8c07f;
+    margin-left: 8px;
+    vertical-align: 1px;
+    box-shadow: 0 0 8px rgba(216, 192, 127, 0.7);
+    animation: dotp 1.6s ease-in-out infinite;
+}
+
+@keyframes dotp { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+.offline-status.ready {
+    color: #7fd0a0;
+    border-color: #315b45;
+    background: rgba(23, 42, 32, 0.85);
+}
+.offline-status.ready::before {
+    background: #7fd0a0;
+    box-shadow: 0 0 8px rgba(127, 208, 160, 0.7);
+}
+
+/* ===== عناوين الأقسام ===== */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    max-width: 790px;
+    margin: 20px auto 6px;
+    color: #d4af37;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+}
+.section-title::before,
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.45), transparent);
+}
+
+/* ===== شبكة الكروت ===== */
 .cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -91,21 +220,35 @@ header .dev b {
     margin: 14px auto 20px;
 }
 
-/* الكارت الأساسي — خلفية صلبة سريعة الرسم (بدون شفافية أو blur) */
+/* ===== الكارت الزجاجي الذهبي ===== */
 .card {
     position: relative;
     width: 375px;
     max-width: 100%;
-    background: #12161c;
-    border: 1px solid #2b3542;
-    border-radius: 16px;
+    background: rgba(15, 18, 24, 0.94);
+    border: 1px solid rgba(212, 175, 55, 0.30);
+    border-radius: 18px;
     text-decoration: none;
     color: #fff;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     cursor: pointer;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* شريط ذهبي متوهج أعلى الكارت */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, rgba(240, 208, 96, 0), rgba(240, 208, 96, 0.85), rgba(240, 208, 96, 0));
+    z-index: 2;
 }
 
 /* لمعة تمر خفيفة عند الـ hover — transform فقط (الأرخص على PS4) */
@@ -122,18 +265,18 @@ header .dev b {
 .card:hover, .card:focus {
     transform: translateY(-6px);
     border-color: #D4AF37;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(212, 175, 55, 0.22);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.55), 0 0 30px rgba(212, 175, 55, 0.25);
 }
 
 .card:hover::after, .card:focus::after {
     transform: translateX(130%);
 }
 
-/* ===== رأس الكارت المتدرج (Accent Strip) ===== */
+/* ===== رأس الكارت ===== */
 .card-head {
     padding: 13px 18px 10px;
     border-bottom: 1px solid rgba(212, 175, 55, 0.28);
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.20) 0%, rgba(212, 175, 55, 0.04) 55%, rgba(212, 175, 55, 0.10) 100%);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.03) 55%, rgba(212, 175, 55, 0.09) 100%);
 }
 
 .card-tag {
@@ -196,21 +339,26 @@ header .dev b {
     margin: 0;
 }
 
-/* ===== زر الكارت — في منتصف الكارت بالظبط ===== */
+/* ===== زر الكارت — ثلاثي الأبعاد ===== */
 .card-badge {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 10px 16px 14px;
-    background: linear-gradient(135deg, #D4AF37, #ffd700);
-    color: #0b0d10;
+    margin: 10px 16px 16px;
+    background: linear-gradient(135deg, #f7dd7a 0%, #D4AF37 55%, #a87c22 100%);
+    color: #191204;
     font-weight: 800;
     padding: 9px 14px;
-    border-radius: 11px;
+    border-radius: 12px;
     font-size: 0.85rem;
     letter-spacing: 1px;
-    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35);
+    box-shadow: 0 4px 0 #6e5317, 0 10px 22px rgba(212, 175, 55, 0.30);
+}
+
+.card:active .card-badge {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #6e5317, 0 4px 10px rgba(212, 175, 55, 0.22);
 }
 
 /* ===== ألوان الأكسنت لكل نوع كارت ===== */
@@ -222,7 +370,7 @@ header .dev b {
 }
 .card.accent-green .card-head {
     border-bottom-color: rgba(56, 178, 122, 0.35);
-    background: linear-gradient(135deg, rgba(56, 178, 122, 0.18) 0%, rgba(56, 178, 122, 0.03) 55%, rgba(56, 178, 122, 0.10) 100%);
+    background: linear-gradient(135deg, rgba(56, 178, 122, 0.16) 0%, rgba(56, 178, 122, 0.03) 55%, rgba(56, 178, 122, 0.09) 100%);
 }
 .card.accent-green .card-tag { color: #9fd8b8; }
 .card.accent-green .card-range { text-shadow: 0 2px 12px rgba(56, 178, 122, 0.35); }
@@ -233,11 +381,12 @@ header .dev b {
 }
 .card.accent-green .card-badge {
     background: linear-gradient(135deg, #38b67a, #57d99a);
-    box-shadow: 0 2px 10px rgba(56, 178, 122, 0.35);
+    box-shadow: 0 4px 0 #1e5e3f, 0 10px 22px rgba(56, 178, 122, 0.30);
 }
+.card.accent-green .card::before { background: linear-gradient(90deg, rgba(87, 217, 154, 0), rgba(87, 217, 154, 0.75), rgba(87, 217, 154, 0)); }
 .card.accent-green:hover, .card.accent-green:focus {
     border-color: #38b67a;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(56, 178, 122, 0.22);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.55), 0 0 30px rgba(56, 178, 122, 0.22);
 }
 
 /* كارت ItemzFlow — سماوي */
@@ -246,7 +395,7 @@ header .dev b {
 }
 .card.accent-cyan .card-head {
     border-bottom-color: rgba(56, 189, 248, 0.35);
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.18) 0%, rgba(56, 189, 248, 0.03) 55%, rgba(56, 189, 248, 0.10) 100%);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.16) 0%, rgba(56, 189, 248, 0.03) 55%, rgba(56, 189, 248, 0.09) 100%);
 }
 .card.accent-cyan .card-tag { color: #a5dcf5; }
 .card.accent-cyan .card-range { text-shadow: 0 2px 12px rgba(56, 189, 248, 0.35); }
@@ -257,11 +406,11 @@ header .dev b {
 }
 .card.accent-cyan .card-badge {
     background: linear-gradient(135deg, #2e9fd0, #5cc2ec);
-    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.35);
+    box-shadow: 0 4px 0 #175a78, 0 10px 22px rgba(56, 189, 248, 0.30);
 }
 .card.accent-cyan:hover, .card.accent-cyan:focus {
     border-color: #38bdf8;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(56, 189, 248, 0.22);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.55), 0 0 30px rgba(56, 189, 248, 0.22);
 }
 
 /* الفوتر وزر التواصل */
@@ -322,9 +471,9 @@ footer {
 .credits-box {
     margin-top: 10px;
     padding: 10px 16px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(15, 18, 24, 0.8);
     border: 1px solid rgba(212, 175, 55, 0.25);
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 0.75rem;
     color: #8b95a3;
     line-height: 1.6;
@@ -412,27 +561,6 @@ footer {
     filter: brightness(1.08);
 }
 
-/* ===== عناوين الأقسام في صفحة الهبوط (9 كروت / 3 أقسام) ===== */
-.section-title {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    max-width: 790px;
-    margin: 18px auto 6px;
-    color: #d4af37;
-    font-size: 0.95rem;
-    font-weight: 800;
-    letter-spacing: 0.6px;
-    white-space: nowrap;
-}
-.section-title::before,
-.section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.45), transparent);
-}
-
 /* ===== الكروت المدمجة للأدوات (شبكة 3 أعمدة) ===== */
 .cards-container.tools {
     max-width: 790px;
@@ -441,7 +569,11 @@ footer {
 }
 .card.tool {
     width: 245px;
-    border-radius: 13px;
+    border-radius: 14px;
+}
+.card.tool::before {
+    left: 8%;
+    right: 8%;
 }
 .card.tool .card-head {
     padding: 9px 14px 7px;
@@ -471,10 +603,15 @@ footer {
     line-height: 1.5;
 }
 .card.tool .card-badge.tool-badge {
-    margin: 8px 12px 10px;
+    margin: 8px 12px 12px;
     padding: 7px 12px;
     font-size: 0.78rem;
-    border-radius: 9px;
+    border-radius: 10px;
+    box-shadow: 0 3px 0 #6e5317, 0 8px 18px rgba(212, 175, 55, 0.28);
+}
+.card.tool:active .card-badge.tool-badge {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #6e5317, 0 4px 8px rgba(212, 175, 55, 0.2);
 }
 
 /* ===== ألوان الأكسنت الجديدة للأدوات ===== */
@@ -482,7 +619,7 @@ footer {
 .card.accent-orange { border-color: #4d3a20; }
 .card.accent-orange .card-head {
     border-bottom-color: rgba(235, 150, 50, 0.35);
-    background: linear-gradient(135deg, rgba(235, 150, 50, 0.18) 0%, rgba(235, 150, 50, 0.03) 55%, rgba(235, 150, 50, 0.10) 100%);
+    background: linear-gradient(135deg, rgba(235, 150, 50, 0.16) 0%, rgba(235, 150, 50, 0.03) 55%, rgba(235, 150, 50, 0.09) 100%);
 }
 .card.accent-orange .card-tag { color: #f0c9a0; }
 .card.accent-orange .card-range { text-shadow: 0 2px 12px rgba(235, 150, 50, 0.35); }
@@ -493,18 +630,18 @@ footer {
 }
 .card.accent-orange .card-badge {
     background: linear-gradient(135deg, #eb8c2e, #f5b260);
-    box-shadow: 0 2px 10px rgba(235, 150, 50, 0.35);
+    box-shadow: 0 4px 0 #7a4a14, 0 10px 22px rgba(235, 150, 50, 0.30);
 }
 .card.accent-orange:hover, .card.accent-orange:focus {
     border-color: #eb8c2e;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(235, 150, 50, 0.22);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.55), 0 0 30px rgba(235, 150, 50, 0.22);
 }
 
 /* الشيتات — أحمر وردى */
 .card.accent-red { border-color: #4a2a2a; }
 .card.accent-red .card-head {
     border-bottom-color: rgba(224, 105, 105, 0.35);
-    background: linear-gradient(135deg, rgba(224, 105, 105, 0.18) 0%, rgba(224, 105, 105, 0.03) 55%, rgba(224, 105, 105, 0.10) 100%);
+    background: linear-gradient(135deg, rgba(224, 105, 105, 0.16) 0%, rgba(224, 105, 105, 0.03) 55%, rgba(224, 105, 105, 0.09) 100%);
 }
 .card.accent-red .card-tag { color: #f0bcbc; }
 .card.accent-red .card-range { text-shadow: 0 2px 12px rgba(224, 105, 105, 0.35); }
@@ -515,18 +652,18 @@ footer {
 }
 .card.accent-red .card-badge {
     background: linear-gradient(135deg, #d46060, #eb8888);
-    box-shadow: 0 2px 10px rgba(224, 105, 105, 0.35);
+    box-shadow: 0 4px 0 #6e2626, 0 10px 22px rgba(224, 105, 105, 0.30);
 }
 .card.accent-red:hover, .card.accent-red:focus {
     border-color: #d46060;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(224, 105, 105, 0.22);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.55), 0 0 30px rgba(224, 105, 105, 0.22);
 }
 
 /* البلجنات — ذهبي داكن */
 .card.accent-gold { border-color: #4d411e; }
 .card.accent-gold .card-head {
     border-bottom-color: rgba(240, 208, 96, 0.4);
-    background: linear-gradient(135deg, rgba(240, 208, 96, 0.2) 0%, rgba(240, 208, 96, 0.04) 55%, rgba(240, 208, 96, 0.12) 100%);
+    background: linear-gradient(135deg, rgba(240, 208, 96, 0.18) 0%, rgba(240, 208, 96, 0.04) 55%, rgba(240, 208, 96, 0.11) 100%);
 }
 .card.accent-gold .card-tag { color: #f0e2b0; }
 .card.accent-gold .card-range { text-shadow: 0 2px 12px rgba(240, 208, 96, 0.4); }
@@ -537,18 +674,18 @@ footer {
 }
 .card.accent-gold .card-badge {
     background: linear-gradient(135deg, #e0c050, #f0d060);
-    box-shadow: 0 2px 10px rgba(240, 208, 96, 0.35);
+    box-shadow: 0 4px 0 #7a5c1a, 0 10px 22px rgba(240, 208, 96, 0.30);
 }
 .card.accent-gold:hover, .card.accent-gold:focus {
     border-color: #e0c050;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(240, 208, 96, 0.22);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.55), 0 0 30px rgba(240, 208, 96, 0.22);
 }
 
 /* التثبيت اللاسلكي — أزرق */
 .card.accent-blue { border-color: #273758; }
 .card.accent-blue .card-head {
     border-bottom-color: rgba(90, 130, 230, 0.35);
-    background: linear-gradient(135deg, rgba(90, 130, 230, 0.18) 0%, rgba(90, 130, 230, 0.03) 55%, rgba(90, 130, 230, 0.10) 100%);
+    background: linear-gradient(135deg, rgba(90, 130, 230, 0.16) 0%, rgba(90, 130, 230, 0.03) 55%, rgba(90, 130, 230, 0.09) 100%);
 }
 .card.accent-blue .card-tag { color: #bccdf5; }
 .card.accent-blue .card-range { text-shadow: 0 2px 12px rgba(90, 130, 230, 0.35); }
@@ -559,18 +696,18 @@ footer {
 }
 .card.accent-blue .card-badge {
     background: linear-gradient(135deg, #4a72d0, #7296e8);
-    box-shadow: 0 2px 10px rgba(90, 130, 230, 0.35);
+    box-shadow: 0 4px 0 #243c75, 0 10px 22px rgba(90, 130, 230, 0.30);
 }
 .card.accent-blue:hover, .card.accent-blue:focus {
     border-color: #4a72d0;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(90, 130, 230, 0.22);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.55), 0 0 30px rgba(90, 130, 230, 0.22);
 }
 
 /* منع التحديثات — بنفسجي */
 .card.accent-violet { border-color: #3e2a55; }
 .card.accent-violet .card-head {
     border-bottom-color: rgba(160, 110, 230, 0.35);
-    background: linear-gradient(135deg, rgba(160, 110, 230, 0.18) 0%, rgba(160, 110, 230, 0.03) 55%, rgba(160, 110, 230, 0.10) 100%);
+    background: linear-gradient(135deg, rgba(160, 110, 230, 0.16) 0%, rgba(160, 110, 230, 0.03) 55%, rgba(160, 110, 230, 0.09) 100%);
 }
 .card.accent-violet .card-tag { color: #d8c5f5; }
 .card.accent-violet .card-range { text-shadow: 0 2px 12px rgba(160, 110, 230, 0.35); }
@@ -581,18 +718,18 @@ footer {
 }
 .card.accent-violet .card-badge {
     background: linear-gradient(135deg, #8a5cd0, #ac86e8);
-    box-shadow: 0 2px 10px rgba(160, 110, 230, 0.35);
+    box-shadow: 0 4px 0 #47296e, 0 10px 22px rgba(160, 110, 230, 0.30);
 }
 .card.accent-violet:hover, .card.accent-violet:focus {
     border-color: #8a5cd0;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(160, 110, 230, 0.22);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.55), 0 0 30px rgba(160, 110, 230, 0.22);
 }
 
 /* حل مشكلة قفل الجهاز — تركواز */
 .card.accent-teal { border-color: #1e4a44; }
 .card.accent-teal .card-head {
     border-bottom-color: rgba(45, 212, 191, 0.35);
-    background: linear-gradient(135deg, rgba(45, 212, 191, 0.18) 0%, rgba(45, 212, 191, 0.03) 55%, rgba(45, 212, 191, 0.10) 100%);
+    background: linear-gradient(135deg, rgba(45, 212, 191, 0.16) 0%, rgba(45, 212, 191, 0.03) 55%, rgba(45, 212, 191, 0.09) 100%);
 }
 .card.accent-teal .card-tag { color: #aee8df; }
 .card.accent-teal .card-range { text-shadow: 0 2px 12px rgba(45, 212, 191, 0.35); }
@@ -603,22 +740,41 @@ footer {
 }
 .card.accent-teal .card-badge {
     background: linear-gradient(135deg, #1fa89a, #3fd4c0);
-    box-shadow: 0 2px 10px rgba(45, 212, 191, 0.35);
+    box-shadow: 0 4px 0 #0e574e, 0 10px 22px rgba(45, 212, 191, 0.30);
 }
 .card.accent-teal:hover, .card.accent-teal:focus {
     border-color: #1fa89a;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 26px rgba(45, 212, 191, 0.22);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.55), 0 0 30px rgba(45, 212, 191, 0.22);
 }
 
 /* التجاوب مع الموبايل والشاشات الصغيرة */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 1.9rem;
+        font-size: 2rem;
         letter-spacing: 1px;
     }
-    .brand-logo {
-        width: 56px;
-        height: 56px;
+    header .subtitle-en {
+        font-size: 0.85rem;
+        letter-spacing: 5px;
+        padding: 3px 16px 3px 12px;
+    }
+    .brand-orbit {
+        width: 78px;
+        height: 78px;
+    }
+    .brand-orbit .brand-logo {
+        top: 7px;
+        left: 7px;
+        width: 64px;
+        height: 64px;
+    }
+    .brand-orbit::before {
+        width: 78px;
+        height: 78px;
+    }
+    .brand-orbit::after {
+        width: 72px;
+        height: 72px;
     }
     .card {
         width: 100%;
@@ -638,17 +794,4 @@ footer {
     .page-topbar .topbar-title {
         display: none;
     }
-}
-
-/* شريحة حالة الكاش */
-.offline-status {
-    margin: 8px auto 0;
-    max-width: 680px;
-    color: #d8c07f;
-    font-size: 0.85rem;
-    text-align: center;
-}
-
-.offline-status.ready {
-    color: #7fd0a0;
 }
