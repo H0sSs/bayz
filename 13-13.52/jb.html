@@ -10,24 +10,36 @@
         margin: 0;
         padding: 0;
         min-height: 100%;
-        background: linear-gradient(160deg, #0b0d10 55%, #16110a 100%);
+        background: #0b0d10;
         color: #c8ced8;
         font: 16px/1.7 "Segoe UI", Tahoma, system-ui, sans-serif;
       }
+
+      /* ====== خلفية المنارة (نفس هوية البوابة) ====== */
+      #bg { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: -1; overflow: hidden;
+            background: linear-gradient(165deg, #06080b 0%, #0b0d10 52%, #181006 100%); }
+      #bg i { position: absolute; border-radius: 50%; }
+      #bg .o1 { width: 560px; height: 560px; top: -190px; right: -150px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0) 70%);
+            animation: drift1 17s ease-in-out infinite alternate; }
+      #bg .o2 { width: 500px; height: 500px; bottom: -180px; left: -140px;
+            background: radial-gradient(circle, rgba(64, 102, 178, 0.13) 0%, rgba(64, 102, 178, 0) 70%);
+            animation: drift2 21s ease-in-out infinite alternate; }
+      @keyframes drift1 { from { transform: translate(0, 0) scale(1); } to { transform: translate(-42px, 30px) scale(1.08); } }
+      @keyframes drift2 { from { transform: translate(0, 0) scale(1); } to { transform: translate(38px, -28px) scale(1.1); } }
+
       #brand {
         text-align: center;
         padding: 9px 12px;
-        background: #0e1116;
+        background: rgba(14, 17, 22, 0.96);
         border-bottom: 1px solid #1e2732;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
       }
       #brand .brand-center {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
         flex: 1;
         justify-content: center;
         min-width: 0;
@@ -37,6 +49,21 @@
         height: 28px;
         border-radius: 50%;
         flex: none;
+        margin-left: 9px;
+      }
+      #brand b {
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color: #d4af37;
+        margin-left: 7px;
+      }
+      .dev {
+        font-size: 11px;
+        opacity: 0.65;
+        color: #d4af37;
+        letter-spacing: 0.5px;
+        font-weight: 500;
       }
       #backlink {
         background: linear-gradient(135deg, #f0d060, #d4af37);
@@ -49,49 +76,62 @@
         white-space: nowrap;
         flex: none;
         letter-spacing: 0.3px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
       }
       #backlink:hover { filter: brightness(1.08); }
-      #brand b {
-        font-size: 15px;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        color: #d4af37;
-      }
-      .dev {
-        font-size: 11px;
-        opacity: 0.65;
-        color: #d4af37;
-        letter-spacing: 0.5px;
-        font-weight: 500;
-      }
+      #backlink:active { transform: translateY(1px); }
 
       /* ====== شاشة التشغيل (الافتراضية أثناء عمل الثغرة) ====== */
       #stage {
-        max-width: 560px;
-        margin: 10vh auto 0;
+        max-width: 580px;
+        margin: 7vh auto 0;
         padding: 0 18px;
         text-align: center;
       }
       .panel {
-        background: rgba(17, 21, 27, 0.92);
-        border: 1px solid #2b3542;
-        border-radius: 16px;
-        padding: 26px 24px 22px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+        position: relative;
+        background: rgba(15, 18, 24, 0.94);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 20px;
+        padding: 30px 26px 24px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+        overflow: hidden;
       }
+      .glint {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 90px;
+        height: 2px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, rgba(240, 208, 96, 0), rgba(240, 208, 96, 0.95), rgba(240, 208, 96, 0));
+        animation: sweep 5.4s ease-in-out infinite;
+      }
+      @keyframes sweep { 0%, 55% { transform: translateX(-100px); opacity: 0; } 62% { opacity: 1; }
+                         86% { transform: translateX(540px); opacity: 0; } 100% { opacity: 0; } }
+      .c { position: absolute; width: 20px; height: 20px; border: 2px solid rgba(212, 175, 55, 0.55); }
+      .c-tl { top: -1px; left: -1px; border-right-width: 0; border-bottom-width: 0; border-top-left-radius: 8px; }
+      .c-tr { top: -1px; right: -1px; border-left-width: 0; border-bottom-width: 0; border-top-right-radius: 8px; }
+      .c-bl { bottom: -1px; left: -1px; border-right-width: 0; border-top-width: 0; border-bottom-left-radius: 8px; }
+      .c-br { bottom: -1px; right: -1px; border-left-width: 0; border-top-width: 0; border-bottom-right-radius: 8px; }
+
       /* حلقة دوّارة حوالين اللوجو */
       .loader {
         position: relative;
-        width: 92px;
-        height: 92px;
-        margin: 0 auto 16px;
+        width: 96px;
+        height: 96px;
+        margin: 0 auto 18px;
       }
       .loader .disc {
         position: absolute;
-        inset: 10px;
+        top: 10px;
+        left: 10px;
+        width: 76px;
+        height: 76px;
         border-radius: 50%;
         overflow: hidden;
-        border: 2px solid rgba(212, 175, 55, 0.55);
+        border: 2px solid rgba(212, 175, 55, 0.65);
+        box-shadow: 0 0 22px rgba(212, 175, 55, 0.22);
       }
       .loader .disc img {
         width: 100%;
@@ -101,23 +141,29 @@
       }
       .loader .ring {
         position: absolute;
-        inset: 0;
+        top: 0;
+        left: 0;
+        width: 96px;
+        height: 96px;
         border-radius: 50%;
         border: 4px solid #1e2732;
         border-top-color: #f0d060;
         border-right-color: #d4af37;
+        border-bottom-color: rgba(212, 175, 55, 0.25);
         animation: spin 0.9s linear infinite;
       }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+
       #runpanel h1 {
         color: #e8d090;
-        font-size: 21px;
+        font-size: 24px;
         margin: 0 0 6px;
-        font-weight: 800;
+        font-weight: 900;
+        letter-spacing: 0.02em;
+        background: linear-gradient(180deg, #f8e7ae 0%, #ecc45c 55%, #c2902e 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
       #runpanel .sub {
         color: #8b95a3;
@@ -128,13 +174,14 @@
       #elapsed {
         display: inline-block;
         direction: ltr;
-        background: #1a2330;
-        border: 1px solid #2b3542;
-        color: #aab4c0;
+        background: #131926;
+        border: 1px solid rgba(212, 175, 55, 0.35);
+        color: #e0c77b;
         border-radius: 99px;
-        padding: 3px 14px;
-        font-size: 12.5px;
-        font-weight: 700;
+        padding: 4px 16px;
+        font-size: 13px;
+        font-weight: 800;
+        font-family: Consolas, Menlo, monospace;
       }
       .steps {
         margin: 16px 0 0;
@@ -143,8 +190,8 @@
         color: #8b95a3;
         font-size: 12.5px;
       }
-      .steps li { margin: 5px 0; }
-      .steps li b { color: #c8ced8; }
+      .steps li { margin: 6px 0; }
+      .steps li b { color: #e0c77b; }
 
       /* ====== شاشة النجاح ====== */
       #okpanel { display: none; }
@@ -160,6 +207,7 @@
         justify-content: center;
         font-size: 42px;
         color: #7fd0a0;
+        box-shadow: 0 0 26px rgba(127, 208, 160, 0.3);
         animation: okpop 0.55s ease-out;
       }
       @keyframes okpop {
@@ -182,14 +230,16 @@
       #okpanel .home {
         display: inline-block;
         margin-top: 16px;
-        background: linear-gradient(135deg, #f0d060, #d4af37);
-        color: #141005;
+        background: linear-gradient(135deg, #f7dd7a 0%, #d4af37 55%, #a87c22 100%);
+        color: #191204;
         font-weight: 900;
         text-decoration: none;
-        border-radius: 11px;
-        padding: 12px 28px;
+        border-radius: 14px;
+        padding: 12px 30px;
         font-size: 16px;
+        box-shadow: 0 5px 0 #6e5317, 0 14px 30px rgba(212, 175, 55, 0.28);
       }
+      #okpanel .home:active { transform: translateY(3px); box-shadow: 0 2px 0 #6e5317, 0 6px 14px rgba(212, 175, 55, 0.22); }
       /* تنبيه القفل الصح قبل إطفاء الجهاز */
       #okpanel .pwrbox {
         margin: 14px 0 4px;
@@ -225,6 +275,7 @@
         justify-content: center;
         font-size: 38px;
         color: #e08a7f;
+        box-shadow: 0 0 26px rgba(224, 138, 127, 0.25);
       }
       #msg h1 {
         color: #e08a7f;
@@ -280,11 +331,14 @@
     </style>
   </head>
   <body>
+    <div id="bg"><i class="o1"></i><i class="o2"></i></div>
     <div id="brand"><a id="backlink" href="../index.html">&#10148; رجوع للرئيسية</a><span class="brand-center"><img src="../logo.png" alt="" width="28" height="28"><b>الدراع بايظ</b> <span class="dev">by H0sS</span></span><span style="flex:none;width:1px"></span></div>
 
     <div id="stage">
       <!-- شاشة التحميل: بتظهر طول ما الثغرة شغالة -->
       <div class="panel" id="runpanel">
+        <i class="glint"></i>
+        <i class="c c-tl"></i><i class="c c-tr"></i><i class="c c-bl"></i><i class="c c-br"></i>
         <div class="loader">
           <div class="disc"><img src="../logo.png" alt="" width="72" height="72"></div>
           <div class="ring"></div>
@@ -301,6 +355,8 @@
 
       <!-- شاشة النجاح: body.done -->
       <div class="panel" id="okpanel">
+        <i class="glint"></i>
+        <i class="c c-tl"></i><i class="c c-tr"></i><i class="c c-bl"></i><i class="c c-br"></i>
         <div class="okbadge">&#10004;</div>
         <h1>الجيلبريك اشتغل بنجاح!</h1>
         <p class="line"><b>GoldHEN</b> شغّال دلوقتي — و<b>مانع تحديث سوني</b> متفعّل تلقائيًا معه.</p>
@@ -320,6 +376,8 @@
 
       <!-- شاشة الفشل: body.fail / body.timeout -->
       <div class="panel" id="msg">
+        <i class="glint"></i>
+        <i class="c c-tl"></i><i class="c c-tr"></i><i class="c c-bl"></i><i class="c c-br"></i>
         <div class="badbadge">!</div>
         <h1>لازم تعمل ريستارت للجهاز</h1>
         <p class="line">الثغرة فشلت المرة دي — <b>وده طبيعي وحصل</b> مع كتير من المحاولات.</p>
