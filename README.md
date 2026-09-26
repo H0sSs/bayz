@@ -27,7 +27,7 @@
 | القسم | الفيرموير | السلاسل | البيلود |
 |---|---|---|---|
 | PS4 | 7.00 – 13.00 | PSFree · CSSFontFace · SlopKit | GoldHEN v2.4b18.10 |
-| PS4 | 13.02 – 13.52 | aio_multi_wait (RAW GAME) | GoldHEN + باتشات AIO fix |
+| PS4 | 13.02 – 13.52 | aio_multi_wait (RAW GAME) | GoldHEN + باتشات AIO fix + تحديث الاستقرار skipjb2 (26-09-2026) |
 | **نسخ الألعاب** | 7.00 – 13.52* | أي سلسلة من فوق | PKG-BackUP v1.3 |
 | **التحكم في المراوح** | 7.00 – 13.52 | أي سلسلة (`?bin=`) | 6 بيلودات ICC Threshold (55°–80°) |
 | **الشيتات** | 7.00 – 13.52 (قاعدة محلية) / 7.00 – 12.02 (ps4debug) | — | قاعدة GoldHEN_Cheat_Repository كاملة محليًا (1197 لعبة/1877 ملف — بحث أوفلاين) + ps4debug v1.1.19 |

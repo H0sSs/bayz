@@ -8,7 +8,7 @@
 - **PSFree** (CVE-2022-22620) — anonymous / open source (AGPL) — سلاسل 7.00–9.60
 - **CSSFontFace UAF chain** — Sleirsgoevy وChendoChap والمع community — سلسلة 10.00–11.02
 - **SlopKit chains** (chain_lapse / chain_poops) — عنا سلاسل 11.50–13.00
-- **aio_multi_wait chain (13.02–13.52)** — فريق **RAW GAME** (raw13g) — مع تحديثات **MODDED_WARFARE** و**Al-Azif** (باتشات AIO fix)
+- **aio_multi_wait chain (13.02–13.52)** — فريق **RAW GAME** (raw13g) — مع تحديثات **MODDED_WARFARE** و**Al-Azif** (باتشات AIO fix) وتحديث الاستقرار **skipjb2** (26-09-2026: تخطي سباق 663 لو الكيرنل مكسّر + إعادة تشغيل البيلود بدون إعادة سباق + بوابات تحقق بعد كل تفجير + تصريف الـ workers قبل النهاية)
 - **pOOBs4 / TheFlow** وكل باحثي kernel exploits في مشهد PS4
 
 ## Payloads
