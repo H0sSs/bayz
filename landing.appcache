@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 20260927-landing-v10-golden
+# rev 20260929-landing-v11-golden
 
 CACHE:
 index.html
@@ -10,6 +10,7 @@ tools/pkg-backup/ps4-pkg-backup_v13.bin
 tools/pkg-backup/config.cfg
 tools/itemzflow/index.html
 tools/dns-block/index.html
+tools/dns-block/dns-guide.jpg
 tools/shutdown-fix/index.html
 tools/rpi/index.html
 tools/goldhen-plugins/index.html
