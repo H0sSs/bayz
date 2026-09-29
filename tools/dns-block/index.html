@@ -23,32 +23,14 @@ h3{color:var(--gold2);font-size:17px;margin:18px 0 6px}
 .bottom-back a:hover{filter:brightness(1.08)}
 @media(max-width:600px){.page-topbar .topbar-title{display:none}}
 .box{background:rgba(21,26,33,.92);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
-.warning{border-color:#75622c;color:var(--warn)}
 .ok-box{border-color:#315b45;color:var(--ok)}
-.bad-box{border-color:#75332c;color:var(--bad)}
-code,pre{font-family:Consolas,Menlo,monospace;direction:ltr;text-align:left}
-code{background:#0b0d10;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:13.5px;color:#e8d090;word-break:break-all}
-pre{background:#0b0d10;border:1px solid var(--line);border-radius:10px;padding:12px 14px;overflow-x:auto;font-size:13.5px}
-a.button{display:inline-block;background:var(--gold);color:#0b0d10;text-decoration:none;font-weight:800;border-radius:9px;padding:10px 18px;margin:4px 4px 4px 0;font-size:15px}
-a.button:hover{background:var(--gold2)}
-a.ext{color:var(--cyan);text-decoration:none}
-a.ext:hover{text-decoration:underline}
-.meta{color:var(--muted);font-size:13px;word-break:break-all}
+code{font-family:Consolas,Menlo,monospace;direction:ltr;text-align:left;background:#0b0d10;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:13.5px;color:#e8d090;word-break:break-all}
 ol,ul{padding-right:26px;margin:8px 0}
 li{margin:9px 0}
-.small{font-size:13px;color:var(--muted)}
-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14.5px}
-th,td{border:1px solid var(--line);padding:7px 11px;text-align:right}
-th{background:#1a1410;color:var(--gold)}
 .steps{counter-reset:step;list-style:none;padding-right:0}
 .steps>li{counter-increment:step;position:relative;padding-right:52px;margin:14px 0}
 .steps>li::before{content:counter(step);position:absolute;right:0;top:2px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:#141005;font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center}
-hr{border:none;border-top:1px solid var(--line);margin:26px 0}
 .tag{display:inline-block;background:#233024;color:var(--ok);border:1px solid #315b45;border-radius:99px;padding:2px 12px;font-size:12.5px;margin:2px}
-.tag.warn{background:#2c2813;color:var(--warn);border-color:#75622c}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-.mini{background:rgba(21,26,33,.8);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
-.mini b{color:var(--gold2)}
 .copybtn{background:#233024;border:1px solid #315b45;color:var(--ok);border-radius:7px;padding:5px 14px;font-size:13px;cursor:pointer;margin-inline-start:8px}
 .copybtn:hover{filter:brightness(1.15)}
 .dnsbox{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;direction:ltr;background:#0b0d10;border:1px solid #315b45;border-radius:12px;padding:14px 10px;margin:8px 0}
@@ -63,8 +45,6 @@ h2{border-bottom-color:rgba(212,175,55,.3)}
 .page-topbar .back-btn:active{transform:translateY(2px);box-shadow:0 1px 0 #6e5317,0 4px 10px rgba(212,175,55,.2)}
 .bottom-back a{box-shadow:0 4px 0 #6e5317,0 12px 26px rgba(212,175,55,.28)}
 .bottom-back a:active{transform:translateY(3px);box-shadow:0 1px 0 #6e5317,0 5px 12px rgba(212,175,55,.2)}
-a.back{box-shadow:0 4px 0 #6e5317,0 12px 26px rgba(212,175,55,.28)}
-a.back:active{transform:translateY(3px);box-shadow:0 1px 0 #6e5317,0 5px 12px rgba(212,175,55,.2)}
 .box{background:rgba(15,18,24,.94);border-color:rgba(212,175,55,.30);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
 /* ===== الدليل المصوّر لضبط DNS (2026-09-29 — الصورة الرسمية 12 خطوة) ===== */
 .guideframe{width:100%;max-width:680px;margin:16px auto 4px;background:#0e1116;border:1px solid rgba(212,175,55,.5);border-radius:16px;padding:10px;box-shadow:0 18px 44px rgba(0,0,0,.6),0 4px 0 #6e5317}
@@ -81,28 +61,32 @@ a.back:active{transform:translateY(3px);box-shadow:0 1px 0 #6e5317,0 5px 12px rg
 </nav>
 <main>
 <h1>🛡️ منع تحديثات سوني</h1>
-<p class="sub">دليل عربي كامل لحماية جهازك من التحديثات الإجبارية — النقطة دي أهم خطوة بعد الجيلبريك، لأن أي تحديث من سوني هيقفل الثغرة ويضيّع الجيلبريك نهائيًا</p>
+<p class="sub">رقم واحد + دقيقتين = جهازك محمي من تحديثات سوني نهائيًا</p>
 
-<!-- ============ الطريقة الأولى: DNS الحاجز ============ -->
-<h2>الطريقة الأولى (الأسرع والأشهر): DNS الحاجز 🚀</h2>
+<!-- ============ الخطوة 1: رقم DNS الحاجز ============ -->
+<h2>الخطوة 1 — خد رقم الـ DNS 🚀</h2>
 <div class="box ok-box">
-<h3 style="margin-top:0">رقم DNS أساسي — معروف وموثّق في مشهد PS4 من 2025</h3>
+<h3 style="margin-top:0">رقم DNS أساسي — دوس «نسخ الرقم» وخد الرقم</h3>
 <div class="dnsbox">
   <code class="bigip" id="ipVal">62.210.38.117</code>
   <button class="copybtn" id="copyIp" type="button">📋 نسخ الرقم</button>
 </div>
-<p style="margin:10px 0 8px">الرقم ده هو <b>DNS الحاجز (Nomadic DNS)</b> — أشهر سيرفر مجتمعي مخصص لمنع تحديثات PS4 وPS5، ومعروف وموثّق في أدلة مشهد الجيلبريك (psx-place + consolemods) واتشرح في فيديوهات MODDED_WARFARE المشهورة. طريقة عمله: بيعترض طلبات جهازك لسيرفرات تحديث سوني ويحجبها، وبيسيب باقي الإنترنت شغال عادي.</p>
-<p style="margin:0"><b>أهم مميزاته:</b> <span class="tag">بيانفض بعد الريستارت</span> <span class="tag">2 دقيقة بس</span> <span class="tag">شغال على كل الفيرمويرات</span> <span class="tag">بيمنع تحديث الألعاب كمان</span></p>
+<p style="margin:10px 0 8px">الرقم ده هو <b>DNS الحاجز (Nomadic DNS)</b> — بيحجب طلبات جهازك لسيرفرات تحديث سوني وبيسيب باقي الإنترنت شغال عادي.</p>
+<p style="margin:0"><b>مميزاته:</b> <span class="tag">2 دقيقة بس</span> <span class="tag">بيانفض بعد الريستارت</span> <span class="tag">شغال على كل الفيرمويرات</span></p>
 </div>
+
+<!-- ============ الخطوة 2: الدليل المصوّر ============ -->
+<h2>الخطوة 2 — الدليل المصوّر 📷</h2>
 <div class="box">
-<h3 style="margin-top:0">📷 الدليل المصوّر — 12 خطوة بالصور من قوائم الـ PS4 نفسه</h3>
-<p style="margin:4px 0 0">الصورة اللي تحت هي <b>الدليل الإرشادي الكامل</b> لضبط الـ DNS على الـ PS4: 12 خطوة مترتبة، كل خطوة عنوانها بالعربي وتحتها لقطة حقيقية من شاشة الـ PS4 والاختيار الصح متحدد فيها <b>بمربع أحمر</b> — من أول ما تدخل القائمة الرئيسية وتفتح الإعدادات، لحد ما تكتب رقم الـ DNS وتعمل اختبار الاتصال. الدليل المصوّر مطابق تمامًا للخطوات المكتوبة تحت، فامشي عليه خطوة بخطوة وأنت مطبّق على الجهاز.</p>
-<p style="margin:8px 0 0">💡 <b>نصيحة:</b> لو بتطبق الخطوات على الـ PS4، أنسب طريقة إنك تفتح الصفحة دي من <b>موبايلك</b> (اكتب <code>h0sss.github.io/bayz</code> في متصفح الموبايل وادخل قسم «منع تحديثات سوني») عشان الدليل يفضل مفتوح قدامك وانت داخل قوائم الجهاز — و<b>دوس على الصورة</b> عشان تفتح بحجمها الكامل (1070 بكسل) وتقرا كل خطوة بوضوح تام.</p>
+<h3 style="margin-top:0">12 خطوة بالصور من قوائم الـ PS4 نفسه</h3>
+<p style="margin:4px 0 0">كل خطوة عنوانها بالعربي وتحتها لقطة حقيقية من شاشة الـ PS4 والاختيار الصح متحدد فيها <b>بمربع أحمر</b> — الدليل مطابق للخطوات المكتوبة تحت بالظبط. 💡 <b>نصيحة:</b> افتح الصفحة دي من <b>موبايلك</b> (اكتب <code>h0sss.github.io/bayz</code> في متصفح الموبايل وادخل قسم «منع تحديثات سوني») وانت بتطبّق على الـ PS4 — و<b>دوس على الصورة</b> عشان تفتح بحجمها الكامل وتقرا كل خطوة بوضوح تام.</p>
 <div class="guideframe"><a href="dns-guide.jpg" target="_blank"><img src="dns-guide.jpg" alt="دليل مصور من 12 خطوة لضبط DNS على PS4: الإعدادات ثم الشبكة ثم إعداد اتصال الإنترنت ثم اختيار Custom ثم IP تلقائي و DHCP بدون تحديد ثم DNS يدوي مع كتابة Primary DNS برقم 62.210.38.117 وترك Secondary DNS فاضي ثم MTU تلقائي ثم بدون بروكسي ثم اختبار الاتصال" width="1070" height="978"></a></div>
-<p class="guidecap">الدليل المصوّر الكامل: 12 خطوة بلقطات حقيقية من قوائم الـ PS4 والاختيار الصح في كل خطوة متحدد <b>بمربع أحمر</b> — وآخر مربع فيه ملخص الإعدادات النهائية: <b>Primary DNS: 62.210.38.117</b> و<b>Secondary DNS يفضل فاضي</b>. دوس على الصورة لفتحها بحجمها الكامل.</p>
+<p class="guidecap">آخر مربع في الدليل فيه ملخص الإعدادات النهائية: <b>Primary DNS: 62.210.38.117</b> و<b>Secondary DNS يفضل فاضي</b> — دوس على الصورة لفتحها بحجمها الكامل.</p>
 </div>
+
+<!-- ============ الخطوة 3: خطوات الضبط ============ -->
+<h2>الخطوة 3 — خطوات الضبط على PS4 (دقيقتين)</h2>
 <div class="box">
-<h3 style="margin-top:0">خطوات الضبط على PS4 (دقيقتين)</h3>
 <ol class="steps">
 <li>من القائمة الرئيسية: <b>الإعدادات ← الشبكة ← إعداد اتصال الإنترنت</b> (Settings ← Network ← Set Up Internet Connection).</li>
 <li>اختار اتصالك (Wi-Fi أو الكابل) وادوس عليه زر <b>خيارات (Options)</b> ← <b>إعدادات متقدمة / Advanced Settings</b>... أو اختار الاتصال وسطر الإعدادات يفتحلك نموذج الإعداد — في الحالتين اختار <b>Custom (مخصص)</b> بدل Easy.</li>
@@ -112,152 +96,6 @@ a.back:active{transform:translateY(3px);box-shadow:0 1px 0 #6e5317,0 5px 12px rg
 </ol>
 <div class="ok-box box" style="margin-bottom:0">
 <b>✅ علامة نجاح الاختبار:</b> الاتصال بيظهر «نجح» والإنترنت شغال — ولو دخلت على <b>الإعدادات ← تحديث برنامج النظام</b> هتلاقيه بيقول «لا يمكن الاتصال» أو «أنت على آخر نسخة» حتى لو في تحديث أحدث. <b>متضغطش تحديث</b> لو ظهرلك خيار!</div>
-</div>
-<div class="box warning">
-<h3 style="margin-top:0">ملاحظات مهمة على طريقة الـ DNS</h3>
-<ul style="margin:0">
-<li><b>بتحجب تحديثات الألعاب كمان:</b> ده مطلوب عند أغلب مستخدمي الجيلبريك (يحمي الألعاب المثبتة من التحديث المفروض) — بس خد بالك منها.</li>
-<li><b>خدمات PSN:</b> ممكن بعض خدمات سوني (تسجيل دخول/متجر) متشتغلش مع الحجب — ودي عادي على أجهزة الجيلبريك أصلًا.</li>
-<li><b>بعض شركات الإنترنت بتمنع DNS الخارجي:</b> لو النت وقف تمامًا بعد الضبط، ارجع لنفس الخطوات وخلّي DNS على <b>تلقائي (Automatic)</b> — وشوف عوّضها بطريقة الراوتر تحت.</li>
-<li><b>السيرفر مجتمعي مش رسمي:</b> عشان كده بنطلب منك تختبر الحجب بعد الضبط (خطوة النجاح فوق) — ولو حسّيت إنه باظ بعد فترة، اعمل خطوات الشيل وارجع له تاني أو اعتمد على الراوتر.</li>
-</ul>
-</div>
-<div class="box">
-<h3 style="margin-top:0">إزاي تشيله لو احتجت؟</h3>
-<p style="margin:0">نفس مسار الخطوات: <b>الإعدادات ← الشبكة ← إعداد اتصال الإنترنت ← اختار اتصالك ← إعدادات ← Custom</b> — وحط <b>إعدادات DNS: تلقائي (Automatic)</b> بدل يدوي، وبعدها اختبر الاتصال. كده رجع كل حاجة زي ما كانت.</p>
-</div>
-
-<!-- ============ ليه؟ ============ -->
-<h2>ليه لازم تمنع التحديثات؟</h2>
-<div class="box">
-<p style="margin-top:0">الجيلبريك شغال على <b>نسخة فيرموير محددة</b> — سوني بتطلع تحديثات جديدة بشكل دوري خصيصًا لسد الثغرات. لو جهازك اتحدّث بالغلط (أو بسبب لعبة طالبة تحديث إجباري) هتخسر:</p>
-<ul style="margin-bottom:0">
-<li><b>الجيلبريك نفسه:</b> مش هتقدر ترجع ليه إلا لو نزلت لفيرموير أقدم — وده غالبًا مستحيل بعد تحديث معين.</li>
-<li><b>كل الأدوات:</b> GoldHEN والألعاب المثبتة خارج المتجر والبيلودات كلها هتتوقف عن الشغل.</li>
-<li><b>خطر الـ CMOS:</b> أجهزة PS4 المعروفة بمشكلة CE-30391-6 بتظهر بعد التحديث مع بطارية فارغة.</li>
-</ul>
-</div>
-
-<!-- ============ طب الحماية 4 طبقات ============ -->
-<h2>الحماية الكاملة = 4 طبقات</h2>
-<div class="grid2">
-<div class="mini"><b>الطبقة 1 — DNS الحاجز:</b><span>رقم واحد تتكتبه في إعدادات الشبكة (دقيقتين) — أسرع طبقة وبتفضل شغالة بعد الريستارت. دي الطريقة الأساسية عندنا فوق.</span></div>
-<div class="mini"><b>الطبقة 2 — GoldHEN:</b><span>بيمنع التحديث تلقائيًا طالما شغال في ذاكرة الجهاز (خاصية <b>FW Update Block</b> مدمجة). حماية تلقائية مع كل جلسة جيلبريك.</span></div>
-<div class="mini"><b>الطبقة 3 — الراوتر:</b><span>حجب سيرفرات التحديث على مستوى الشبكة كلها — أقوى حماية وبتشتغل حتى لو الجهاز من غير جيلبريك. الطريقة مشروحة تحت بالتفصيل.</span></div>
-<div class="mini"><b>الطبقة 4 — عاداتك:</b><span>متفتحش قائمة «تحديث برنامج النظام» أبدًا، واقفل «التحديث التلقائي» من الإعدادات (تحت بالخطوات).</span></div>
-</div>
-
-<!-- ============ خطوة إعداد الجهاز نفسه ============ -->
-<h2>الخطوة صفر: إعدادات جهازك نفسه (دقيقتين)</h2>
-<div class="box">
-<ol class="steps">
-<li><b>اقفل التنزيل التلقائي:</b> من قائمة الـ PS4: <b>الإعدادات ← إدارة النظام ← التنزيل التلقائي/التحديث</b> — شيل علامة ✔ من «تحديث برنامج النظام تلقائيًا».</li>
-<li><b>اقفل الإرسال التلقائي للتشغيل:</b> من نفس القائمة شيل ✔ من «إرسال بيانات التشغيل للإنترنت».</li>
-<li><b>متستخدمش خيار «تحديث» في الألعاب:</b> لو لعبة طلبت تحديث فيرموير عشان تشتغل — لازم تلعبها على فيرموير الجيلبريك من غير تحديث، أو استخدم نسخ اللعبة المطابقة لفيرمويرك (النسخ CD/فلاشة المتوافقة مع جهازك).</li>
-</ol>
-</div>
-
-<!-- ============ الطريقة 2: الراوتر ============ -->
-<h2>الطريقة الثانية (الأقوى والأدوم): الحجب من الراوتر 🏆</h2>
-<div class="box">
-<p style="margin-top:0">الحجب على مستوى الراوتر معناه إن <b>أي جهاز في البيت</b> مش هيوصل لسيرفرات تحديث سوني — أقوى وأدوم حماية، وبتشتغل حتى لو الجيلبريك مش معمول، ومش معتمدة على أي سيرفر خارجي. طريقة الـ DNS فوق أسهل وأسرع، لكن لو عايز حماية عمرها ما تبان: اعتمد على الراوتر. الطريقة تختلف حسب نوع الراوتر:</p>
-<h3>لو راوترك فيه «فلترة دومينات / رقابة أبوية / Domain Blocking»</h3>
-<ol>
-<li>افتح صفحة إعدادات الراوتر من المتصفح (غالبًا <code>192.168.1.1</code> أو <code>192.168.0.1</code>).</li>
-<li>ادور على قسم <b>Parental Control / URL Filter / Domain Blocking</b> (الاسم يختلف حسب الماركة — TP-Link اسمه «Access Control»، D-Link اسمه «Website Filter»).</li>
-<li>أضف الدومينات اللي في الجدول اللي تحت (أو على الأقل نمط الحجب العام <code>ps4.update.playstation.net</code> لو الراوتر بيدعم حجز جزئي).</li>
-</ol>
-<h3>لو عندك PiHole أو نظام حجب متقدم</h3>
-<p>أضف كل الدومينات التالية لقاعدة الحجب — دي <b>القائمة الكاملة الرسمية</b> لسيرفرات تحديث PS4 لكل المناطق (39 سيرفر إقليمي + 6 خاصة):</p>
-<button class="copybtn" id="copyAll" type="button">📋 نسخ كل الدومينات</button>
-<pre id="allDomains">dau01.ps4.update.playstation.net
-dbr01.ps4.update.playstation.net
-dcn01.ps4.update.playstation.net
-deu01.ps4.update.playstation.net
-dhk01.ps4.update.playstation.net
-djp01.ps4.update.playstation.net
-dkr01.ps4.update.playstation.net
-dmx01.ps4.update.playstation.net
-dru01.ps4.update.playstation.net
-dsa01.ps4.update.playstation.net
-dtw01.ps4.update.playstation.net
-duk01.ps4.update.playstation.net
-dus01.ps4.update.playstation.net
-fau01.ps4.update.playstation.net
-fbr01.ps4.update.playstation.net
-fcn01.ps4.update.playstation.net
-feu01.ps4.update.playstation.net
-fhk01.ps4.update.playstation.net
-fjp01.ps4.update.playstation.net
-fkr01.ps4.update.playstation.net
-fmx01.ps4.update.playstation.net
-fru01.ps4.update.playstation.net
-fsa01.ps4.update.playstation.net
-ftw01.ps4.update.playstation.net
-fuk01.ps4.update.playstation.net
-fus01.ps4.update.playstation.net
-hau01.ps4.update.playstation.net
-hbr01.ps4.update.playstation.net
-hcn01.ps4.update.playstation.net
-heu01.ps4.update.playstation.net
-hhk01.ps4.update.playstation.net
-hjp01.ps4.update.playstation.net
-hkr01.ps4.update.playstation.net
-hmx01.ps4.update.playstation.net
-hru01.ps4.update.playstation.net
-hsa01.ps4.update.playstation.net
-htw01.ps4.update.playstation.net
-huk01.ps4.update.playstation.net
-hus01.ps4.update.playstation.net
-ps4-eb.ww.np.dl.playstation.net
-ps4-system.sec.np.dl.playstation.net
-ps4.updptl.sp-int.community.playstation.net
-ps4updptl.eu.np.community.playstation.net
-ps4updptl.jp.sp-int.community.playstation.net
-ps4updptl.uk.np.community.playstation.net</pre>
-<p class="small">القائمة دي مجمعة من مشروع صيانة مجتمع PS4 (Misl3d/PS-dns-block) — كل سيرفرات التحديث الإقليمية (أمريكا/أوروبا/آسيا/الشرق الأوسط) + سيرفرات التحديث الخاصة. حرف <code>d/f/h</code> الأول = مجموعة سيرفرات، والحرفين بعده = المنطقة (us=أمريكا، eu=أوروبا، sa=السعودية، hk=هونج كونج... إلخ).</p>
-</div>
-
-<div class="box ok-box">
-<h3 style="margin-top:0">💡 حسب منطقتك — لو الراوتر بيقبل عدد محدود من الدومينات</h3>
-<p style="margin:4px 0 8px">أجهزة المنطقة العربية بتتصل غالبًا بسيرفرات <b>أوروبا (eu)</b> أو <b>السعودية (sa)</b> أو <b>هونج كونج (hk)</b> حسب أصل الجهاز. لو مضطر تختار، ركّز على دومينات منطقتك الأول:</p>
-<ul style="margin:0">
-<li>أجهزة أوروبا/الشرق الأوسط (الشائعة عندنا): <code>deu01</code> + <code>feu01</code> + <code>heu01</code> + <code>dsa01</code> + <code>fsa01</code> + <code>hsa01</code></li>
-<li>أجهزة آسيا (ياباني/خليجي مستورد): <code>djp01</code>/<code>dhk01</code> + <code>fjp01</code>/<code>fhk01</code> + <code>hjp01</code>/<code>hhk01</code></li>
-<li><b>الأحسن برضه:</b> حجب القائمة كلها — أي دومين متسرب ممكن يكون باب التحديث.</li>
-</ul>
-</div>
-
-<!-- ============ تحذير DNS العامة ============ -->
-<h2>⚠️ ليه رقم واحد بس — ومتستخدمش أرقام الفيديوهات العشوائية؟</h2>
-<div class="box bad-box">
-<p style="margin-top:0">أي رقم DNS تاني شايفه في فيديوهات (غير <code>62.210.38.117</code> الموثّق فوق) خد بالك معاه: اللي يشغّل سيرفر DNS يقدر يوجّه جهازك لأي موقع تاني (خطر اختراق حقيقي)، وأغلب الأرقام دي بتقع من الشغل بعد شهور وماحدشيش محدّثها. <b>إحنا موثقين رقم واحد بس</b> لأنه المعروف والمتداول في مشهد PS4 من 2025 (اسمه Nomadic DNS) ومصدره أدلة معروفة — ومع ذلك بنطلب منك <b>تختبره</b> بعد الضبط بالخطوات فوق. <b>والأمان المضمون 100%</b> يفضل حجب الدومينات عندك في راوترك انت — كده مفيش حد تاني واقف في النص.</p>
-</div>
-
-<!-- ============ التحقق ============ -->
-<h2>✅ إزاي تتأكد إن الحماية شغالة؟</h2>
-<div class="box">
-<ol class="steps">
-<li><b>اختبار المتصفح:</b> من متصفح الـ PS4 افتح: <code>https://dus01.ps4.update.playstation.net</code> — المفروض تظهر رسالة خطأ اتصال (لأن السيرفر محجوب). لو الصفحة ردّت أو فتحت، الحجب مش شغال.</li>
-<li><b>اختبار القائمة:</b> من قائمة الـ PS4: <b>الإعدادات ← تحديث برنامج النظام</b> — هتلاقيه بيقول «أنت على آخر نسخة» حتى لو في تحديث أحدث، أو يفشل الاتصال. <b>بس خلي بالك:</b> ده مجرد اختبار — متعملش تحديث فعل لو ظهرلك خيار!</li>
-<li><b>اختبار GoldHEN:</b> بعد الجيلبريك، هتلاقي خاصية منع التحديث مذكورة في إعدادات GoldHEN — دي بتشتغل مع كل جلسة تلقائيًا.</li>
-</ol>
-<div class="ok-box box" style="margin-bottom:0">
-<b>النتيجة المطلوبة:</b> الجهاز يفضل على فيرموير الجيلبريك ✚ الألعاب والأدوات تكمل شغالة ✚ الإنترنت العادي (متجر؟ لأ — المتبر محظور للجيلبريك عادي، بس المتصفح والألعاب الأونلاين حسب الحالة) يفضل شغال.
-</div>
-</div>
-
-<!-- ============ جدول ملخص ============ -->
-<h2>ملخص الطرق كلها</h2>
-<div class="box">
-<table>
-<tr><th>الطريقة</th><th>قوة الحماية</th><th>محتاج إيه؟</th><th>ملاحظات</th></tr>
-<tr><td><b>DNS الحاجز 62.210.38.117</b> <span class="tag">الأسرع</span></td><td>⭐⭐ قوية</td><td>دقيقتين — بدون راوتر</td><td>بيستمر بعد الريستارت + بيمنع تحديثات الألعاب كمان — <b>الاختيار الأساسي عندنا</b></td></tr>
-<tr><td><b>GoldHEN (FW Update Block)</b></td><td>⭐⭐ متوسطة</td><td>الجيلبريك من هوستنا بس</td><td>تلقائية مع كل جلسة — أول حماية وأسهلها</td></tr>
-<tr><td><b>حجب الراوتر</b></td><td>⭐⭐⭐ أقوى</td><td>الدخول على إعدادات الراوتر</td><td>تحمي كل أجهزة البيت وبتشتغل دايمًا — الأدوم والمضمونة</td></tr>
-<tr><td><b>إعدادات الجهاز + عاداتك</b></td><td>⭐ أساسية</td><td>دقيقتين من قائمة PS4</td><td>قفل التنزيل التلقائي وتجنب قائمة التحديث</td></tr>
-</table>
-<p class="small" style="margin-bottom:0">التوليفة المثالية عندنا: <span class="tag">DNS الحاجز</span> <span class="tag">+ GoldHEN من هوستنا</span> <span class="tag">+ قفل التلقائي</span> — بالثلاثة مع بعض، فرصة التحديث بالغلط بتقرب من الصفر. ولو عندك دخول للراوتر: ضيف حجب الراوتر وتبقى محمي لدرجة الصفر حرفيًا.</p>
 </div>
 
 <div class="bottom-back"><a href="../../index.html">&#10148; رجوع للصفحة الرئيسية</a></div>
@@ -282,9 +120,6 @@ ps4updptl.uk.np.community.playstation.net</pre>
       }
     });
   }
-  wireCopy('copyAll', function () {
-    return document.getElementById('allDomains').textContent.trim();
-  }, '✔ اتنسخت!');
   wireCopy('copyIp', function () {
     return '62.210.38.117';
   }, '✔ الرقم اتنسخ!');
