@@ -45,14 +45,21 @@ li{margin:9px 0}
 #jbStart:not(:disabled){animation:goldpulse 2.4s ease-in-out infinite}
 .paybox{display:inline-block;background:#0b0d10;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:4px 2px;color:#e8d090;font-size:14px;direction:ltr}
 
-/* ===== صندوق التفعيل (أول الصفحة) ===== */
-.hero{margin:10px 0;border-color:rgba(212,175,55,.55);border-width:2px;box-shadow:0 14px 40px rgba(0,0,0,.45),0 0 26px rgba(212,175,55,.12);text-align:center}
-.hero .herotag{display:inline-block;background:rgba(212,175,55,.14);border:1px solid rgba(212,175,55,.45);color:var(--gold2);border-radius:99px;padding:3px 16px;font-size:12.5px;font-weight:700;letter-spacing:.5px;margin:0 0 10px}
+/* ===== كارت تشغيل الاستغلال (تصميم كروت PS4 — أول الصفحة) ===== */
+.jbcard{position:relative;max-width:600px;margin:12px auto 8px;background:rgba(15,18,24,.94);border:1px solid rgba(212,175,55,.30);border-radius:18px;overflow:hidden;box-shadow:0 12px 34px rgba(0,0,0,.45),0 0 26px rgba(212,175,55,.10)}
+.jbcard::before{content:'';position:absolute;top:0;left:12%;right:12%;height:2px;border-radius:2px;background:linear-gradient(90deg,rgba(240,208,96,0),rgba(240,208,96,.85),rgba(240,208,96,0));z-index:2}
+.jbcard .card-head{padding:13px 18px 10px;border-bottom:1px solid rgba(212,175,55,.28);background:linear-gradient(135deg,rgba(212,175,55,.16) 0%,rgba(212,175,55,.03) 55%,rgba(212,175,55,.09) 100%)}
+.jbcard .card-tag{display:block;font-size:12px;font-weight:700;letter-spacing:2px;color:#d8c07f;margin-bottom:4px}
+.jbcard .card-range{display:block;font-size:24px;font-weight:900;letter-spacing:1px;color:#f5f7fa;text-shadow:0 2px 12px rgba(212,175,55,.35);direction:ltr;text-align:right;line-height:1.2}
+.jbcard .card-body{padding:12px 18px 4px}
+.jbcard .chip{display:inline-block;font-size:11.5px;font-weight:700;color:#d4af37;background:rgba(212,175,55,.10);border:1px solid rgba(212,175,55,.38);padding:2px 10px;border-radius:20px;letter-spacing:.4px;white-space:nowrap;margin:3px}
+.jbcard .card-desc{font-size:13.5px;color:#c3cbd7;line-height:1.7;margin:0 0 6px}
+.jbcard .card-action{padding:8px 16px 0}
+.jbcard .card-foot{padding:8px 16px 16px}
 .fwchip{display:block;border-radius:99px;padding:6px 16px;font-size:13.5px;font-weight:700;margin:8px auto 4px;border:1px solid;max-width:100%;line-height:1.6}
 .fwchip.ok{background:#14261c;border-color:#315b45;color:var(--ok)}
 .fwchip.warn{background:#262014;border-color:#6e5a2a;color:var(--warn)}
 .fwchip.note{background:#131a24;border-color:#2b3542;color:var(--muted)}
-.hint{color:var(--muted);font-size:13.5px;margin:8px auto 0;max-width:560px;line-height:1.7}
 
 /* ===== شريط الحالة العربي ===== */
 .arab-status{display:none;margin:14px 0 0;border-radius:12px;padding:13px 16px;border:1px solid;direction:rtl;text-align:right}
@@ -90,6 +97,13 @@ li{margin:9px 0}
 .legend li{padding:7px 12px;margin:6px 0;background:#0b0d10;border:1px solid var(--line);border-radius:9px;line-height:1.9}
 .legend code{background:transparent;border:none;padding:0;font-size:13px}
 
+/* ===== الدليل المصوّر لضبط DNS (12 خطوة) — نفس تصميم صفحة منع التحديثات ===== */
+.guideframe{width:100%;max-width:680px;margin:16px auto 4px;background:#0e1116;border:1px solid rgba(212,175,55,.5);border-radius:16px;padding:10px;box-shadow:0 18px 44px rgba(0,0,0,.6),0 4px 0 #6e5317}
+.guideframe a{display:block;border-radius:11px}
+.guideframe img{display:block;width:100%;height:auto;border-radius:11px;background:#05070a;border:1px solid rgba(212,175,55,.22)}
+.guidecap{color:var(--muted);font-size:13.5px;text-align:center;margin:10px auto 0;max-width:680px}
+.guidecap b{color:var(--gold2)}
+
 /* ===== هوية الدراع الذهبية v3 (طبقة توحيد فوق الأساس — CSS فقط) ===== */
 body{background:radial-gradient(ellipse 900px 420px at 50% -160px,rgba(212,175,55,.14),rgba(212,175,55,0) 70%),linear-gradient(165deg,#06080b 0%,#0b0d10 55%,#181006 100%);background-repeat:no-repeat;background-color:#0b0d10}
 h1{background:linear-gradient(180deg,#f8e7ae 0%,#ecc45c 55%,#c2902e 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 4px 24px rgba(212,175,55,.3)}
@@ -109,13 +123,25 @@ h2{border-bottom-color:rgba(212,175,55,.3)}
 </nav>
 <main>
 <h1>🔓 جيلبريك PS5 — Relapse</h1>
-<p class="sub">استغلال كامل من متصفح الجهاز — من 7.00 إلى 13.60 — زر التفعيل بتاعه في أول الصفحة دي</p>
+<p class="sub">استغلال كامل من متصفح الجهاز — من 7.00 إلى 13.60 — كارت التفعيل في أول الصفحة</p>
 
-<!-- ============ زر تفعيل الجيلبريك (أول الصفحة) ============ -->
-<div class="box hero" id="hero">
-<span class="herotag">⚡ التفعيل المباشر — من غير خروج من الصفحة</span>
+<!-- ============ كارت تشغيل الاستغلال (أول الصفحة — بنفس تصميم كروت PS4) ============ -->
+<div class="jbcard" id="hero">
+<div class="card-head">
+<span class="card-tag">PS5 · جيلبريك</span>
+<span class="card-range">Relapse · 7.00 → 13.60</span>
+</div>
+<div class="card-body">
+<span class="chip">Relapse</span>
+<span class="chip">etaHEN</span>
+<span class="chip">من متصفح الجهاز</span>
+<span class="chip">بدون كمبيوتر</span>
+<p class="card-desc">تفعيل مباشر من غير خروج من الصفحة — اضغط الزر من متصفح الـ PS5 نفسه وسلسلة الاستغلال كاملة (متصفح ← كيرنل ← بيلودات etaHEN) بتشتغل، وكل حاجة بتتحمّل من موقعنا مباشرة.</p>
+</div>
+<div class="card-action">
 <button class="runbtn" id="jbStart" type="button">🚀 فعّل الجيلبريك الآن</button>
-<p class="hint">الزر ده مخصوص للضغط من متصفح الـ PS5 نفسه بعد ما تفتح الرابط بتاعنا عليه — بيبدأ سلسلة الاستغلال كاملة (متصفح ← كيرنل ← بيلودات etaHEN) وكل حاجة بتتحمّل من موقعنا مباشرة.</p>
+</div>
+<div class="card-foot">
 <div class="fwchip note" id="fwChip">… جاري قراءة حالة جهازك</div>
 
 <div class="arab-status st-run" id="arabStatus">
@@ -130,6 +156,7 @@ h2{border-bottom-color:rgba(212,175,55,.3)}
 
 <div class="retryrow" id="retryRow">
 <a class="retrybtn" href="index.html">🔄 إعادة المحاولة — تحديث الصفحة والبدء من الأول</a>
+</div>
 </div>
 </div>
 
@@ -174,6 +201,11 @@ h2{border-bottom-color:rgba(212,175,55,.3)}
 </div>
 <p style="margin:10px 0 8px">الرقم ده هو <b>الـ DNS الموصى بيه من مطورين الاستغلال</b> — بيعمل حاجتين في نفس الوقت: <b>بيحجب سيرفرات تحديث سوني</b> على الـ PS5 (فالتحديث بيبوظ عنك حتى لو مش مفعّل الإعداد التلقائي)، وبيسيب باقي الإنترنت شغال عادي — يعني تقدر تلعب أونلاين وتنزّل وانت مطمّن.</p>
 <p style="margin:0"><b>ضبطه على PS5 (مرة واحدة):</b> <b>الإعدادات ← الشبكة ← الإعدادات ← إعداد اتصال الإنترنت</b> — اختار اتصالك (Wi-Fi أو الكابل) ← زر <b>خيارات</b> ← <b>الإعدادات المتقدمة</b> ← <b>إعدادات DNS</b> ← <b>يدوي (Manual)</b> ← في خانة <b>Primary DNS</b> اكتب: <code>45.56.67.85</code> — وخانة <b>Secondary DNS</b> سيبها فاضية. كمّل باقي الإعدادات زي ما هي (تلقائي) واعمل <b>اختبار الاتصال</b>.</p>
+
+<h3>الدليل المصوّر — 12 خطوة بالصور 📷</h3>
+<p style="margin:4px 0 0">كل خطوة عنوانها بالعربي وتحتها لقطة حقيقية من قوائم بلايستيشن والاختيار الصح متحدد فيها <b>بمربع أحمر</b> — نفس الترتيب والفكرة بالظبط اللي مكتوبة فوق: إعدادات الشبكة ← إعداد اتصال الإنترنت ← الإعدادات المتقدمة ← إعدادات DNS ← يدوي ← اكتب الرقم. 💡 <b>نصيحة:</b> افتح الصفحة دي من <b>موبايلك</b> وانت بتطبّق على الـ PS5 — و<b>دوس على الصورة</b> عشان تفتح بحجمها الكامل وتقرا كل خطوة بوضوح تام.</p>
+<div class="guideframe"><a href="../tools/dns-block/dns-guide.jpg" target="_blank"><img src="../tools/dns-block/dns-guide.jpg" alt="دليل مصوّر من 12 خطوة لضبط الـ DNS على بلايستيشن: الإعدادات ثم الشبكة ثم إعداد اتصال الإنترنت ثم اختيار الاتصال ثم الإعدادات المتقدمة ثم إعدادات DNS يدوي مع كتابة رقم الـ Primary DNS وترك الـ Secondary DNS فاضي ثم باقي الإعدادات تلقائي ثم اختبار الاتصال — على PS5 الرقم المطلوب 45.56.67.85" width="1070" height="978"></a></div>
+<p class="guidecap">⚠️ <b>ملاحظة مهمة لـ PS5:</b> آخر مربع في الدليل المصوّر بيعرض رقم DNS بتاع أجهزة الـ <b>PS4</b> — <b>انت على الـ PS5 اكتب رقمنا الحاجز: 45.56.67.85</b> في خانة Primary DNS وخانة Secondary DNS سيبها فاضية — باقي الخطوات والترتيب زي ما هي بالظبط. دوس على الصورة لفتحها بحجمها الكامل.</p>
 </div>
 
 <!-- ============ الخطوة 3: التشغيل ============ -->

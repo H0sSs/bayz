@@ -1,0 +1,90 @@
+name: Sync Relapse (PS5)
+
+# مزامنة تلقائية لاستغلال Relapse من المصدر الرسمي إلى ps5/ مباشرة (بدون مسار فرعي)
+# التشغيل: مجدول كل 6 ساعات + زر تشغيل فوري من صفحة Actions (Run workflow)
+#
+# الأمان على 3 طبقات:
+#   1) عقود الملفات + عقود السلوك (watchR2 + loadOptionalPayloads + البيلودات):
+#      لو المصدر شطبها (زي ما حصل 2026-09-30) المزامنة بتقف بكود 3/5
+#      والـ workflow يكمّل عادي — الموقع يفضل شغال على النسخة الكاملة المثبتة.
+#   2) بوابة qa_check.py: أي تحديث لازم يعدي بصفر أخطاء قبل أي commit.
+#   3) صفحة التفعيل العربية ps5/index.html محمية — السكريبت بحدّث ملفات
+#      المصدر فقط (src/ offsets/ payloads/) ومش بيلمس صفحتنا أبدًا.
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # كل 6 ساعات (UTC): 00:00 / 06:00 / 12:00 / 18:00
+  workflow_dispatch:          # تشغيل يدوي فوري بإيدك
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: sync-relapse
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Setup Node (لسكربتات QA)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Sync Relapse from upstream (بعقود سلوك حامية)
+        run: |
+          set +e
+          python3 scripts/sync_relapse.py --repo "$GITHUB_WORKSPACE"
+          rc=$?
+          if [ "$rc" -eq 3 ] || [ "$rc" -eq 5 ]; then
+            echo "UPSTREAM_DRIFT=1" >> "$GITHUB_ENV"
+            echo "⚠ انحراف المصدر (كود $rc): آلية الجيلبريك الكامل اتغيرت/شُطبت في المصدر."
+            echo "⚠ المزامنة اتوقفت عمدًا — الموقع هيفضل على النسخة الكاملة المثبتة."
+            echo "⚠ محتاج مراجعة يدوية وتحديث ps5/index.html قبل قبول السلوك الجديد."
+            exit 0
+          elif [ "$rc" -ne 0 ]; then
+            exit $rc
+          fi
+
+      - name: QA gate (صفر أخطاء قبل أي commit)
+        run: python3 scripts/qa_check.py
+        env:
+          BAYZ_REPO: ${{ github.workspace }}
+
+      - name: Commit and push (لو في تحديثات متوافقة)
+        if: env.UPSTREAM_DRIFT != '1'
+        run: |
+          git config user.name "bayz-sync-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ps5/
+          if git diff --cached --quiet; then
+            echo "مفيش تغييرات متوافقة من المصدر — ولا commit."
+          else
+            git commit -m "sync(ps5): تحديث Relapse من المصدر الرسمي — اجتاز QA وعقود السلوك"
+            git push
+            echo "تم المزامنة والرفع — طلب إعادة بناء GitHub Pages…"
+            curl -sS -X POST \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: Bearer $GITHUB_TOKEN" \
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds" || true
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notice (انحراف المصدر — مفيش تغييرات)
+        if: env.UPSTREAM_DRIFT == '1'
+        run: |
+          echo "⚠⚠⚠ انحراف المصدر اتحقق — محدش اتلمس والموقع زي ما هو. ⚠⚠⚠"
+          echo "راجع سجل خطوة Sync فوق عشان تعرف إيه اللي اتغير بالظبط."

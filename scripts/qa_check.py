@@ -870,6 +870,69 @@ if all(n in _sr5 for n in ["BEHAVIOR_CONTRACTS", "watchR2", "loadOptionalPayload
     passed.append("سكريبت المزامنة: يستهدف ps5/ مباشرة + بيحمي صفحتنا + واقف عند عقود السلوك (بيقف لو المصدر شطب آلية R2) ✓")
 
 
+# ---------- 5.14) فحص Task 24: كارت تشغيل الاستغلال (تصميم كروت PS4) + الدليل المصوّر 12 خطوة جوه صفحة PS5 ----------
+# أ) عقود الكارت: نفس عناصر كروت PS4 في صفحة الهبوط (رأس + تاج + نطاق + شيبس + زر التفعيل جوه الكارت)
+_card24_need = ['class="jbcard"', 'class="card-head"', 'class="card-tag"', 'class="card-range"',
+                'class="card-body"', 'class="card-action"', 'class="card-foot"',
+                'id="jbStart"', "runbtn", "Relapse", "etaHEN"]
+for _n in _card24_need:
+    if _n not in ps5_page:
+        errors.append(f"[PS5-كارت] كارت التفعيل ناقص عنصر: '{_n}'")
+if all(n in ps5_page for n in _card24_need):
+    passed.append("كارت تشغيل الاستغلال (رأس + شيبس + زر تفعيل) بنفس عناصر كروت PS4 في أول صفحة PS5 ✓")
+if ps5_page.count('<span class="chip">') < 3:
+    errors.append("[PS5-كارت] الكارت لازم يبقى فيه 3 شيبس على الأقل (زي كروت الهبوط)!")
+else:
+    _nchips = ps5_page.count('<span class="chip">')
+    passed.append("شيبس الكارت موجودة (" + str(_nchips) + " شيب — زي كروت الهبوط) ✓")
+# ب) الترتيب: الكارت أول عنصر في الصفحة قبل كل الأقسام (زر التفعيل ظاهر من غير سكرول — أمر صاحب الموقع)
+_o_card = ps5_page.find('id="jbStart"')
+_o_r2sec = ps5_page.find("أثناء التشغيل")
+_o_s1 = ps5_page.find("الخطوة 1")
+_o_dns = ps5_page.find('id="copyDns"')
+_o_guide = ps5_page.find("../tools/dns-block/dns-guide.jpg")
+if -1 in (_o_card, _o_r2sec, _o_s1, _o_dns, _o_guide) or not (_o_card < _o_r2sec and _o_card < _o_s1 and _o_card < _o_dns):
+    errors.append("[PS5-كارت] كارت التفعيل لازم يبقى أول عنصر في الصفحة قبل كل الأقسام!")
+else:
+    passed.append("الكارت أول الصفحة قبل كل الأقسام — زر التفعيل ظاهر من غير سكرول ✓")
+# ج) الدليل المصوّر 12 خطوة جوه قسم DNS (الخطوة 2) — من مسارنا tools/dns-block بدون نسخ مكررة
+if "dns-guide.jpg" not in ps5_page:
+    errors.append("[PS5-دليل] الدليل المصوّر 12 خطوة ناقص من قسم DNS في صفحة PS5 (أمر صاحب الموقع)!")
+else:
+    if "../tools/dns-block/dns-guide.jpg" not in ps5_page:
+        errors.append("[PS5-دليل] الدليل المصوّر لازم ييجي من مسارنا المشترك tools/dns-block/dns-guide.jpg (مش نسخة جوه ps5/)!")
+    if "guideframe" not in ps5_page or "guidecap" not in ps5_page or "12 خطوة" not in ps5_page:
+        errors.append("[PS5-دليل] الدليل المصوّر ناقص عناصره (guideframe + guidecap + عنوان 12 خطوة)!")
+    if _o_dns == -1 or _o_guide < _o_dns:
+        errors.append("[PS5-دليل] الدليل المصوّر لازم يبقى جوه قسم DNS بعد رقم الـ DNS (الخطوة 2)!")
+    if not ("دوس على الصورة" in ps5_page and 'width="1070"' in ps5_page and 'height="978"' in ps5_page):
+        errors.append("[PS5-دليل] الدليل المصوّر لازم يبقى قابل للفتح بالحجم الكامل (دوس على الصورة) بأبعاد 1070x978!")
+    if all(x in ps5_page for x in ["../tools/dns-block/dns-guide.jpg", "guideframe", "guidecap", "12 خطوة", "دوس على الصورة", 'width="1070"', 'height="978"']) and _o_guide > _o_dns:
+        passed.append("الدليل المصوّر (12 خطوة / 1070x978) جوه قسم DNS — بنفس صورة الدليل الرسمية المشتركة من tools/ من غير نسخ مكررة ✓")
+# د) تحذير الرقم: رقم آخر مربع في الدليل بتاع PS4 — على PS5 يتكتب 45.56.67.85
+_cap24 = ps5_page.find('class="guidecap"')
+if _cap24 == -1 or "45.56.67.85" not in ps5_page[_cap24:_cap24 + 1200] or "PS4" not in ps5_page[_cap24:_cap24 + 1200]:
+    errors.append("[PS5-دليل] لازم تحذير واضح تحت الدليل المصوّر: رقم الدليل بتاع PS4 — على PS5 اكتب 45.56.67.85!")
+else:
+    passed.append("تحذير الرقم موجود تحت الدليل المصوّر (رقم الصورة بتاع PS4 — والـ PS5 يكتب 45.56.67.85) ✓")
+# هـ) ممنوع نسخ الصورة جوه ps5/ (بتفضل في tools/dns-block — المانيفست بيمنع الملفات الزيادة)
+if os.path.exists("ps5/dns-guide.jpg"):
+    errors.append("[PS5-دليل] ممنوع نسخ dns-guide.jpg جوه ps5/ — الصورة بتفضل في tools/dns-block/ (ملف واحد مشترك)!")
+else:
+    passed.append("صورة الدليل مش متنسوخة جوه ps5/ (محمية عقود المانيفست) — بتتحمّل من tools/dns-block المشتركة ✓")
+# و) الـ IDs الوظيفية كلها سليمة جوه الكارت (الـ JS شغال من غير تغيير)
+for _id24 in ['id="fwChip"', 'id="arabStatus"', 'id="asMain"', 'id="asSub"', 'id="console"', 'id="consoleWrap"', 'id="retryRow"']:
+    if _id24 not in ps5_page:
+        errors.append(f"[PS5-كارت] ID وظيفي ناقص من الكارت (الـ JS بيعتمد عليه): {_id24}")
+if all(x in ps5_page for x in ['id="fwChip"', 'id="arabStatus"', 'id="asMain"', 'id="asSub"', 'id="console"', 'id="consoleWrap"', 'id="retryRow"']):
+    passed.append("كل الـ IDs الوظيفية (الحالة + السجل + إعادة المحاولة) سليمة جوه الكارت — الـ JS من غير أي تغيير ✓")
+# ز) CSS الكارت + الدليل موجودين
+if ".jbcard" not in ps5_page or ".jbcard .card-head" not in ps5_page or ".guideframe" not in ps5_page:
+    errors.append("[PS5-كارت] CSS الكارت (.jbcard .card-head) أو الدليل (.guideframe) ناقص من الصفحة!")
+else:
+    passed.append("CSS الكارت (jbcard) + CSS الدليل المصوّر (guideframe) متسجلين في الصفحة ✓")
+
+
 # ---------- النتيجة ----------
 print()
 print("=" * 60)
