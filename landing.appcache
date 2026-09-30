@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 20260930-landing-v14-ps5
+# rev 20260930-landing-v15-freshps5
 
 CACHE:
 index.html
@@ -11,7 +11,6 @@ tools/pkg-backup/config.cfg
 tools/itemzflow/index.html
 tools/dns-block/index.html
 tools/dns-block/dns-guide.jpg
-ps5/index.html
 tools/shutdown-fix/index.html
 tools/rpi/index.html
 tools/goldhen-plugins/index.html

@@ -559,7 +559,7 @@ for name, body in [("landing.appcache", ac_landing), ("7-13/host.appcache", ac_h
         passed.append(f"صفحة الحل مسجلة في الكاش: {name} ✓")
     else:
         errors.append(f"[CACHE] {name}: صفحة الحل مش مسجلة — الأوفلاين هيكسر!")
-if "landing-v14-ps5" in ac_landing and "golden-v10" in ac_aio and "7-13-v9-golden" in ac_host:
+if "landing-v15-freshps5" in ac_landing and "golden-v10" in ac_aio and "7-13-v9-golden" in ac_host:
     passed.append("مراجعات الكاشات التلاتة اترفعت (rev bump) ✓")
 else:
     errors.append("[CACHE] واحد أو أكتر من rev bumps ناقص!")
@@ -714,19 +714,29 @@ if 'target="_blank" rel="noopener"' in sd_page:
     passed.append("الروابط الخارجية بـ rel=noopener ✓")
 
 
-# ---------- 5.13) فحص Task 22: قسم PS5 (Relapse) — استضافة محلية + مزامنة تلقائية ----------
+# ---------- 5.13) فحص Task 23: قسم PS5 (Relapse) — صفحة تفعيل عربية موحدة جوه ps5/ مباشرة + مزامنة بعقود سلوك ----------
 ps5_page = open("ps5/index.html", encoding="utf-8").read()
-# أ) عقود المحتوى الأساسية لصفحة الدليل العربية
+# أ) عقود المحتوى الأساسية للصفحة العربية الموحدة (دليل + تفعيل في صفحة واحدة)
 for need in ["Relapse", "PS5", "7.00", "13.60", "45.56.67.85", "copyDns", "copyUrl",
-             "h0sss.github.io/bayz", "https://h0sss.github.io/bayz", "relapse/", "R2", "9021",
+             "h0sss.github.io/bayz/ps5/", "https://h0sss.github.io/bayz/ps5/", "R2", "9021",
              "elfldr", "etaHEN", "kstuff", "shadowmountplus", "الخطوة 1", "الخطوة 2", "الخطوة 3",
-             "هوية الدراع الذهبية v3", "runbtn", "45.56.67.85'", "دليل المستخدم", "Guide &amp; Tips",
-             "بيحجب سيرفرات تحديث سوني", "الجيلبريك مؤقت مش دائم"]:
+             "هوية الدراع الذهبية v3", "runbtn", "دليل المستخدم", "Guide &amp; Tips",
+             "بيحجب سيرفرات تحديث سوني", "الجيلبريك مؤقت مش دائم",
+             'id="jbStart"', 'id="arabStatus"', 'id="console"', 'id="fwChip"',
+             "src/firmware.js", "src/site.js", "src/utils/syscalls.js",
+             "MutationObserver", "s.type = \"module\""]:
     if need not in ps5_page:
         errors.append(f"[PS5] صفحة PS5 ناقصة: '{need}'")
-if all(n in ps5_page for n in ["Relapse", "45.56.67.85", "copyDns", "copyUrl", "R2", "etaHEN", "9021"]):
-    passed.append("صفحة PS5: Relapse + DNS + نسخ الرقم/الرابط + خطوة R2 + بورت 9021 كاملة ✓")
-# ب) صفر روابط خارجية في صفحة PS5 (أمر المستخدم — رابطنا فقط)
+if all(n in ps5_page for n in ['id="jbStart"', "runbtn", 'id="console"', 'id="arabStatus"', "src/site.js"]):
+    passed.append("زر تفعيل الجيلبريك في أول الصفحة (jbStart) + شريط الحالة العربي + السجل التقني متصلين بكود الاستغلال (src/site.js) ✓")
+# ب) المسار الموحد: ملفات الاستغلال جوه ps5/ مباشرة (أمر صاحب الموقع — إلغاء مسار relapse/)
+if "relapse/" in ps5_page:
+    errors.append("[PS5] ممنوع مسار relapse/ في صفحة PS5 — الملفات جوه ps5/ مباشرة (أمر صاحب الموقع)!")
+if os.path.isdir("ps5/relapse"):
+    errors.append("[PS5] المجلد القديم ps5/relapse/ لسه موجود — الملفات لازم تبقى جوه ps5/ مباشرة!")
+if not os.path.isdir("ps5/relapse") and "relapse/" not in ps5_page:
+    passed.append("مسار relapse/ اتلغى — ملفات الاستغلال جوه ps5/ مباشرة + الرابط الموحد h0sss.github.io/bayz/ps5/ ✓")
+# ج) صفر روابط خارجية في صفحة PS5 (أمر المستخدم — رابطنا فقط)
 if "ntfargo" in ps5_page:
     errors.append("[PS5] ممنوع ذكر المصدر الخارجي (ntfargo) في صفحة PS5 — أمر المستخدم: رابطنا فقط!")
 if "github.com" in ps5_page:
@@ -736,8 +746,17 @@ if _ext5:
     errors.append(f"[PS5] روابط خارجية ممنوعة في صفحة PS5: {_ext5[:3]}")
 if "ntfargo" not in ps5_page and "github.com" not in ps5_page and not _ext5:
     passed.append("صفر روابط خارجية في صفحة PS5 — رابطنا فقط (أمر المستخدم) ✓")
-# ج) تكامل ملفات الاستغلال مع المانيفست (نسخة حرفية بايت-بايت من المصدر)
-import hashlib as _h22
+# د) عقود السلوك: آلية R2 + إرسال البيلودات لازم تفضل موجودة (النسخة الكاملة المثبتة)
+_main5 = open("ps5/src/main.js", encoding="utf-8").read()
+if "watchR2" not in _main5:
+    errors.append("[PS5] آلية R2 مش موجودة في ps5/src/main.js — النسخة الكاملة المثبتة اتكسرت!")
+_kexp5 = open("ps5/src/kexp.js", encoding="utf-8").read()
+if "loadOptionalPayloads" not in _kexp5:
+    errors.append("[PS5] آلية إرسال البيلودات (loadOptionalPayloads) مش موجودة في ps5/src/kexp.js — النسخة المثبتة اتكسرت!")
+if "watchR2" in _main5 and "loadOptionalPayloads" in _kexp5:
+    passed.append("عقود السلوك سليمة: آلية R2 + إرسال البيلودات (kstuff ← shadowmountplus ← etaHEN) موجودة في كود الاستغلال ✓")
+# هـ) تكامل ملفات الاستغلال مع المانيفست (نسخة حرفية بايت-بايت من المصدر — جوه ps5/ مباشرة)
+import hashlib as _h23
 _mf5 = "ps5/relapse-sync.json"
 if not os.path.exists(_mf5):
     errors.append("[PS5] ps5/relapse-sync.json (مانيفست التكامل) مش موجود!")
@@ -745,23 +764,28 @@ else:
     _mfdata = json.load(open(_mf5, encoding="utf-8"))
     _bad5 = 0
     for rel, meta in _mfdata["files"].items():
-        p = os.path.join("ps5/relapse", rel)
+        p = os.path.join("ps5", rel)
         if not os.path.exists(p):
             errors.append(f"[PS5] ملف استغلال ناقص: {rel}"); _bad5 += 1; continue
-        if os.path.getsize(p) != meta["size"] or _h22.sha256(open(p, "rb").read()).hexdigest() != meta["sha256"]:
+        if os.path.getsize(p) != meta["size"] or _h23.sha256(open(p, "rb").read()).hexdigest() != meta["sha256"]:
             errors.append(f"[PS5] تكامل مكسور (مش مطابق للمانيفست): {rel}"); _bad5 += 1
     if _bad5 == 0:
-        passed.append(f"تكامل Relapse: {len(_mfdata['files'])} ملف مطابق للمانيفست بايت-بايت ✓ ({_mfdata['total_bytes']/1048576:.2f}MB)")
-    _local5 = set()
-    for _dp, _dd, _fns in os.walk("ps5/relapse"):
-        for _fn in _fns:
-            _local5.add(os.path.relpath(os.path.join(_dp, _fn), "ps5/relapse").replace(os.sep, "/"))
-    _extra5 = _local5 - set(_mfdata["files"])
-    if _extra5:
-        errors.append(f"[PS5] ملفات زيادة في ps5/relapse مش موجودة في المصدر: {sorted(_extra5)[:5]}")
+        passed.append(f"تكامل Relapse: {len(_mfdata['files'])} ملف مطابق للمانيفست بايت-بايت جوه ps5/ ✓ ({_mfdata['total_bytes']/1048576:.2f}MB)")
+    if "jbStart" not in ps5_page:
+        errors.append("[PS5] صفحة التفعيل العربية الموحدة (ps5/index.html) ناقصة أو مش صفحتنا!")
     else:
-        passed.append("صفر تعديلات يدوية في مجلد الاستغلال (مطابق للمصدر حرفيًا) ✓")
-    _fw5 = open("ps5/relapse/src/firmware.js", encoding="utf-8").read()
+        passed.append("صفحة التفعيل العربية الموحدة موجودة ومستبدلة صفحة المصدر (محمية من المزامنة) ✓")
+    _our5 = {"index.html", "relapse-sync.json"}
+    _local5 = set()
+    for _dp, _dd, _fns in os.walk("ps5"):
+        for _fn in _fns:
+            _local5.add(os.path.relpath(os.path.join(_dp, _fn), "ps5").replace(os.sep, "/"))
+    _extra5 = _local5 - set(_mfdata["files"]) - _our5
+    if _extra5:
+        errors.append(f"[PS5] ملفات زيادة في ps5/ مش موجودة في المصدر ولا ملكنا: {sorted(_extra5)[:5]}")
+    else:
+        passed.append("صفر تعديلات يدوية في ملفات الاستغلال (مطابقة للمانيفست حرفيًا) ✓")
+    _fw5 = open("ps5/src/firmware.js", encoding="utf-8").read()
     for fw in ["13.60", "7.00", "PlayStation 5"]:
         if fw not in _fw5:
             errors.append(f"[PS5] firmware.js ناقصة إشارة أساسية: '{fw}'")
@@ -771,15 +795,15 @@ else:
                 "payloads/kstuff.elf": 500000, "payloads/elfldr-ps5-1360.elf": 100000}
     _pbad5 = False
     for _pp, _mn in _paymin5.items():
-        _sz = os.path.getsize(os.path.join("ps5/relapse", _pp))
+        _sz = os.path.getsize(os.path.join("ps5", _pp))
         if _sz < _mn:
             errors.append(f"[PS5] بيلود مشتبه (صغير جدًا — ممكن فاسد): {_pp} ({_sz}B)")
             _pbad5 = True
     if not _pbad5:
         passed.append("أحجام البيلودات الأربعة منطقية (etaHEN + shadowmountplus + kstuff + elfldr) ✓")
-    print(f"صفحة PS5 (ps5/index.html): {os.path.getsize('ps5/index.html')/1024:.1f} KB")
-    print(f"ملفات الاستغلال (ps5/relapse/): {_mfdata['file_count']} ملف / {_mfdata['total_bytes']/1048576:.2f} MB (خارج كاش الهبوط — للـ PS5 أونلاين)")
-# د) كارت PS5 في صفحة الهبوط (بعد كارت 13.02 — المركز الثالث في قسم الجيلبريك)
+    print(f"صفحة PS5 الموحدة (ps5/index.html): {os.path.getsize('ps5/index.html')/1024:.1f} KB")
+    print(f"ملفات الاستغلال (جوه ps5/ مباشرة): {len(_mfdata['files'])} ملف / {_mfdata['total_bytes']/1048576:.2f} MB — النسخة الكاملة المثبتة (شاملة آلية R2 والبيلودات)")
+# و) كارت PS5 في صفحة الهبوط (بعد كارت 13.02 — المركز الثالث في قسم الجيلبريك)
 if 'href="ps5/index.html"' in landing_idx:
     _p5 = landing_idx.find('href="ps5/index.html"')
     _p13 = landing_idx.find('href="13-13.52/index.html"')
@@ -796,30 +820,55 @@ if "Nathan Fargo" in landing_idx and "Relapse Team" in landing_idx:
     passed.append("شكرات فريق Relapse (Nathan Fargo) موجودة في فوتر الهبوط ✓")
 else:
     errors.append("[PS5] الفوتر ناقص شكرات فريق Relapse (Nathan Fargo & Relapse Team)!")
-# هـ) التسجيل في كاش الهبوط (الصفحة العربية فقط — من غير ملفات الاستغلال التقيلة)
-if "ps5/index.html" in ac_landing and "landing-v14-ps5" in ac_landing:
-    passed.append("صفحة PS5 مسجلة في كاش الهبوط + rev v14-ps5 ✓")
+# ز) صفحة التفعيل خارج كاش الهبوط عمدًا (صفحة حية بتتحمّل كل مرة من السيرفر — زي صفحة الاستغلال الأصلية)
+if "ps5/index.html" not in ac_landing and "landing-v15-freshps5" in ac_landing:
+    passed.append("صفحة تفعيل PS5 خارج كاش الهبوط (دايمًا طازجة) + rev v15-freshps5 ✓")
 else:
-    errors.append("[PS5] ps5/index.html مش مسجل في landing.appcache أو rev v14-ps5 ناقص!")
-if "ps5/relapse/" in ac_landing or "relapse-sync" in ac_landing:
-    errors.append("[PS5] ممنوع تسجيل ملفات الاستغلال (9.3MB) في كاش الهبوط — تقيلة على PS4 بلا فايدة!")
+    errors.append("[PS5] ps5/index.html لازم يفضل خارج landing.appcache (صفحة تفعيل حية) و rev v15-freshps5 مطلوب!")
+if "ps5/src" in ac_landing or "ps5/offsets" in ac_landing or "ps5/payloads" in ac_landing or "relapse-sync" in ac_landing or "ps5/relapse" in ac_landing:
+    errors.append("[PS5] ممنوع تسجيل ملفات الاستغلال (9.3MB) في كاش الهبوط — تقيلة بلا فايدة!")
 else:
-    passed.append("ملفات الاستغلال خارج كاش الهبوط (خفة PS4 + PS5 دايمًا أونلاين وقت الاستغلال) ✓")
-# و) أدوات التزامن التلقائي موجودة داخل الريبو (تشغيلها من GitHub Actions)
+    passed.append("ملفات الاستغلال خارج كاش الهبوط (خفة + الصفحة الحية دايمًا أونلاين وقت الاستغلال) ✓")
+# ح) أدوات التزامن التلقائي موجودة داخل الريبو (تشغيلها من GitHub Actions)
 for _f in ["scripts/sync_relapse.py", "scripts/qa_check.py", ".github/workflows/sync-relapse.yml"]:
     if not os.path.exists(_f):
         errors.append(f"[PS5] أداة التزامن/الجودة ناقصة من الريبو: {_f}")
 if all(os.path.exists(f) for f in ["scripts/sync_relapse.py", "scripts/qa_check.py", ".github/workflows/sync-relapse.yml"]):
     passed.append("أدوات التزامن التلقائي (sync_relapse.py + qa_check.py + workflow) موجودة في الريبو ✓")
-_wf5 = open(".github/workflows/sync-relapse.yml", encoding="utf-8").read() if os.path.exists(".github/workflows/sync-relapse.yml") else ""
-if "workflow_dispatch" in _wf5 and "schedule" in _wf5 and "cron" in _wf5:
-    passed.append("الـ workflow: جدولة كل 6 ساعات + زر تشغيل يدوي فوري (workflow_dispatch) ✓")
-else:
-    errors.append("[PS5] الـ workflow لازم يكون فيه schedule (cron) + workflow_dispatch!")
-if "BAYZ_REPO" not in _wf5:
-    errors.append("[PS5] الـ workflow لازم يمرر BAYZ_REPO لـ qa_check.py!")
-else:
-    passed.append("الـ workflow بيمرر BAYZ_REPO لبوابة الجودة ✓")
+    _wf5 = open(".github/workflows/sync-relapse.yml", encoding="utf-8").read()
+    if "workflow_dispatch" in _wf5 and "schedule" in _wf5 and "cron" in _wf5:
+        passed.append("الـ workflow: جدولة كل 6 ساعات + زر تشغيل يدوي فوري (workflow_dispatch) ✓")
+    else:
+        errors.append("[PS5] الـ workflow لازم يكون فيه schedule (cron) + workflow_dispatch!")
+    if "BAYZ_REPO" not in _wf5:
+        errors.append("[PS5] الـ workflow لازم يمرر BAYZ_REPO لـ qa_check.py!")
+    else:
+        passed.append("الـ workflow بيمرر BAYZ_REPO لبوابة الجودة ✓")
+    if "pages/builds" in _wf5:
+        passed.append("الـ workflow بطلب إعادة بناء GitHub Pages بعد كل مزامنة ✓")
+    else:
+        errors.append("[PS5] الـ workflow لازم يطلب إعادة بناء Pages بعد الدفع!")
+    if "UPSTREAM_DRIFT" in _wf5:
+        passed.append("الـ workflow بيتعامل مع انحراف المصدر بأمان (وقف المزامنة بدون كسر الموقع) ✓")
+    else:
+        errors.append("[PS5] الـ workflow لازم يتعامل مع أكواد الانحراف (3/5) بوقف آمن!")
+    # تحذير لو الـ workflow مش متتبع في git (الـ PAT وقت v3.4 كان ناقص scope الـ workflows)
+    try:
+        _tr5 = subprocess.run(["git", "ls-files", "--error-unmatch", ".github/workflows/sync-relapse.yml"], capture_output=True, text=True)
+        if _tr5.returncode != 0:
+            warnings.append("[PS5] ملف الـ workflow موجود على القرص بس مش متسجل في git — محتاج PAT بصلاحية workflows أو إنشاؤه من واجهة GitHub (زي حالة v3.4)")
+    except Exception:
+        pass
+# ط) سكريبت المزامنة نفسه: يستهدف ps5/ مباشرة + يحمي صفحتنا + محمي بعقود السلوك
+_sr5 = open("scripts/sync_relapse.py", encoding="utf-8").read()
+if 'os.path.join(args.repo, "ps5")' not in _sr5:
+    errors.append("[PS5] sync_relapse.py لازم يستهدف ps5/ مباشرة (بدون مجلد فرعي)!")
+for _need5 in ["index.html", "relapse-sync.json", "watchR2", "loadOptionalPayloads", "BEHAVIOR_CONTRACTS"]:
+    if _need5 not in _sr5:
+        errors.append(f"[PS5] sync_relapse.py ناقص عنصر حماية: {_need5}")
+if all(n in _sr5 for n in ["BEHAVIOR_CONTRACTS", "watchR2", "loadOptionalPayloads", "index.html", "relapse-sync.json"]) and 'os.path.join(args.repo, "ps5")' in _sr5:
+    passed.append("سكريبت المزامنة: يستهدف ps5/ مباشرة + بيحمي صفحتنا + واقف عند عقود السلوك (بيقف لو المصدر شطب آلية R2) ✓")
+
 
 # ---------- النتيجة ----------
 print()

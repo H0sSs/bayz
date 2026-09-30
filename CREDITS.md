@@ -13,8 +13,8 @@
 
 ## قسم PS5 — Relapse
 
-- **Relapse Exploit (PS5 7.00 – 13.60)** — Nathan Fargo (ntfargo) ومعه ufm42 و Sonic-Iso و Jordy و Dr. Yenyen و TheFlow و SlidyBat و flat_z و cow و nhk و bollarz و Sleirsgoevy و EchoStretch و EarthOnion — https://github.com/ntfargo/Relapse-Exploit (رخصة **MIT**) — الاستغلال كامل (كود + 33 ملف offsets + بيلودات **etaHEN** و **shadowmountplus** و **kstuff** و **elfldr**) محفوظ **حرفيًا بايت-بايت** في `ps5/relapse/` من غير أي تعديل، مع مانيفست تكامل SHA256 لكل ملف في `ps5/relapse-sync.json`، والمزامنة التلقائية من المصدر عبر `.github/workflows/sync-relapse.yml` (كل 6 ساعات + تشغيل يدوي فوري)
-- **رقم DNS الموصى به للـ PS5 (45.56.67.85)** — الرقم الرسمي المذكور في مستودع Relapse (حجب تحديثات سوني + إتاحة متصفح الدليل) — مستخدم في صفحة الدليل العربية `ps5/index.html`
+- **Relapse Exploit (PS5 7.00 – 13.60)** — Nathan Fargo (ntfargo) ومعه ufm42 و Sonic-Iso و Jordy و Dr. Yenyen و TheFlow و SlidyBat و flat_z و cow و nhk و bollarz و Sleirsgoevy و EchoStretch و EarthOnion — https://github.com/ntfargo/Relapse-Exploit (رخصة **MIT**) — الاستغلال كامل (كود + 33 ملف offsets + بيلودات **etaHEN** و **shadowmountplus** و **kstuff** و **elfldr**) محفوظ **حرفيًا بايت-بايت** **جوه `ps5/` مباشرة** من غير أي تعديل، مع مانيفست تكامل SHA256 لكل ملف في `ps5/relapse-sync.json` — صفحة التفعيل العربية الموحدة `ps5/index.html` من صنعنا بتستبدل صفحة المصدر الإنجليزية (محمية من المزامنة) — والمزامنة التلقائية من المصدر عبر `.github/workflows/sync-relapse.yml` (كل 6 ساعات + تشغيل يدوي فوري) واقفة عند عقود سلوك بتمنع شطب آلية البيلودات
+- **رقم DNS الموصى به للـ PS5 (45.56.67.85)** — الرقم الرسمي المذكور في مستودع Relapse (حجب تحديثات سوني + إتاحة متصفح الدليل) — مستخدم في صفحة التفعيل العربية الموحدة `ps5/index.html`
 
 ## Payloads
 

@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>جيلبريك PS5 — Relapse من 7.00 إلى 13.60 | الدراع بايظ</title>
 <link rel="icon" type="image/png" href="../logo.png">
 <style>
@@ -13,7 +14,7 @@ main{width:min(94%,880px);margin:0 auto;padding:20px 0 34px}
 h1{color:var(--gold);font-size:clamp(24px,4.5vw,36px);margin:6px 0 2px}
 h2{color:var(--gold);font-size:22px;margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
 h3{color:var(--gold2);font-size:17px;margin:18px 0 6px}
-.sub{color:var(--muted);margin:0 0 10px}
+.sub{color:var(--muted);margin:0 0 8px}
 .page-topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;background:#0e1116;border-bottom:1px solid var(--line);padding:9px 14px}
 .page-topbar .back-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:800;border-radius:9px;padding:9px 22px;font-size:15px;letter-spacing:.5px;box-shadow:0 2px 10px rgba(212,175,55,.3);white-space:nowrap}
 .page-topbar .back-btn:hover{filter:brightness(1.08)}
@@ -35,11 +36,59 @@ li{margin:9px 0}
 .copybtn{background:#233024;border:1px solid #315b45;color:var(--ok);border-radius:7px;padding:5px 14px;font-size:13px;cursor:pointer;margin-inline-start:8px}
 .copybtn:hover{filter:brightness(1.15)}
 .dnsbox{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;direction:ltr;background:#0b0d10;border:1px solid #315b45;border-radius:12px;padding:14px 10px;margin:8px 0}
-.bigip{font-size:28px;font-weight:900;color:#e8d090;background:transparent;border:none;padding:0;letter-spacing:1px}
-.runbtn{display:block;width:100%;text-align:center;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:900;border-radius:12px;padding:16px 20px;font-size:19px;margin:14px 0 6px;box-shadow:0 4px 0 #6e5317,0 12px 26px rgba(212,175,55,.28)}
+.bigip{font-size:26px;font-weight:900;color:#e8d090;background:transparent;border:none;padding:0;letter-spacing:1px}
+.runbtn{display:block;width:100%;border:none;cursor:pointer;font-family:inherit;text-align:center;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;font-weight:900;border-radius:14px;padding:18px 20px;font-size:22px;margin:10px 0 6px;box-shadow:0 5px 0 #6e5317,0 14px 30px rgba(212,175,55,.35);transition:filter .15s}
 .runbtn:hover{filter:brightness(1.07)}
-.runbtn:active{transform:translateY(3px);box-shadow:0 1px 0 #6e5317,0 5px 12px rgba(212,175,55,.2)}
+.runbtn:active{transform:translateY(3px);box-shadow:0 2px 0 #6e5317,0 6px 14px rgba(212,175,55,.25)}
+.runbtn:disabled{cursor:default;filter:saturate(.55) brightness(.92);transform:none}
+@keyframes goldpulse{0%,100%{box-shadow:0 5px 0 #6e5317,0 14px 30px rgba(212,175,55,.35)}50%{box-shadow:0 5px 0 #6e5317,0 14px 40px rgba(212,175,55,.65)}}
+#jbStart:not(:disabled){animation:goldpulse 2.4s ease-in-out infinite}
 .paybox{display:inline-block;background:#0b0d10;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:4px 2px;color:#e8d090;font-size:14px;direction:ltr}
+
+/* ===== صندوق التفعيل (أول الصفحة) ===== */
+.hero{margin:10px 0;border-color:rgba(212,175,55,.55);border-width:2px;box-shadow:0 14px 40px rgba(0,0,0,.45),0 0 26px rgba(212,175,55,.12);text-align:center}
+.hero .herotag{display:inline-block;background:rgba(212,175,55,.14);border:1px solid rgba(212,175,55,.45);color:var(--gold2);border-radius:99px;padding:3px 16px;font-size:12.5px;font-weight:700;letter-spacing:.5px;margin:0 0 10px}
+.fwchip{display:block;border-radius:99px;padding:6px 16px;font-size:13.5px;font-weight:700;margin:8px auto 4px;border:1px solid;max-width:100%;line-height:1.6}
+.fwchip.ok{background:#14261c;border-color:#315b45;color:var(--ok)}
+.fwchip.warn{background:#262014;border-color:#6e5a2a;color:var(--warn)}
+.fwchip.note{background:#131a24;border-color:#2b3542;color:var(--muted)}
+.hint{color:var(--muted);font-size:13.5px;margin:8px auto 0;max-width:560px;line-height:1.7}
+
+/* ===== شريط الحالة العربي ===== */
+.arab-status{display:none;margin:14px 0 0;border-radius:12px;padding:13px 16px;border:1px solid;direction:rtl;text-align:right}
+.arab-status .as-main{font-size:16.5px;font-weight:800;line-height:1.7}
+.arab-status .as-sub{display:none;direction:ltr;text-align:left;font:12.5px/1.5 Consolas,Menlo,monospace;color:var(--muted);margin-top:7px;word-break:break-all;border-top:1px dashed rgba(170,180,192,.25);padding-top:6px}
+.arab-status.st-run{background:rgba(212,175,55,.10);border-color:rgba(212,175,55,.55)}
+.arab-status.st-run .as-main{color:var(--gold2)}
+.arab-status.st-ok{background:rgba(127,208,160,.10);border-color:#315b45}
+.arab-status.st-ok .as-main{color:var(--ok)}
+.arab-status.st-r2{background:rgba(212,175,55,.16);border-color:var(--gold)}
+.arab-status.st-r2 .as-main{color:var(--gold2);font-size:19px}
+@keyframes r2pulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.45)}50%{box-shadow:0 0 0 10px rgba(212,175,55,0)}}
+.arab-status.st-r2{animation:r2pulse 1.4s ease-out infinite}
+.arab-status.st-win{background:rgba(127,208,160,.16);border-color:#7fd0a0}
+.arab-status.st-win .as-main{color:#a8e8c2;font-size:19px}
+.arab-status.st-bad{background:rgba(224,138,127,.10);border-color:#8a4a42}
+.arab-status.st-bad .as-main{color:var(--bad)}
+.arab-status.st-warn{background:rgba(224,199,123,.10);border-color:#6e5a2a}
+.arab-status.st-warn .as-main{color:var(--warn)}
+
+/* ===== السجل التقني ===== */
+.consolewrap{display:none;margin:12px 0 0;background:#05070a;border:1px solid rgba(212,175,55,.35);border-radius:12px;overflow:hidden}
+.consolehead{padding:8px 14px;background:rgba(212,175,55,.09);color:var(--gold2);font-size:13px;font-weight:700;border-bottom:1px solid rgba(212,175,55,.25)}
+#console{direction:ltr;text-align:left;font:13px/1.55 Consolas,Menlo,monospace;color:#b8c4d0;background:#05070a;padding:10px 14px;height:240px;overflow-y:auto;word-break:break-all}
+#console div{margin:1px 0;white-space:pre-wrap}
+#console .ln-err{color:#e08a7f}
+#console .ln-ok{color:#8fd8a8}
+#console .ln-info{color:#e8d090}
+.retryrow{display:none;margin:14px 0 0;text-align:center}
+.retrybtn{display:inline-flex;align-items:center;gap:8px;background:#131a24;border:1px solid #2b3542;color:#d6dee8;text-decoration:none;font-weight:800;border-radius:10px;padding:10px 22px;font-size:14.5px}
+.retrybtn:hover{filter:brightness(1.2);border-color:rgba(212,175,55,.5)}
+
+/* ===== قائمة الرسائل المتوقعة ===== */
+.legend{list-style:none;padding-right:0;margin:10px 0 0}
+.legend li{padding:7px 12px;margin:6px 0;background:#0b0d10;border:1px solid var(--line);border-radius:9px;line-height:1.9}
+.legend code{background:transparent;border:none;padding:0;font-size:13px}
 
 /* ===== هوية الدراع الذهبية v3 (طبقة توحيد فوق الأساس — CSS فقط) ===== */
 body{background:radial-gradient(ellipse 900px 420px at 50% -160px,rgba(212,175,55,.14),rgba(212,175,55,0) 70%),linear-gradient(165deg,#06080b 0%,#0b0d10 55%,#181006 100%);background-repeat:no-repeat;background-color:#0b0d10}
@@ -60,7 +109,49 @@ h2{border-bottom-color:rgba(212,175,55,.3)}
 </nav>
 <main>
 <h1>🔓 جيلبريك PS5 — Relapse</h1>
-<p class="sub">استغلال كامل من متصفح الجهاز — بيلعب في دقايق من غير أي انتظار طويل، وبيركّب بيئة الجيلبريك (etaHEN) زي GoldHEN بس للـ PS5</p>
+<p class="sub">استغلال كامل من متصفح الجهاز — من 7.00 إلى 13.60 — زر التفعيل بتاعه في أول الصفحة دي</p>
+
+<!-- ============ زر تفعيل الجيلبريك (أول الصفحة) ============ -->
+<div class="box hero" id="hero">
+<span class="herotag">⚡ التفعيل المباشر — من غير خروج من الصفحة</span>
+<button class="runbtn" id="jbStart" type="button">🚀 فعّل الجيلبريك الآن</button>
+<p class="hint">الزر ده مخصوص للضغط من متصفح الـ PS5 نفسه بعد ما تفتح الرابط بتاعنا عليه — بيبدأ سلسلة الاستغلال كاملة (متصفح ← كيرنل ← بيلودات etaHEN) وكل حاجة بتتحمّل من موقعنا مباشرة.</p>
+<div class="fwchip note" id="fwChip">… جاري قراءة حالة جهازك</div>
+
+<div class="arab-status st-run" id="arabStatus">
+<div class="as-main" id="asMain">…</div>
+<div class="as-sub" id="asSub"></div>
+</div>
+
+<div class="consolewrap" id="consoleWrap">
+<div class="consolehead">🖥 سجل الاستغلال التقني — رسائل النظام الأصلية (للمتابعة والمرجع)</div>
+<div id="console"></div>
+</div>
+
+<div class="retryrow" id="retryRow">
+<a class="retrybtn" href="index.html">🔄 إعادة المحاولة — تحديث الصفحة والبدء من الأول</a>
+</div>
+</div>
+
+<!-- ============ أثناء التشغيل ============ -->
+<h2>أثناء التشغيل — أهم لحظة: زر R2 ⚡</h2>
+<div class="box">
+<h3 style="margin-top:0">بعد الضغط على زر التفعيل فوق — اعمل كده بالترتيب:</h3>
+<ol class="steps">
+<li>راقب <b>الشريط الذهبي للحالة</b> اللي هيظهر تحت الزر مباشرة — هو بيتابع معاك كل مرحلة بالعربي لحظة بلحظة (مرحلة المتصفح ← مرحلة الكيرنل ← إرسال البيلودات).</li>
+<li>لما الشريط يعرضلك <b>🔔 اضغط زر R2 دلوقتي لإرسال البيلودات</b> — اضغط زر <b>R2</b> في يدك اليمنى ضغطة واحدة.</li>
+<li>استنى البيلودات تتحمّل بالترتيب: <span class="paybox">kstuff.elf</span> ← <span class="paybox">shadowmountplus.elf</span> ← <span class="paybox">etaHEN.elf</span> — البيلودات دي محفوظة عندنا على نفس الرابط بتاعنا.</li>
+<li>لما الشريط يعرضلك <b>🎉 اكتمل الجيلبريك — etaHEN شغال على جهازك</b> — مبروك، بيئة الهومبريو بقت شغالة.</li>
+</ol>
+<ul class="legend">
+<li><b>📖 الرسائل الأصلية اللي هتشوفها في السجل التقني ومعناها:</b></li>
+<li><code>ARW ready</code> — صلاحيات القراءة/الكتابة في الذاكرة جاهزة ✅</li>
+<li><code>elfldr is listening on port 9021</code> — استعد لضغطة R2 🔔</li>
+<li><code>kstuff.elf sent</code> / <code>shadowmountplus.elf sent</code> — البيلودات بتتحمّل بالترتيب 📦</li>
+<li><code>etaHEN.elf sent</code> — الجيلبريك اكتمل 🎉</li>
+<li><code>PlayStation 5 Required</code> — الصفحة متفتحةش من متصفح الـ PS5 نفسه (لو بتجرب من موبايل أو كمبيوتر ده طبيعي مش عطل)</li>
+</ul>
+</div>
 
 <!-- ============ الخطوة 1: الفيرموير ============ -->
 <h2>الخطوة 1 — اتأكد إن جهازك مؤهل 🎯</h2>
@@ -78,46 +169,41 @@ h2{border-bottom-color:rgba(212,175,55,.3)}
 <div class="box ok-box">
 <h3 style="margin-top:0">رقم DNS أساسي — دوس «نسخ الرقم» وخد الرقم</h3>
 <div class="dnsbox">
-  <code class="bigip" id="dnsVal">45.56.67.85</code>
-  <button class="copybtn" id="copyDns" type="button">📋 نسخ الرقم</button>
+<code class="bigip" id="dnsVal">45.56.67.85</code>
+<button class="copybtn" id="copyDns" type="button">📋 نسخ الرقم</button>
 </div>
 <p style="margin:10px 0 8px">الرقم ده هو <b>الـ DNS الموصى بيه من مطورين الاستغلال</b> — بيعمل حاجتين في نفس الوقت: <b>بيحجب سيرفرات تحديث سوني</b> على الـ PS5 (فالتحديث بيبوظ عنك حتى لو مش مفعّل الإعداد التلقائي)، وبيسيب باقي الإنترنت شغال عادي — يعني تقدر تلعب أونلاين وتنزّل وانت مطمّن.</p>
 <p style="margin:0"><b>ضبطه على PS5 (مرة واحدة):</b> <b>الإعدادات ← الشبكة ← الإعدادات ← إعداد اتصال الإنترنت</b> — اختار اتصالك (Wi-Fi أو الكابل) ← زر <b>خيارات</b> ← <b>الإعدادات المتقدمة</b> ← <b>إعدادات DNS</b> ← <b>يدوي (Manual)</b> ← في خانة <b>Primary DNS</b> اكتب: <code>45.56.67.85</code> — وخانة <b>Secondary DNS</b> سيبها فاضية. كمّل باقي الإعدادات زي ما هي (تلقائي) واعمل <b>اختبار الاتصال</b>.</p>
 </div>
 
 <!-- ============ الخطوة 3: التشغيل ============ -->
-<h2>الخطوة 3 — شغّل الاستغلال ⚡</h2>
+<h2>الخطوة 3 — افتح رابطنا من متصفح الـ PS5 🌐</h2>
 <div class="box">
-<h3 style="margin-top:0">الرابط اللي هتكتبه في مربع عنوان URL</h3>
-<p style="margin:4px 0">متصفح الـ PS5 المخفي بيفتح من دليل المستخدم — وآخر الصفحة بيظهرلك <b>مربع عنوان URL</b> تكتب فيه الرابط بتاعنا: </p>
+<h3 style="margin-top:0">الرابط المباشر لصفحة التفعيل دي</h3>
 <div class="dnsbox">
-  <code class="bigip" id="urlVal">h0sss.github.io/bayz</code>
-  <button class="copybtn" id="copyUrl" type="button">📋 نسخ الرابط</button>
+<code class="bigip" id="urlVal" style="font-size:21px">h0sss.github.io/bayz/ps5/</code>
+<button class="copybtn" id="copyUrl" type="button">📋 نسخ الرابط</button>
 </div>
-<p style="margin:8px 0 0">💡 <b>نصيحة:</b> افتح الصفحة دي من <b>موبايلك</b> الأول وانسخ الرابط من هنا — وبعدين اكتبه على الـ PS5 (الكتابة بعصا التحكم بتاخد دقيقة). بعد أول مرة، المتصفح بيفتكر آخر رابط كتبته فتلاقيه مكتوب جاهز.</p>
+<p style="margin:8px 0 0">💡 <b>نصيحة:</b> انسخ الرابط من <b>موبايلك</b> دلوقتي — وبعدين اكتبه على الـ PS5 (الكتابة بعصا التحكم بتاخد دقيقة). بعد أول مرة، المتصفح بيفتكر آخر رابط كتبته فتلاقيه مكتوب جاهز.</p>
 
 <ol class="steps">
 <li>من قائمة الـ PS5 افتح: <b>الإعدادات ← الدليل والنصائح (Guide &amp; Tips) ← دليل المستخدم (User's Guide)</b> — هيفتحلك متصفح الـ PS5.</li>
-<li>انزل لآخر الصفحة لحد ما يظهرلك <b>مربع كتابة الرابط</b> — اكتب فيه: <code>https://h0sss.github.io/bayz</code> واضغط <b>Go</b>.</li>
-<li>هتفتحلك <b>الصفحة الرئيسية بتاعتنا</b> — دوس على كارت <b>«جيلبريك PS5 — Relapse»</b> عشان ترجع للصفحة دي، وبعدين دوس على الزر الذهبي الكبير تحت 👇</li>
-<li>استنى الاستغلال يشتغل — هتشوف سطور بتجري على الشاشة السودا. أول ما تظهر رسالة إن <b>elfldr شغال على بورت 9021</b>، اضغط زر <b>R2</b> عشان يبعت البيلودات.</li>
-<li>البيلودات بتتحمل بالترتيب: <span class="paybox">kstuff.elf</span> ← <span class="paybox">shadowmountplus.elf</span> ← <span class="paybox">etaHEN.elf</span> — لما <b>etaHEN</b> يخلص، بيئة الجيلبريك بقت شغالة على جهازك. 🎉</li>
+<li>انزل لآخر الصفحة لحد ما يظهرلك <b>مربع كتابة الرابط</b> — اكتب فيه: <code>https://h0sss.github.io/bayz/ps5/</code> واضغط <b>Go</b>.</li>
+<li>هتفتحلك <b>نفس الصفحة دي على شاشة الـ PS5</b> — اضغط <b>زر التفعيل الذهبي اللي في أولها</b>، وكمّل من قسم «أثناء التشغيل» اللي فوق.</li>
 </ol>
-
-<a class="runbtn" href="relapse/">🚀 شغّل الاستغلال الآن — Relapse</a>
-<p style="text-align:center;color:var(--muted);font-size:13.5px;margin:4px 0 0">الزر ده مخصوص للضغط من متصفح الـ PS5 نفسه — هو اللي بيبدأ سلسلة الاستغلال مباشرة.</p>
-
-<div class="warn-box box">
-<b>🔁 مشتغلش من أول مرة؟ عادي جدًا:</b> مرحلة المتصفح ممكن تحتاج <b>إعادة تحميل الصفحة</b> مرة أو اتنين (اعمل Reload من قائمة المتصفح وحاول تاني)، ومرحلة الكيرنل ممكن تلخبط الجهاز أو تعمله ريستارت — <b>اطفيه وشغّله وحاول تاني</b> من نفس الزر. ده طبيعي ومكتوب في إرشادات المطورين نفسهم — الاستغلال بيثبت أكتر مع المحاولات المتكررة.
 </div>
+
+<!-- ============ مشتغلش من أول مرة؟ ============ -->
+<div class="warn-box box">
+<b>🔁 مشتغلش من أول مرة؟ عادي جدًا:</b> مرحلة المتصفح ممكن تحتاج <b>إعادة تحميل الصفحة</b> مرة أو اتنين (دوس «إعادة المحاولة» اللي بتظهر تحت الزر أو اعمل Reload من قائمة المتصفح وحاول تاني)، ومرحلة الكيرنل ممكن تلخبط الجهاز أو تعمله ريستارت — <b>اطفيه وشغّله وحاول تاني</b> من نفس الزر. ده طبيعي ومكتوب في إرشادات المطورين نفسهم — الاستغلال بيثبت أكتر مع المحاولات المتكررة.
 </div>
 
 <!-- ============ بعد النجاح ============ -->
 <h2>بعد النجاح — إيه اللي يبقى شغال؟ ✨</h2>
 <div class="box">
 <ul>
-<li><b>etaHEN هو بيئة الهومبريو بتاعتك</b> — بيتحمل تلقائيًا مع الزر، وبيفعّلك تشغيل أدوات وألعاب محلية على الجهاز (نفس دور GoldHEN على الـ PS4).</li>
-<li><b>الجيلبريك مؤقت مش دائم:</b> بعد أي <b>إيقاف تشغيل كامل أو ريستارت</b> بيروح — وترجّعه في دقايق بنفس الخطوات (فتح الرابط ← الزر الذهبي ← R2). لو الجهاز دخلت وضع السكون عادي من غير ما يتقفل، الحالة غالبًا لسه شغالة.</li>
+<li><b>etaHEN هو بيئة الهومبريو بتاعتك</b> — بيتحمّل تلقائيًا مع الاستغلال، وبيفعّلك تشغيل أدوات وألعاب محلية على الجهاز (نفس دور GoldHEN على الـ PS4).</li>
+<li><b>الجيلبريك مؤقت مش دائم:</b> بعد أي <b>إيقاف تشغيل كامل أو ريستارت</b> بيروح — وترجّعه في دقايق بنفس الخطوات (فتح الرابط ← زر التفعيل ← R2). لو الجهاز دخلت وضع السكون عادي من غير ما يتقفل، الحالة غالبًا لسه شغالة.</li>
 <li><b>البيلودات محفوظة عندنا جاهزة:</b> الاستغلال بيحمّلها من الموقع بتاعنا نفسه — يعني الرابط اللي بتكتبه هو نفسه مصدر كل حاجة، من غير أي موقع خارجي في النص.</li>
 <li><b>متحدّثش جهازك خالص</b> بعد الجيلبريك — الـ DNS الحاجز من الخطوة 2 بيفضل واقف حارس على مدار الساعة.</li>
 </ul>
@@ -126,22 +212,43 @@ h2{border-bottom-color:rgba(212,175,55,.3)}
 <!-- ============ بديل لو مربع الرابط مش ظاهر ============ -->
 <div class="box">
 <h3 style="margin-top:0">مربع الرابط مش ظاهر عندك؟ — المتصفح المخفي التاني 🎬</h3>
-<p style="margin:4px 0">على بعض الفيرمويرات الأقدم من 12.70، الدليل بيفتح على صفحة قديمة من غير مربع للرابط. في الحالة دي افتح متصفح الـ PS5 المخفي من يوتيوب: <b>الإعدادات ← المستخدمون والحسابات ← الخدمات المرتبطة ← YouTube ← ربط (Link)</b> — في شاشة الشروط هتلاقي زر <b>«استخدام المتصفح / Use Browser»</b> — اضغطه واكتب رابطنا في شريط العنوان اللي هيظهر، وكمّل من الخطوة 3 فوق بنفس الترتيب.</p>
+<p style="margin:4px 0">على بعض الفيرمويرات الأقدم من 12.70، الدليل بيفتح على صفحة قديمة من غير مربع للرابط. في الحالة دي افتح متصفح الـ PS5 المخفي من يوتيوب: <b>الإعدادات ← المستخدمون والحسابات ← الخدمات المرتبطة ← YouTube ← ربط (Link)</b> — في شاشة الشروط هتلاقي زر <b>«استخدام المتصفح / Use Browser»</b> — اضغطه واكتب رابطنا <code>https://h0sss.github.io/bayz/ps5/</code> في شريط العنوان اللي هيظهر، وكمّل بنفس الترتيب من زر التفعيل.</p>
 </div>
 
 <div class="bottom-back"><a href="../index.html">&#10148; رجوع للصفحة الرئيسية</a></div>
 </main>
 <script>
 (function () {
+  "use strict";
+
+  /* ---------- 1) قراءة حالة الجهاز (فيرموير) أول ما الصفحة تفتح ---------- */
+  var SUPPORTED = ["13.60","13.42","13.40","13.20","13.00","12.70","12.60","12.40","12.20","12.02","12.00",
+                   "11.60","11.20","11.00","10.60","10.40","10.20","10.01","10.00","9.60","9.40","9.20","9.00",
+                   "8.60","8.40","8.20","8.00","7.61","7.60","7.40","7.20","7.01","7.00"];
+  var ua = navigator.userAgent || "";
+  var fwMatch = /PlayStation 5\/(\d+\.\d+)/.exec(ua);
+  var isPS5 = ua.indexOf("PlayStation 5") !== -1;
+  var fw = fwMatch ? fwMatch[1] : "";
+  var chip = document.getElementById("fwChip");
+  function setChip(cls, html) { chip.className = "fwchip " + cls; chip.innerHTML = html; }
+  if (isPS5 && SUPPORTED.indexOf(fw) !== -1) {
+    setChip("ok", "✅ جهازك مؤهل — فيرموير " + fw + " (في النطاق المدعوم 7.00 ← 13.60)");
+  } else if (isPS5) {
+    setChip("warn", "⚠ فيرموير " + (fw || "غير معروف") + " مش في القائمة الحالية — القائمة بتتوسع مع تحديثات الاستغلال، جرّب الزر برضه");
+  } else {
+    setChip("note", "📡 الصفحة دي مفتوحة دلوقتي من جهاز غير PS5 — خلّيها دليلك وانسخ الرابط من الخطوة 3، وزر التفعيل شغال بس من متصفح الـ PS5 نفسه");
+  }
+
+  /* ---------- 2) أزرار النسخ ---------- */
   function wireCopy(btnId, getText, okMsg) {
     var btn = document.getElementById(btnId);
     if (!btn) return;
-    btn.addEventListener('click', function () {
+    btn.addEventListener("click", function () {
       var txt = getText();
       function fallbackCopy() {
-        var ta = document.createElement('textarea');
+        var ta = document.createElement("textarea");
         ta.value = txt; document.body.appendChild(ta); ta.select();
-        try { document.execCommand('copy'); btn.textContent = okMsg; } catch (e) { btn.textContent = '⚠ اعمل تحديد ونسخ يدويًا'; }
+        try { document.execCommand("copy"); btn.textContent = okMsg; } catch (e) { btn.textContent = "⚠ اعمل تحديد ونسخ يدويًا"; }
         document.body.removeChild(ta);
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -151,12 +258,122 @@ h2{border-bottom-color:rgba(212,175,55,.3)}
       }
     });
   }
-  wireCopy('copyDns', function () {
-    return '45.56.67.85';
-  }, '✔ الرقم اتنسخ!');
-  wireCopy('copyUrl', function () {
-    return 'https://h0sss.github.io/bayz';
-  }, '✔ الرابط اتنسخ!');
+  wireCopy("copyDns", function () {
+    return "45.56.67.85";
+  }, "✔ الرقم اتنسخ!");
+  wireCopy("copyUrl", function () {
+    return "https://h0sss.github.io/bayz/ps5/";
+  }, "✔ الرابط اتنسخ!");
+
+  /* ---------- 3) تفعيل الاستغلال: تحميل سلسلة Relapse بالترتيب عند الضغط ---------- */
+  var CHAIN = ["src/firmware.js", "src/main.js", "src/rop.js", "src/utils/syscalls.js"];
+  var MODULE_ENTRY = "src/site.js";
+  var started = false;
+  var btn = document.getElementById("jbStart");
+  var statusEl = document.getElementById("arabStatus");
+  var asMain = document.getElementById("asMain");
+  var asSub = document.getElementById("asSub");
+  var consoleEl = document.getElementById("console");
+
+  function setStatus(cls, html) {
+    statusEl.style.display = "block";
+    statusEl.className = "arab-status " + cls;
+    asMain.innerHTML = html;
+  }
+  function reveal() {
+    statusEl.style.display = "block";
+    document.getElementById("consoleWrap").style.display = "block";
+    document.getElementById("retryRow").style.display = "block";
+  }
+  function failLoad(src) {
+    setStatus("st-bad", "❌ تعذّر تحميل ملف من ملفات الاستغلال: <span dir=\"ltr\">" + src + "</span> — اعمل تحديث للصفحة وحاول تاني");
+  }
+  function loadScript(src, isModule, onload) {
+    var s = document.createElement("script");
+    if (isModule) s.type = "module";
+    if (onload) s.onload = onload;
+    s.onerror = function () { failLoad(src); };
+    s.src = src;
+    document.head.appendChild(s);
+  }
+  btn.addEventListener("click", function () {
+    if (started) return;
+    started = true;
+    btn.disabled = true;
+    btn.textContent = "⏳ الاستغلال شغال حاليًا — راقب شريط الحالة تحت";
+    reveal();
+    setStatus("st-run", "⚡ جاري تحميل ملفات الاستغلال وبدء السلسلة…");
+    (function next(i) {
+      if (i < CHAIN.length) {
+        loadScript(CHAIN[i], false, function () { next(i + 1); });
+      } else {
+        loadScript(MODULE_ENTRY, true, null);
+      }
+    })(0);
+  });
+
+  /* ---------- 4) مترجم الحالة العربي: بيتابع سجل الاستغلال ويعرضه بالعربي ---------- */
+  var MAP = [
+    { re: "playstation 5 required", cls: "st-warn", txt: "⚠ الصفحة دي بتشتغل من متصفح الـ PS5 نفسه — انت دلوقتي على جهاز تاني (لو بتجرب من الموبايل ده طبيعي مش عطل)" },
+    { re: "fw version not found", cls: "st-warn", txt: "⚠ مش قادرين نقرا رقم الفيرموير من المتصفح ده — افتح الصفحة من متصفح الـ PS5" },
+    { re: "is not supported", cls: "st-bad", txt: "❌ الفيرموير بتاعك خارج النطاق المدعوم (7.00 ← 13.60) — الاستغلال مش هيكمل" },
+    { re: "starting webkit exploit", cls: "st-run", txt: "⚡ بدأ استغلال المتصفح — جاري تجهيز الثغرة (ثواني قليلة)…" },
+    { re: "arw ready", cls: "st-ok", txt: "✅ مرحلة المتصفح نجحت — صلاحيات القراءة/الكتابة في الذاكرة جاهزة" },
+    { re: "webkit base", cls: "st-run", txt: "🎯 تم تحديد عناوين الذاكرة — جاري بناء سلسلة استغلال الكيرنل" },
+    { re: "firmware:", cls: "st-run", txt: "🔍 الفيرموير المتعرف عليه: {fw}" },
+    { re: "kernel exploit complete", cls: "st-ok", txt: "✅ استغلال الكيرنل خلص بنجاح" },
+    { re: "elfldr is listening on port 9021", cls: "st-r2", txt: "🔔 اضغط زر R2 دلوقتي لإرسال البيلودات!" },
+    { re: "press r2", cls: "st-r2", txt: "🔔 اضغط زر R2 دلوقتي لإرسال البيلودات!" },
+    { re: "root and sandbox escape", cls: "st-ok", txt: "✅ صلاحيات الجذر والهروب من الـ Sandbox شغالين" },
+    { re: "kstuff.elf sent", cls: "st-run", txt: "📦 البيلود الأول (kstuff) اتبعت — جاري shadowmountplus…" },
+    { re: "shadowmountplus.elf sent", cls: "st-run", txt: "📦 البيلود التاني (shadowmountplus) اتبعت — باقي etaHEN…" },
+    { re: "etahen.elf sent", cls: "st-win", txt: "🎉 اكتمل الجيلبريك — etaHEN شغال على جهازك! استمتع 🎉" },
+    { re: "webkit exploit failed", cls: "st-bad", txt: "❌ ثغرة المتصفح فشلت — اعمل Reload للصفحة وحاول تاني (طبيعي تحاول أكتر من مرة)" },
+    { re: "never answered", cls: "st-bad", txt: "⚠ السلسلة معلّقة — اعمل Reload للصفحة وحاول من الأول" },
+    { re: "worker failed to load", cls: "st-bad", txt: "⚠ فشل تحميل وحدة تشغيل السلسلة — اعمل Reload وحاول تاني" }
+  ];
+  var FW_LINE = /firmware:\s*([\d.]+)/i;
+  function applyLine(text) {
+    var t = text.toLowerCase();
+    for (var i = 0; i < MAP.length; i++) {
+      if (t.indexOf(MAP[i].re) !== -1) {
+        var html = MAP[i].txt;
+        var fm = FW_LINE.exec(text);
+        if (fm) html = html.replace("{fw}", fm[1]);
+        setStatus(MAP[i].cls, html);
+        return true;
+      }
+    }
+    return false;
+  }
+  function rescan() {
+    var lines = consoleEl.children;
+    for (var i = 0; i < lines.length; i++) {
+      var text = lines[i].textContent || "";
+      if (text.indexOf("[-]") === 0) lines[i].className = "ln-err";
+      else if (text.indexOf("[+]") === 0) lines[i].className = "ln-ok";
+      else lines[i].className = "";
+    }
+    if (!lines.length) return;
+    var lastText = lines[lines.length - 1].textContent || "";
+    var handled = applyLine(lastText);
+    if (!handled && lastText.indexOf("[-]") === 0) {
+      setStatus("st-bad", "⚠ حصل خطأ أثناء الاستغلال — اعمل Reload للصفحة وحاول تاني (ده طبيعي في المحاولات الأولى)");
+      handled = true;
+    }
+    if (!handled) {
+      for (var j = lines.length - 2; j >= 0; j--) {
+        if (applyLine(lines[j].textContent || "")) break;
+      }
+    }
+    asSub.textContent = lastText;
+    asSub.style.display = "block";
+  }
+  if (window.MutationObserver) {
+    new MutationObserver(function () { rescan(); }).observe(consoleEl, { childList: true, subtree: true, characterData: true });
+  } else {
+    setInterval(function () { if (consoleEl.children.length) rescan(); }, 700);
+  }
 })();
 </script>
 </body>

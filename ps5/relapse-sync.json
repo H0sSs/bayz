@@ -1,5 +1,11 @@
 {
- "file_count": 53,
+ "custom_page": {
+  "path": "index.html",
+  "protected": true,
+  "replaces": "صفحة المصدر الإنجليزية — صفحة التفعيل العربية الموحدة (زر تفعيل + شريط حالة + سجل تقني)",
+  "upstream_shell_sha256": "300474e22327d703006abb3e350594d5794e4cca7fb24aaf43df4247b0c7d180"
+ },
+ "file_count": 52,
  "files": {
   "LICENSE": {
    "sha256": "27733007935689bfd85e2a13aae08144377e385b9d2aec9b72de295b9a6218f0",
@@ -8,10 +14,6 @@
   "README.md": {
    "sha256": "f47760bec7ee1d4326ec35eddef10070aee973f32c1c604276511b6be1c46382",
    "size": 1515
-  },
-  "index.html": {
-   "sha256": "300474e22327d703006abb3e350594d5794e4cca7fb24aaf43df4247b0c7d180",
-   "size": 550
   },
   "offsets/10.00.js": {
    "sha256": "23a0e624f4b566b8188c47486177eaf0fe4853148ffe1eaba9894650d3b22a65",
@@ -214,9 +216,11 @@
    "size": 20965
   }
  },
- "note": "نسخة حرفية بايت-بايت من المستودع الرسمي (رخصة MIT) — عقد التكامل في qa_check.py بيقارن الملفات بالمانيفست ده",
- "source": "ntfargo/Relapse-Exploit@main",
- "synced_at": "2026-09-29T16:22:50Z",
- "total_bytes": 9795482,
+ "note": "نسخة حرفية بايت-بايت من المستودع الرسمي (رخصة MIT) — الملفات جوه ps5/ مباشرة. صفحة التفعيل العربية ps5/index.html ملكنا وبتستبدل صفحة المصدر الإنجليزية (محمية من المزامنة). عقد التكامل في qa_check.py بيقارن الملفات بالمانيفست ده، وسكريبت sync_relapse.py محمي بعقود سلوك (watchR2 + loadOptionalPayloads + البيلودات) — لو المصدر شطبها المزامنة بتقف لمراجعة يدوية بدون ما تكسر حاجة",
+ "pin_reason": "2026-09-30: upstream حذف آلية إرسال البيلودات (watchR2/loadOptionalPayloads) وملفات etaHEN/kstuff/shadowmountplus من الريبو والموقع الحي — احتفظنا بآخر نسخة كاملة شغالة عشان الموقع يفضل بيقدّم الجيلبريك الكامل (زر التفعيل ← R2 ← etaHEN). الانتقال لسلوك المصدر الجديد يطلب مراجعة يدوية وإعادة تصميم الصفحة",
+ "pinned": true,
+ "source": "ntfargo/Relapse-Exploit@main — نسخة كاملة مثبتة (snapshot 2026-09-29T16:22Z)",
+ "synced_at": "2026-09-30T05:00:00Z",
+ "total_bytes": 9794932,
  "upstream_url": "https://codeload.github.com/ntfargo/Relapse-Exploit/tar.gz/refs/heads/main"
 }
