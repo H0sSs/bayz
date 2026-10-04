@@ -63,7 +63,8 @@ TARBALL_URL = f"https://codeload.github.com/{UPSTREAM_OWNER}/{UPSTREAM_REPO}/tar
 UPSTREAM_SHELL = "index.html"
 
 # ملفاتنا الخاصة جوه ps5/ — ملكنا ومحمية من المزامنة أبدًا
-OUR_FILES = {"index.html", "relapse-sync.json"}
+OUR_FILES = {"index.html", "relapse-sync.json", "cache.appcache"}
+# cache.appcache: كاش أوفلاين صفحة التفعيل — ملفنا زي صفحتنا (محمي من المزامنة والحذف)
 
 # ملفات مطلوبة بجودة qa_check.py — لو اختفت من المصدر ده معناه انحراف
 REQUIRED_FILES = [

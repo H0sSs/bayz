@@ -85,7 +85,7 @@ for mf in ["landing.appcache"]:
                 errors.append(f"[CACHE] {mf}: ملف مذكور ومش موجود: {line}")
 
 # فحص كاش 7-13 (المسارات نسبية لفولدر 7-13)
-for mf, base in [("7-13/host.appcache", "7-13"), ("13-13.52/cache.appcache", "13-13.52"), ("tools/cheats/cheats.appcache", "tools/cheats")]:
+for mf, base in [("7-13/host.appcache", "7-13"), ("13-13.52/cache.appcache", "13-13.52"), ("tools/cheats/cheats.appcache", "tools/cheats"), ("ps5/cache.appcache", "ps5")]:
     body = open(mf, encoding="utf-8").read()
     section = None
     for line in body.splitlines():
@@ -775,7 +775,7 @@ else:
         errors.append("[PS5] صفحة التفعيل العربية الموحدة (ps5/index.html) ناقصة أو مش صفحتنا!")
     else:
         passed.append("صفحة التفعيل العربية الموحدة موجودة ومستبدلة صفحة المصدر (محمية من المزامنة) ✓")
-    _our5 = {"index.html", "relapse-sync.json"}
+    _our5 = {"index.html", "relapse-sync.json", "cache.appcache"}
     _local5 = set()
     for _dp, _dd, _fns in os.walk("ps5"):
         for _fn in _fns:
@@ -820,15 +820,75 @@ if "Nathan Fargo" in landing_idx and "Relapse Team" in landing_idx:
     passed.append("شكرات فريق Relapse (Nathan Fargo) موجودة في فوتر الهبوط ✓")
 else:
     errors.append("[PS5] الفوتر ناقص شكرات فريق Relapse (Nathan Fargo & Relapse Team)!")
-# ز) صفحة التفعيل خارج كاش الهبوط عمدًا (صفحة حية بتتحمّل كل مرة من السيرفر — زي صفحة الاستغلال الأصلية)
+# ز) صفحة التفعيل خارج كاش الهبوط عمدًا (عندها كاش أوفلاين مستقل ps5/cache.appcache — مش نكرر 9.6MB جوه كاشين)
 if "ps5/index.html" not in ac_landing and "landing-v17-browserpkg" in ac_landing:
-    passed.append("صفحة تفعيل PS5 خارج كاش الهبوط (دايمًا طازجة) + rev v17-browserpkg ✓")
+    passed.append("صفحة تفعيل PS5 خارج كاش الهبوط (كاشها المستقل ps5/cache.appcache) + rev v17-browserpkg ✓")
 else:
-    errors.append("[PS5] ps5/index.html لازم يفضل خارج landing.appcache (صفحة تفعيل حية) و rev v17-browserpkg مطلوب!")
+    errors.append("[PS5] ps5/index.html لازم يفضل خارج landing.appcache (عندها كاش مستقل ps5/cache.appcache) و rev v17-browserpkg مطلوب!")
+
 if "ps5/src" in ac_landing or "ps5/offsets" in ac_landing or "ps5/payloads" in ac_landing or "relapse-sync" in ac_landing or "ps5/relapse" in ac_landing:
     errors.append("[PS5] ممنوع تسجيل ملفات الاستغلال (9.3MB) في كاش الهبوط — تقيلة بلا فايدة!")
 else:
-    passed.append("ملفات الاستغلال خارج كاش الهبوط (خفة + الصفحة الحية دايمًا أونلاين وقت الاستغلال) ✓")
+    passed.append("ملفات الاستغلال خارج كاش الهبوط (عندها كاش مستقل ps5/cache.appcache — من غير تكرار 9.6MB) ✓")
+# ز2) عقود كاش أوفلاين PS5 المستقل (2026-10-04 بأمر صاحب الموقع: الصفحة لازم تفتح وتشتغل بعد فصل النت)
+_pcache_path = "ps5/cache.appcache"
+if not os.path.exists(_pcache_path):
+    errors.append("[PS5-CACHE] ps5/cache.appcache ناقص — صفحة PS5 مش هتفتح أوفلاين!")
+else:
+    _pcache_body = open(_pcache_path, encoding="utf-8").read()
+    _pcache_sec = None
+    _pcache_cache = set()
+    _pcache_fb = set()
+    for _pl in _pcache_body.splitlines():
+        _pl = _pl.strip()
+        if not _pl or _pl.startswith("#"):
+            continue
+        if _pl in ("CACHE MANIFEST", "CACHE:", "FALLBACK:", "NETWORK:"):
+            _pcache_sec = _pl[:-1] if _pl.endswith(":") else _pl
+            continue
+        if _pcache_sec == "CACHE" and " " not in _pl:
+            _pcache_cache.add(_pl)
+        elif _pcache_sec == "FALLBACK" and " " in _pl:
+            _pcache_fb.add(" ".join(_pl.split()))
+    _off_list5 = sorted(_fn5 for _fn5 in os.listdir("ps5/offsets") if _fn5.endswith(".js"))
+    _need_cache5 = {"index.html", "../index.html", "../style.css", "../logo.png",
+                    "../tools/dns-block/dns-guide.jpg", "../tools/ps5-browser/index.html",
+                    "src/firmware.js", "src/main.js", "src/rop.js", "src/site.js", "src/webkit.js",
+                    "src/relapse_exploit.js", "src/kexp.js",
+                    "src/utils/int64.js", "src/utils/mem.js", "src/utils/rop_slave.js", "src/utils/syscalls.js",
+                    "payloads/elfldr-ps5-1360.elf", "payloads/etaHEN.elf", "payloads/kexp_2026_05_25.bin",
+                    "payloads/kstuff.elf", "payloads/shadowmountplus.elf"} | {"offsets/" + _o5 for _o5 in _off_list5}
+    _miss_cache5 = sorted(_need_cache5 - _pcache_cache)
+    if _miss_cache5:
+        errors.append("[PS5-CACHE] ناقص من قسم CACHE: " + ", ".join(_miss_cache5[:8]))
+    else:
+        passed.append("كاش أوفلاين PS5 كامل: " + str(len(_need_cache5)) + " ملف (الصفحة + السلسلة + " + str(len(_off_list5)) + " أوفست + 5 بيلودات) ✓")
+    _need_fb5 = {"offsets/" + _o5 + " offsets/" + _o5 for _o5 in _off_list5}
+    _miss_fb5 = sorted(_need_fb5 - _pcache_fb)
+    if _miss_fb5:
+        errors.append("[PS5-CACHE] أسطر FALLBACK ناقصة (تغطية طلبات ?v= أوفلاين): " + ", ".join(_miss_fb5[:4]))
+    else:
+        passed.append("تغطية FALLBACK لكل أوفستات الفيرمويرات (طلبات ?v= بتشتغل أوفلاين) ✓")
+    if "NETWORK:" not in _pcache_body:
+        errors.append("[PS5-CACHE] قسم NETWORK: ناقص من المانيفيست!")
+    if "20261004-ps5-v1" not in _pcache_body:
+        errors.append("[PS5-CACHE] علامة rev 20261004-ps5-v1 ناقصة من المانيفيست!")
+    _ps5_html_c = open("ps5/index.html", encoding="utf-8").read()
+    if 'manifest="cache.appcache"' not in _ps5_html_c:
+        errors.append("[PS5-CACHE] صفحة ps5/index.html مش مربوطة بالمانيفيست (سمة manifest ناقصة)!")
+    else:
+        passed.append("صفحة تفعيل PS5 مربوطة بـ ps5/cache.appcache (كاش مستقل خارج كاش الهبوط) ✓")
+    if "no-store" in _ps5_html_c:
+        errors.append("[PS5-CACHE] لسه فيه وسم no-store في صفحة PS5 — ده بيمنع التخزين!")
+    if 'id="cacheNote"' not in _ps5_html_c or "applicationCache" not in _ps5_html_c:
+        errors.append("[PS5-CACHE] مؤشر حالة الكاش (cacheNote + applicationCache) ناقص من الصفحة!")
+    else:
+        passed.append("مؤشر حالة كاش الأوفلاين شغال جوه كارت التفعيل ✓")
+    if 'fwPre.src = "offsets/" + fw + ".js"' not in _ps5_html_c:
+        errors.append("[PS5-CACHE] التحميل المبكر لأوفستات الفيرموير من الكاش ناقص من الصفحة!")
+    else:
+        passed.append("التحميل المبكر للأوفستات من الكاش موجود (تشغيل أوفلاين مضمون حتى مع ?v=) ✓")
+
 # ح) أدوات التزامن التلقائي موجودة داخل الريبو (تشغيلها من GitHub Actions)
 for _f in ["scripts/sync_relapse.py", "scripts/qa_check.py", ".github/workflows/sync-relapse.yml"]:
     if not os.path.exists(_f):
