@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>متصفح الدراع بايظ — اختصار دائم لصفحة تفعيل الجيلبريك | الدراع بايظ</title>
+<link rel="icon" type="image/png" href="../../logo.png">
+<style>
+:root{color-scheme:dark;--bg:#0b0d10;--panel:#151a21;--line:#2b3542;--gold:#d4af37;--gold2:#f0d060;--muted:#aab4c0;--ok:#7fd0a0;--warn:#e0c77b;--bad:#e08a7f;--cyan:#38bdf8}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse 900px 420px at 50% -160px,rgba(212,175,55,.14),rgba(212,175,55,0) 70%),linear-gradient(165deg,#06080b 0%,#0b0d10 55%,#181006 100%);background-repeat:no-repeat;background-color:#0b0d10;color:#edf1f5;font:16px/1.8 "Segoe UI",Tahoma,sans-serif}
+main{width:min(94%,880px);margin:0 auto;padding:20px 0 34px}
+h1{color:var(--gold);font-size:clamp(24px,4.5vw,36px);margin:6px 0 2px;background:linear-gradient(180deg,#f8e7ae 0%,#ecc45c 55%,#c2902e 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 4px 24px rgba(212,175,55,.3)}
+h2{color:var(--gold);font-size:22px;margin:30px 0 10px;border-bottom:1px solid rgba(212,175,55,.3);padding-bottom:6px}
+h3{color:var(--gold2);font-size:17px;margin:18px 0 6px}
+.sub{color:var(--muted);margin:0 0 10px}
+.page-topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;background:rgba(10,13,18,.97);border-bottom:1px solid rgba(212,175,55,.35);padding:9px 14px}
+.page-topbar .back-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:800;border-radius:9px;padding:9px 22px;font-size:15px;letter-spacing:.5px;box-shadow:0 3px 0 #6e5317,0 10px 22px rgba(212,175,55,.28);white-space:nowrap}
+.page-topbar .back-btn:hover{filter:brightness(1.08)}
+.page-topbar .topbar-title{color:var(--muted);font-size:13px;letter-spacing:.5px}
+.bottom-back{text-align:center;margin:26px 0 10px}
+.bottom-back a{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:800;border-radius:9px;padding:11px 26px;font-size:16px;box-shadow:0 4px 0 #6e5317,0 12px 26px rgba(212,175,55,.28)}
+.bottom-back a:hover{filter:brightness(1.08)}
+.bottom-back a:active{transform:translateY(3px);box-shadow:0 1px 0 #6e5317,0 5px 12px rgba(212,175,55,.2)}
+@media(max-width:600px){.page-topbar .topbar-title{display:none}}
+.box{background:rgba(15,18,24,.94);border:1px solid rgba(212,175,55,.30);border-radius:14px;padding:16px 18px;margin:14px 0;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.warn-box{border-color:#7a6a35}
+.bad-box{border-color:#6e3a35}
+code{font-family:Consolas,Menlo,monospace;direction:ltr;text-align:left;background:#0b0d10;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:13.5px;color:#e8d090;word-break:break-all}
+ol,ul{padding-right:26px;margin:8px 0}
+li{margin:9px 0}
+.steps{counter-reset:step;list-style:none;padding-right:0}
+.steps>li{counter-increment:step;position:relative;padding-right:52px;margin:14px 0}
+.steps>li::before{content:counter(step);position:absolute;right:0;top:2px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:#141005;font-weight:900;font-size:18px;display:flex;align-items:center;justify-content:center}
+ol.steps[start]{counter-reset:step 3}
+.tag{display:inline-block;background:#233024;color:var(--ok);border:1px solid #315b45;border-radius:99px;padding:2px 12px;font-size:12.5px;margin:2px}
+.copybtn{background:#233024;border:1px solid #315b45;color:var(--ok);border-radius:7px;padding:5px 14px;font-size:13px;cursor:pointer;margin-inline-start:8px}
+.copybtn:hover{filter:brightness(1.15)}
+.urlbox{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;direction:ltr;background:#0b0d10;border:1px solid #315b45;border-radius:12px;padding:14px 10px;margin:8px 0}
+.bigurl{font-size:15.5px;font-weight:700;color:#e8d090;background:transparent;border:none;padding:0;letter-spacing:.2px;word-break:break-all}
+.dlbtn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#f0d060,#d4af37);color:#141005;text-decoration:none;font-weight:900;border-radius:12px;padding:13px 30px;font-size:16.5px;box-shadow:0 4px 0 #6e5317,0 12px 26px rgba(212,175,55,.3)}
+.dlbtn:hover{filter:brightness(1.08)}
+.dlbtn:active{transform:translateY(3px);box-shadow:0 1px 0 #6e5317,0 5px 12px rgba(212,175,55,.2)}
+</style>
+</head>
+<body>
+<nav class="page-topbar">
+<a class="back-btn" href="../../index.html">&#10148; رجوع للصفحة الرئيسية</a>
+<span class="topbar-title">متصفح الدراع بايظ — الاختصار الدائم</span>
+</nav>
+<main>
+
+<h1>متصفح الدراع بايظ 🌐</h1>
+<p class="sub">PS5 Browser ElDra3Bayez — تطبيق واحد على الشاشة الرئيسية بيوصلك لصفحة تفعيل الجيلبريك من غير أي رابط</p>
+
+<div class="box">
+<h3 style="margin-top:0">إيه هو؟</h3>
+<p>تطبيق صغير بيتثبّت على الـ PS5 وبيظهر في قسم <b>Media</b> في الشاشة الرئيسية. أول ما تدوس عليه بيفتح <b>المتصفح المخفي بتاع الجهاز مباشرة على صفحة التفعيل بتاعتنا</b> — يعني زر تفعيل الجيلبريك جاهز عندك في أي وقت، من غير DNS ولا مربع رابط ولا كتابة أي حاجة بخط اليد.</p>
+<p><span class="tag">بدون كود تنفيذي</span> <span class="tag">الحجم 1.14MB</span> <span class="tag">فيرموير 7.00 ← 13.60</span></p>
+</div>
+
+<div class="warn-box box">
+<b>⚠ قبل التثبيت — شرط واحد:</b> لازم يكون <b>الجيلبريك مفعّل</b> (Relapse + etaHEN شغالين) وقت التثبيت — لأن تثبيت أي تطبيق خارجي بيحتاج صلاحيات الجيلبريك. التفعيل من <a href="../../ps5/index.html" style="color:var(--gold2)">صفحة التفعيل</a> كالمعتاد.
+</div>
+
+<h2>الطريقة 1 — من الموبايل أو الكمبيوتر (الأسرع) 📱</h2>
+<div class="box">
+<p>واجهة etaHen بتشتغل على عنوان الجهاز — بتفتحها من <b>أي جهاز على نفس الشبكة</b> (موبايلك أو كمبيوترك) وبتثبّت الحزمة مباشرة على الـ PS5 من غير USB:</p>
+<ol class="steps">
+<li>اعرف <b>عنوان IP بتاع الـ PS5</b>: من الجهاز نفسه افتح <b>الإعدادات ← الشبكة ← إعدادات الاتصال ← حالة اتصال الإنترنت</b> — هتلاقي الـ IP جنب «عنوان IPv4».</li>
+<li>من الموبايل أو الكمبيوتر (على نفس الواي فاي) افتح المتصفح واكتب في شريط العنوان: <code>http://IP-الجهاز:12800</code> — مثال لو الـ IP هو 192.168.1.20: <code>http://192.168.1.20:12800</code></li>
+<li>هتفتحلك <b>واجهة etaHen</b> — دور على خيار تثبيت الحزم / <b>Package Installer</b> والصق فيه رابط الحزمة ده:</li>
+</ol>
+<div class="urlbox">
+<span class="bigurl" id="urlVal">h0sss.github.io/bayz/tools/ps5-browser/ps5-browser-eldra3bayez.pkg</span>
+<button class="copybtn" id="copyUrl" type="button">📋 نسخ الرابط</button>
+</div>
+<p style="margin:10px 0 0">4. دوس تثبيت — الحزمة هتتنزل وتتثبّت على الجهاز، وهتلاقي «PS5 Browser ElDra3Bayez» ظهرت في قسم <b>Media</b> في الشاشة الرئيسية.</p>
+</div>
+
+<h2>الطريقة 2 — فلاشة USB 💾</h2>
+<div class="box">
+<ol class="steps">
+<li>حمّل ملف الحزمة من الزر اللي تحت (من الموبايل أو الكمبيوتر).</li>
+<li>حط الملف على فلاشة USB (بنظام FAT32 أو exFAT) — من غير تغيير اسمه.</li>
+<li>وصّل الفلاشة بالـ PS5 وفعّل الجيلبريك كالمعتاد.</li>
+<li>افتح: <b>الإعدادات ← إعدادات التصحيح (Debug Settings) ← Package Installer</b> — اختار الملف من الفلاشة وثبّته.</li>
+</ol>
+<p style="text-align:center;margin:18px 0 8px">
+<a class="dlbtn" href="ps5-browser-eldra3bayez.pkg" download>&#11015; تحميل ps5-browser-eldra3bayez.pkg (1.14MB)</a>
+</p>
+</div>
+
+<h2>بعد التثبيت — إيه اللي يحدث؟ ✨</h2>
+<div class="box">
+<ul>
+<li><b>الاختصار بيفضل موجود دايمًا:</b> حتى بعد قفل الجهاز وتشغيله من جديد — التطبيق مثبّت على الذاكرة الداخلية زي أي تطبيق عادي، ومش بيتمسح.</li>
+<li><b>فتحه محتاج الجيلبريك نشط:</b> زي كل تطبيقات الهومبريو على الـ PS5 — بعد أي إعادة تشغيل كاملة، فعّل الجيلبريك الأول (من User Guide زي ما انت متعود) وبعدين افتح المتصفح عادي. لو الجهاز في وضع السكون من غير إطفاء كامل، كله بيفضل شغال زي ما هو.</li>
+<li><b>بيفتح صفحة التفعيل مباشرة:</b> زر التفعيل الذهبي جاهز في أول الصفحة — نفس الخطوات من غير أي كتابة.</li>
+</ul>
+</div>
+
+<h2>ملحوظة تقنية 🔧</h2>
+<div class="box">
+<p>التطبيق من نوع <b>Media App</b> — بيحتوي على أيقونة + إعدادات بس، <b>من غير أي كود تنفيذي</b> — آمن، وبيفتح المتصفح المخفي على رابط ثابت مكتوب جواه: <code>https://h0sss.github.io/bayz/ps5/</code>. الحاوية اتبنت بأداة مفتوحة المصدر (<b>LibProsperoPkg</b> — GPL-3) بكل بصماتها متسقة ذاتيًا، وبتتثبّت من خلال مُثبّت الحزم بتاع etaHen. التطبيق مستوحى من فكرة «متصفح UMTX» بتاعة مشروع umtx2 — شكرًا ليهم ولمطوري الأداة.</p>
+</div>
+
+<div class="bad-box box">
+<b>🚫 تحذير مهم:</b> متحدّثش جهازك فوق <b>13.60</b> نهائيًا — أي فيرموير أحدث من كده مفيش عليه جيلبريك حاليًا، والاختصار هيفضل موجود بس صفحة التفعيل نفسها مش هتشتغل من غير جيلبريك. خليك على الـ DNS الحاجز وقفل التحديث التلقائي.
+</div>
+
+<div class="bottom-back"><a href="../../index.html">&#10148; رجوع للصفحة الرئيسية</a></div>
+</main>
+<script>
+(function () {
+  "use strict";
+  function wireCopy(btnId, getText, okMsg) {
+    var btn = document.getElementById(btnId);
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var txt = getText();
+      function fallbackCopy() {
+        var ta = document.createElement("textarea");
+        ta.value = txt; document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); btn.textContent = okMsg; } catch (e) { btn.textContent = "⚠ اعمل تحديد ونسخ يدويًا"; }
+        document.body.removeChild(ta);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(function () { btn.textContent = okMsg; }).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+    });
+  }
+  wireCopy("copyUrl", function () {
+    return "https://h0sss.github.io/bayz/tools/ps5-browser/ps5-browser-eldra3bayez.pkg";
+  }, "✔ الرابط اتنسخ!");
+})();
+</script>
+</body>
+</html>

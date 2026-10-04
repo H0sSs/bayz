@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 20260930-landing-v15-freshps5
+# rev 20261004-landing-v16-ps5browser
 
 CACHE:
 index.html
@@ -22,6 +22,8 @@ tools/fan-control/65.bin
 tools/fan-control/70.bin
 tools/fan-control/75.bin
 tools/fan-control/80.bin
+tools/ps5-browser/index.html
+tools/ps5-browser/ps5-browser-eldra3bayez.pkg
 tools/cheats/offline-note.html
 
 FALLBACK:
