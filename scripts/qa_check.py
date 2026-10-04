@@ -559,7 +559,7 @@ for name, body in [("landing.appcache", ac_landing), ("7-13/host.appcache", ac_h
         passed.append(f"صفحة الحل مسجلة في الكاش: {name} ✓")
     else:
         errors.append(f"[CACHE] {name}: صفحة الحل مش مسجلة — الأوفلاين هيكسر!")
-if "landing-v16-ps5browser" in ac_landing and "golden-v10" in ac_aio and "7-13-v9-golden" in ac_host:
+if "landing-v17-browserpkg" in ac_landing and "golden-v10" in ac_aio and "7-13-v9-golden" in ac_host:
     passed.append("مراجعات الكاشات التلاتة اترفعت (rev bump) ✓")
 else:
     errors.append("[CACHE] واحد أو أكتر من rev bumps ناقص!")
@@ -821,10 +821,10 @@ if "Nathan Fargo" in landing_idx and "Relapse Team" in landing_idx:
 else:
     errors.append("[PS5] الفوتر ناقص شكرات فريق Relapse (Nathan Fargo & Relapse Team)!")
 # ز) صفحة التفعيل خارج كاش الهبوط عمدًا (صفحة حية بتتحمّل كل مرة من السيرفر — زي صفحة الاستغلال الأصلية)
-if "ps5/index.html" not in ac_landing and "landing-v16-ps5browser" in ac_landing:
-    passed.append("صفحة تفعيل PS5 خارج كاش الهبوط (دايمًا طازجة) + rev v16-ps5browser ✓")
+if "ps5/index.html" not in ac_landing and "landing-v17-browserpkg" in ac_landing:
+    passed.append("صفحة تفعيل PS5 خارج كاش الهبوط (دايمًا طازجة) + rev v17-browserpkg ✓")
 else:
-    errors.append("[PS5] ps5/index.html لازم يفضل خارج landing.appcache (صفحة تفعيل حية) و rev v16-ps5browser مطلوب!")
+    errors.append("[PS5] ps5/index.html لازم يفضل خارج landing.appcache (صفحة تفعيل حية) و rev v17-browserpkg مطلوب!")
 if "ps5/src" in ac_landing or "ps5/offsets" in ac_landing or "ps5/payloads" in ac_landing or "relapse-sync" in ac_landing or "ps5/relapse" in ac_landing:
     errors.append("[PS5] ممنوع تسجيل ملفات الاستغلال (9.3MB) في كاش الهبوط — تقيلة بلا فايدة!")
 else:
@@ -934,17 +934,17 @@ else:
 
 
 
-# ---------- 5.15) فحص Task 27: متصفح الدراع بايظ (PS5 Browser ElDra3Bayez) — تطبيق Media بيفتح صفحة التفعيل ----------
+# ---------- 5.15) فحص Task 27/29: متصفح الدراع بايظ («الدراع بايظ | PS5») — تطبيق Media بيفتح صفحة التفعيل ----------
 _br_pkg = "tools/ps5-browser/ps5-browser-eldra3bayez.pkg"
 _br_page_path = "tools/ps5-browser/index.html"
 if not os.path.exists(_br_page_path):
     errors.append("[PS5-براوزر] صفحة الأداة tools/ps5-browser/index.html مش موجودة!")
 else:
     _br_page = open(_br_page_path, encoding="utf-8").read()
-    _br_needs = ["متصفح الدراع بايظ", "ElDra3Bayez", "ps5-browser-eldra3bayez.pkg", "12800",
+    _br_needs = ["متصفح الدراع بايظ", "الدراع بايظ | PS5", "ps5-browser-eldra3bayez.pkg", "12800",
                  "Package Installer", "Media", 'id="copyUrl"',
                  "h0sss.github.io/bayz/tools/ps5-browser/ps5-browser-eldra3bayez.pkg",
-                 "https://h0sss.github.io/bayz/ps5/", "LibProsperoPkg", "13.60", "Debug Settings",
+                 "https://h0sss.github.io/bayz/ps5/", "umtx2", "13.60", "Debug Settings",
                  "FAT32", "etaHen", "بعد قفل الجهاز"]
     _br_missing = [n for n in _br_needs if n not in _br_page]
     if _br_missing:
@@ -968,11 +968,11 @@ else:
         _sha27 = _hl27.sha256(_f27.read()).hexdigest()
     if _head27 != b"\x7fFIH":
         errors.append("[PS5-براوزر] ماجيك الحزمة غلط (لازم \\x7fFIH — حاوية PS5 debug)!")
-    if _sz27 < 1000000 or _sz27 > 1400000:
-        errors.append(f"[PS5-براوزر] حجم الحزمة غير منطقي: {_sz27} (المتوقع ~1.19MB)")
-    if _sha27 != "82036ef7c3e0f8d8e4f41d3ad4b8b14409d57c05c8deb62f41f49661551b352d":
-        errors.append("[PS5-براوزر] بصمة SHA256 للحزمة تغيّرت — لازم إعادة التوليد بسكريبت lpp_pipeline_ourapp.py")
-    if _head27 == b"\x7fFIH" and _sha27 == "82036ef7c3e0f8d8e4f41d3ad4b8b14409d57c05c8deb62f41f49661551b352d":
+    if _sz27 < 3000000 or _sz27 > 3800000:
+        errors.append(f"[PS5-براوزر] حجم الحزمة غير منطقي: {_sz27} (المتوقع ~3.49MB)")
+    if _sha27 != "e47bca38fedb8820b28fa7d448aa54a0a196b8887404d3cc011802b91a7eccfc":
+        errors.append("[PS5-براوزر] بصمة SHA256 للحزمة تغيّرت — النسخة الحالية محمية بعقد الجودة (مولّد المشهد)")
+    if _head27 == b"\x7fFIH" and _sha27 == "e47bca38fedb8820b28fa7d448aa54a0a196b8887404d3cc011802b91a7eccfc":
         passed.append(f"حزمة المتصفح سليمة: ماجيك \\x7fFIH + SHA256 متطابق + { _sz27:,}B ✓")
 if "tools/ps5-browser/index.html" not in ps5_page or "زهدت من كتابة الرابط" not in ps5_page:
     errors.append("[PS5-براوزر] قسم المتصفح ناقص من ps5/index.html (لازم بعد «بعد النجاح» — رابط لأداة التثبيت)!")
@@ -982,10 +982,10 @@ _lc27 = open("landing.appcache", encoding="utf-8").read()
 for _n27 in ["tools/ps5-browser/index.html", "tools/ps5-browser/ps5-browser-eldra3bayez.pkg"]:
     if _n27 not in _lc27:
         errors.append(f"[PS5-براوزر] الملف مش مسجل في CACHE الـ landing.appcache: {_n27}")
-if "landing-v16-ps5browser" not in _lc27:
-    errors.append("[PS5-براوزر] rev الـ landing.appcache لازم يبقى v16-ps5browser!")
-if "landing-v16-ps5browser" in _lc27 and "tools/ps5-browser/ps5-browser-eldra3bayez.pkg" in _lc27:
-    passed.append("الكاش محدّث: rev v16-ps5browser + صفحة وحزمة المتصفح مسجلين ✓")
+if "landing-v17-browserpkg" not in _lc27:
+    errors.append("[PS5-براوزر] rev الـ landing.appcache لازم يبقى v17-browserpkg!")
+if "landing-v17-browserpkg" in _lc27 and "tools/ps5-browser/ps5-browser-eldra3bayez.pkg" in _lc27:
+    passed.append("الكاش محدّث: rev v17-browserpkg + صفحة وحزمة المتصفح مسجلين ✓")
 
 # ---------- النتيجة ----------
 print()
